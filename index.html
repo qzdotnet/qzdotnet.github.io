@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans,en,default">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -351,7 +351,80 @@
       
         
           
-            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇文章我们已经成功的将博客搭建起来。本文将对主题的相关配置以及第三方服务的集成做进一步的介绍。其实Next的文档，已经将配置与服务集成介绍的非常明白。有兴趣的同学可以去查看<a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">官方文档</a>,本文将重点介绍本人BLOG使用的第三方服务 。</p>
+<h2 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h2><h3 id="站点信息"><a href="#站点信息" class="headerlink" title="站点信息"></a>站点信息</h3><p>站点信息存放在hexo网站根目录的_config.yml文件中。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span> <span class="string">QuZheng</span>	  <span class="comment">#主标题</span></div><div class="line"><span class="attr">subtitle:</span>         <span class="comment">#副标题</span></div><div class="line"><span class="attr">description:</span>      <span class="comment">#描述</span></div><div class="line"><span class="attr">author:</span> <span class="string">QuZheng</span>   <span class="comment">#作者</span></div><div class="line"><span class="attr">language:</span> <span class="string">zh-Hans</span> <span class="comment">#语言</span></div><div class="line"><span class="attr">timezone:</span></div></pre></td></tr></table></figure>
+<h4 id="Next目前支持的语言"><a href="#Next目前支持的语言" class="headerlink" title="Next目前支持的语言"></a>Next目前支持的语言</h4><table>
+<thead>
+<tr>
+<th>语言</th>
+<th>代码</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>English</td>
+<td><code>en</code></td>
+<td><code>language: en</code></td>
+</tr>
+<tr>
+<td>简体中文</td>
+<td><code>zh-Hans</code></td>
+<td><code>language: zh-Hans</code></td>
+</tr>
+<tr>
+<td>Français</td>
+<td><code>fr-FR</code></td>
+<td><code>language: fr-FR</code></td>
+</tr>
+<tr>
+<td>Português</td>
+<td><code>pt</code></td>
+<td><code>language: pt</code> or <code>language: pt-BR</code></td>
+</tr>
+<tr>
+<td>繁體中文</td>
+<td><code>zh-hk</code> 或者 <code>zh-tw</code></td>
+<td><code>language: zh-hk</code></td>
+</tr>
+<tr>
+<td>Русский язык</td>
+<td><code>ru</code></td>
+<td><code>language: ru</code></td>
+</tr>
+<tr>
+<td>Deutsch</td>
+<td><code>de</code></td>
+<td><code>language: de</code></td>
+</tr>
+<tr>
+<td>日本語</td>
+<td><code>ja</code></td>
+<td><code>language: ja</code></td>
+</tr>
+<tr>
+<td>Indonesian</td>
+<td><code>id</code></td>
+<td><code>language: id</code></td>
+</tr>
+<tr>
+<td>Korean</td>
+<td><code>ko</code></td>
+<td><code>language: ko</code></td>
+</tr>
+</tbody>
+</table>
+<p>如果想将自己的网站设置为多语言版本可参考如下设置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">language:</span></div><div class="line"><span class="bullet">-</span> <span class="string">zh-Hans</span></div><div class="line"><span class="bullet">-</span> <span class="string">en</span></div></pre></td></tr></table></figure>
+<h3 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h3><p>博客的菜单的功能菜单是可以自定义的。菜单的配置在<em>主题配置文件</em>主题根目录的_config.yml文件中。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">menu:</span></div><div class="line"><span class="attr">  home:</span> <span class="string">/</span>                    <span class="comment">#首页</span></div><div class="line"><span class="attr">  categories:</span> <span class="string">/categories/</span>   <span class="comment">#分类</span></div><div class="line"><span class="attr">  about:</span> <span class="string">/about/</span>             <span class="comment">#关于</span></div><div class="line"><span class="attr">  archives:</span> <span class="string">/archives/</span>       <span class="comment">#归档</span></div><div class="line"><span class="attr">  tags:</span> <span class="string">/tags/</span>               <span class="comment">#标签</span></div><div class="line">  <span class="comment">#sitemap: /sitemap.xml</span></div><div class="line">  <span class="comment">#commonweal: /404/</span></div></pre></td></tr></table></figure>
+<p>系统初始时，只有<code>home</code>、<code>archives</code>、<code>tags</code>，其它菜单需要手动将注释去掉。并增加相应的页面。</p>
+<h4 id="tags页面添加"><a href="#tags页面添加" class="headerlink" title="tags页面添加"></a>tags页面添加</h4><p>执行下面命令</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">hexo</span> <span class="string">n</span> <span class="string">page</span> <span class="string">tags</span></div></pre></td></tr></table></figure>
+<p>打开source\tags目录下的index.md,添加 type参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: tags</div><div class="line">date: 2017-09-04 20:14:29</div><div class="line">type: &quot;tags&quot;</div><div class="line">---</div></pre></td></tr></table></figure>
+<h3 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h3><h3 id="版权信息"><a href="#版权信息" class="headerlink" title="版权信息"></a>版权信息</h3><h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><h3 id="百度统计"><a href="#百度统计" class="headerlink" title="百度统计"></a>百度统计</h3><h3 id="留言评论"><a href="#留言评论" class="headerlink" title="留言评论"></a>留言评论</h3><h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><h3 id="百度分享"><a href="#百度分享" class="headerlink" title="百度分享"></a>百度分享</h3><h3 id="404网页集成"><a href="#404网页集成" class="headerlink" title="404网页集成"></a>404网页集成</h3>
           
         
       
