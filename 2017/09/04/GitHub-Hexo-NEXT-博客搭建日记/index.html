@@ -460,7 +460,7 @@
 <p>添加一篇新的博文。</p>
 <h3 id="发布到GitHub"><a href="#发布到GitHub" class="headerlink" title="发布到GitHub"></a>发布到GitHub</h3><p>输入完成发布</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g -d</div></pre></td></tr></table></figure>
-<p>发布成功后可以打开<a href="https://qzdotnet.github.io/" target="_blank" rel="external">https://qzdotnet.github.io/</a>查看已经的博客了。到此博客搭建就已经顺利完成了。后面的文章会对Hexo与Next的相关配置和功能使用做一些介绍</p>
+<p>发布成功后可以打开<a href="https://qzdotnet.github.io/">https://qzdotnet.github.io/</a>查看已经的博客了。到此博客搭建就已经顺利完成了。后面的文章会对Hexo与Next的相关配置和功能使用做一些介绍</p>
 <h2 id="99-参考链接"><a href="#99-参考链接" class="headerlink" title="99 参考链接"></a>99 参考链接</h2><p> <a href="http://barrysite.me/2017/05/07/Github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" target="_blank" rel="external">Github+Hexo+NEXT主题+域名绑定 博客搭建全记录</a></p>
 <p> <a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo官网</a></p>
 <p><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT使用文档</a></p>
@@ -581,7 +581,7 @@
   </script>
 
 <script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
       
@@ -595,6 +595,40 @@
 
           
   <div class="comments" id="comments">
+    
+        <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+        <div id="container" style="display:none"></div>
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+        <script>
+        const myTheme = {
+          render(state, instance) {
+            const container = document.createElement('div');
+            container.lang = "en-US";
+            container.className = 'gitment-container gitment-root-container';
+            container.appendChild(instance.renderHeader(state, instance));
+            container.appendChild(instance.renderEditor(state, instance));
+            container.appendChild(instance.renderComments(state, instance));
+            container.appendChild(instance.renderFooter(state, instance));
+            return container;
+          }
+        }
+        function showGitment() {
+          $("#gitment_title").attr("style", "display:none");
+          $("#container").attr("style", "").addClass("gitment_container");
+          var gitment = new Gitment({
+            id: window.location.pathname,
+            theme: myTheme,
+            owner: 'qzdotnet',
+            repo: 'qzdotnet.github.io',
+            oauth: {
+              client_id: 'fa11a893136049e19eea',
+              client_secret: '6047ffa1b9c66f68a089102ef3f0e52fb7520c0a'
+            }
+          });
+          gitment.render('container');
+        }
+        </script>
     
   </div>
 
