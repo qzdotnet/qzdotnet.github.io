@@ -98,11 +98,11 @@
 <meta name="keywords" content="Next">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Next主题配置第三方服务集成">
-<meta property="og:url" content="http://yoursite.com/2017/09/05/Next主题配置第三方服务集成/index.html">
+<meta property="og:url" content="http://qzdotnet.github.io/2017/09/05/Next主题配置第三方服务集成/index.html">
 <meta property="og:site_name" content="QuZheng">
 <meta property="og:description" content="前言上一篇文章我们已经成功的将博客搭建起来。本文将对主题的相关配置以及第三方服务的集成做进一步的介绍。其实Next的文档，已经将配置与服务集成介绍的非常明白。有兴趣的同学可以去查看官方文档,本文将重点介绍本人BLOG使用的第三方服务 。 主题配置站点信息站点信息存放在hexo网站根目录的_config.yml文件中。 123456title: QuZheng	  #主标题subtitle:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-05T06:08:36.749Z">
+<meta property="og:updated_time" content="2017-09-05T07:14:32.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Next主题配置第三方服务集成">
 <meta name="twitter:description" content="前言上一篇文章我们已经成功的将博客搭建起来。本文将对主题的相关配置以及第三方服务的集成做进一步的介绍。其实Next的文档，已经将配置与服务集成介绍的非常明白。有兴趣的同学可以去查看官方文档,本文将重点介绍本人BLOG使用的第三方服务 。 主题配置站点信息站点信息存放在hexo网站根目录的_config.yml文件中。 123456title: QuZheng	  #主标题subtitle:">
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/05/Next主题配置第三方服务集成/"/>
+  <link rel="canonical" href="http://qzdotnet.github.io/2017/09/05/Next主题配置第三方服务集成/"/>
 
 
 
@@ -231,6 +231,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -252,9 +262,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -283,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/05/Next主题配置第三方服务集成/">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/09/05/Next主题配置第三方服务集成/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="QuZheng">
@@ -322,6 +366,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/博客搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">博客搭建</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -422,8 +488,38 @@
 <h4 id="tags页面添加"><a href="#tags页面添加" class="headerlink" title="tags页面添加"></a>tags页面添加</h4><p>执行下面命令</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">hexo</span> <span class="string">n</span> <span class="string">page</span> <span class="string">tags</span></div></pre></td></tr></table></figure>
 <p>打开source\tags目录下的index.md,添加 type参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: tags</div><div class="line">date: 2017-09-04 20:14:29</div><div class="line">type: &quot;tags&quot;</div><div class="line">---</div></pre></td></tr></table></figure>
-<h3 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h3><h3 id="版权信息"><a href="#版权信息" class="headerlink" title="版权信息"></a>版权信息</h3><h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><h3 id="百度统计"><a href="#百度统计" class="headerlink" title="百度统计"></a>百度统计</h3><h3 id="留言评论"><a href="#留言评论" class="headerlink" title="留言评论"></a>留言评论</h3><h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><h3 id="百度分享"><a href="#百度分享" class="headerlink" title="百度分享"></a>百度分享</h3><h3 id="404网页集成"><a href="#404网页集成" class="headerlink" title="404网页集成"></a>404网页集成</h3>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="string">tags</span></div><div class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="bullet">-09</span><span class="bullet">-04</span> <span class="number">20</span><span class="string">:14:29</span></div><div class="line"><span class="attr">type:</span> <span class="string">"tags"</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<h4 id="categories页面添加"><a href="#categories页面添加" class="headerlink" title="categories页面添加"></a>categories页面添加</h4><p>执行命令</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">hexo</span> <span class="string">n</span> <span class="string">page</span> <span class="string">categories</span></div></pre></td></tr></table></figure>
+<p>打开source\categories目录下的index.md,添加 type参数</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="string">tags</span></div><div class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="bullet">-09</span><span class="bullet">-04</span> <span class="number">20</span><span class="string">:14:29</span></div><div class="line"><span class="attr">type:</span> <span class="string">"categories"</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<h4 id="about页面添加"><a href="#about页面添加" class="headerlink" title="about页面添加"></a>about页面添加</h4><p>执行命令</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">hexo</span> <span class="string">n</span> <span class="string">page</span> <span class="string">about</span></div></pre></td></tr></table></figure>
+<h4 id="菜单图标"><a href="#菜单图标" class="headerlink" title="菜单图标"></a>菜单图标</h4><p>menu_icons配置结点可以设置菜单是否带图标。图标使用的<a href="http://fontawesome.io/icons/" target="_blank" rel="external">FontAwesome</a>字体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">menu_icons:</div><div class="line">  enable: true</div><div class="line">  #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome</div><div class="line">  home: home</div><div class="line">  about: user</div><div class="line">  categories: th</div><div class="line">  schedule: calendar</div><div class="line">  tags: tags</div><div class="line">  archives: archive</div><div class="line">  sitemap: sitemap</div><div class="line">  commonweal: heartbeat</div></pre></td></tr></table></figure>
+<h3 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h3><p>Next 提供了三种风格供选择</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scheme: Muse</div><div class="line">#scheme: Mist</div><div class="line">#scheme: Pisces</div></pre></td></tr></table></figure>
+<h3 id="版权信息"><a href="#版权信息" class="headerlink" title="版权信息"></a>版权信息</h3><p>版本信息默认是关闭的，可以通过设置enable来打开版本信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Declare license on posts</div><div class="line">post_copyright:</div><div class="line">  enable: true</div><div class="line">  license: CC BY-NC-SA 3.0</div><div class="line">  license_url: https://creativecommons.org/licenses/by-nc-sa/3.0/</div></pre></td></tr></table></figure>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><h3 id="百度统计"><a href="#百度统计" class="headerlink" title="百度统计"></a>百度统计</h3><p>注册<a href="https://tongji.baidu.com/web/welcome/login" target="_blank" rel="external">百度统计</a>账号</p>
+<p>在网站列表中新增网站，填写信息保存后。点击获取代码。将hm.js?后面的ID复制到<em>主题配置文件</em>中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Baidu Analytics ID</div><div class="line">baidu_analytics: 59***************</div></pre></td></tr></table></figure>
+<p>保存完毕后，可以执行命令，重新生成发布。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g -d</div></pre></td></tr></table></figure>
+<p>发布成功后，可以到百度统计点击首页代码状态进行测试，测试成功会提示代码安装正确。</p>
+<h3 id="Local-Search搜索"><a href="#Local-Search搜索" class="headerlink" title="Local Search搜索"></a>Local Search搜索</h3><p>1 在根目前安装 hexo-generator-searchdb,安装时要使用管理员权限运行命令行工具，切记!!!!!</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-searchdb --save</div></pre></td></tr></table></figure>
+<p>2 编辑网站根目前下的_config.yml配置文件，添加</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">search:</span></div><div class="line"><span class="attr">  path:</span> <span class="string">search.xml</span></div><div class="line"><span class="attr">  field:</span> <span class="string">post</span></div><div class="line"><span class="attr">  format:</span> <span class="string">html</span></div><div class="line"><span class="attr">  limit:</span> <span class="number">10000</span></div></pre></td></tr></table></figure>
+<p>3 编辑<em>主题配置文件</em>,启用本地搜索功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Local search</div><div class="line">local_search:</div><div class="line">  enable: true</div></pre></td></tr></table></figure>
+<h3 id="百度分享"><a href="#百度分享" class="headerlink" title="百度分享"></a>百度分享</h3><h3 id="留言评论"><a href="#留言评论" class="headerlink" title="留言评论"></a>留言评论</h3><h3 id="404网页集成"><a href="#404网页集成" class="headerlink" title="404网页集成"></a>404网页集成</h3><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">Next 官方文档</a></li>
+<li><a href="http://tc9011.com/2017/02/02/hexo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E%E5%8F%8A%E4%B8%80%E4%BA%9B%E7%89%B9%E6%95%88/" target="_blank" rel="external">hexo文章添加版权声明及一些特效</a></li>
+<li><a href="http://blog.shiqichan.com/use-qiniu-store-image-for-hexo/" target="_blank" rel="external">使用七牛为Hexo存储图片</a></li>
+<li><a href="http://blog.csdn.net/yuxuan89814/article/details/52052941" target="_blank" rel="external">npm install 安装软件，出现 operation not permitted, mkdir</a></li>
+</ul>
+
       
     </div>
     
@@ -434,6 +530,24 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    QuZheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://qzdotnet.github.io/2017/09/05/Next主题配置第三方服务集成/" title="Next主题配置第三方服务集成">http://qzdotnet.github.io/2017/09/05/Next主题配置第三方服务集成/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -479,6 +593,44 @@
 
 
     <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
       
     </div>
   </div>
@@ -595,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题配置"><span class="nav-number">2.</span> <span class="nav-text">主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#站点信息"><span class="nav-number">2.1.</span> <span class="nav-text">站点信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Next目前支持的语言"><span class="nav-number">2.1.1.</span> <span class="nav-text">Next目前支持的语言</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#菜单"><span class="nav-number">2.2.</span> <span class="nav-text">菜单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tags页面添加"><span class="nav-number">2.2.1.</span> <span class="nav-text">tags页面添加</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#风格"><span class="nav-number">2.3.</span> <span class="nav-text">风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版权信息"><span class="nav-number">2.4.</span> <span class="nav-text">版权信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件安装"><span class="nav-number">3.</span> <span class="nav-text">插件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#百度统计"><span class="nav-number">3.1.</span> <span class="nav-text">百度统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#留言评论"><span class="nav-number">3.2.</span> <span class="nav-text">留言评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索"><span class="nav-number">3.3.</span> <span class="nav-text">搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#百度分享"><span class="nav-number">3.4.</span> <span class="nav-text">百度分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#404网页集成"><span class="nav-number">3.5.</span> <span class="nav-text">404网页集成</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题配置"><span class="nav-number">2.</span> <span class="nav-text">主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#站点信息"><span class="nav-number">2.1.</span> <span class="nav-text">站点信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Next目前支持的语言"><span class="nav-number">2.1.1.</span> <span class="nav-text">Next目前支持的语言</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#菜单"><span class="nav-number">2.2.</span> <span class="nav-text">菜单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tags页面添加"><span class="nav-number">2.2.1.</span> <span class="nav-text">tags页面添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#categories页面添加"><span class="nav-number">2.2.2.</span> <span class="nav-text">categories页面添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#about页面添加"><span class="nav-number">2.2.3.</span> <span class="nav-text">about页面添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#菜单图标"><span class="nav-number">2.2.4.</span> <span class="nav-text">菜单图标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#风格"><span class="nav-number">2.3.</span> <span class="nav-text">风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版权信息"><span class="nav-number">2.4.</span> <span class="nav-text">版权信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件安装"><span class="nav-number">3.</span> <span class="nav-text">插件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#百度统计"><span class="nav-number">3.1.</span> <span class="nav-text">百度统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Local-Search搜索"><span class="nav-number">3.2.</span> <span class="nav-text">Local Search搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#百度分享"><span class="nav-number">3.3.</span> <span class="nav-text">百度分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#留言评论"><span class="nav-number">3.4.</span> <span class="nav-text">留言评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#404网页集成"><span class="nav-number">3.5.</span> <span class="nav-text">404网页集成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
@@ -754,6 +906,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

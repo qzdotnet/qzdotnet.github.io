@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Next主题配置第三方服务集成]]></title>
+    <url>%2F2017%2F09%2F05%2FNext%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E9%9B%86%E6%88%90%2F</url>
+    <content type="text"><![CDATA[前言上一篇文章我们已经成功的将博客搭建起来。本文将对主题的相关配置以及第三方服务的集成做进一步的介绍。其实Next的文档，已经将配置与服务集成介绍的非常明白。有兴趣的同学可以去查看官方文档,本文将重点介绍本人BLOG使用的第三方服务 。 主题配置站点信息站点信息存放在hexo网站根目录的_config.yml文件中。 123456title: QuZheng #主标题subtitle: #副标题description: #描述author: QuZheng #作者language: zh-Hans #语言timezone: Next目前支持的语言 语言 代码 示例 English en language: en 简体中文 zh-Hans language: zh-Hans Français fr-FR language: fr-FR Português pt language: pt or language: pt-BR 繁體中文 zh-hk 或者 zh-tw language: zh-hk Русский язык ru language: ru Deutsch de language: de 日本語 ja language: ja Indonesian id language: id Korean ko language: ko 如果想将自己的网站设置为多语言版本可参考如下设置 123language:- zh-Hans- en 菜单博客的菜单的功能菜单是可以自定义的。菜单的配置在主题配置文件主题根目录的_config.yml文件中。 12345678menu: home: / #首页 categories: /categories/ #分类 about: /about/ #关于 archives: /archives/ #归档 tags: /tags/ #标签 #sitemap: /sitemap.xml #commonweal: /404/ 系统初始时，只有home、archives、tags，其它菜单需要手动将注释去掉。并增加相应的页面。 tags页面添加执行下面命令 1hexo n page tags 打开source\tags目录下的index.md,添加 type参数 12345---title: tagsdate: 2017-09-04 20:14:29type: "tags"--- categories页面添加执行命令 1hexo n page categories 打开source\categories目录下的index.md,添加 type参数 12345---title: tagsdate: 2017-09-04 20:14:29type: "categories"--- about页面添加执行命令 1hexo n page about 菜单图标menu_icons配置结点可以设置菜单是否带图标。图标使用的FontAwesome字体 1234567891011menu_icons: enable: true #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome home: home about: user categories: th schedule: calendar tags: tags archives: archive sitemap: sitemap commonweal: heartbeat 风格Next 提供了三种风格供选择 123scheme: Muse#scheme: Mist#scheme: Pisces 版权信息版本信息默认是关闭的，可以通过设置enable来打开版本信息。 12345# Declare license on postspost_copyright: enable: true license: CC BY-NC-SA 3.0 license_url: https://creativecommons.org/licenses/by-nc-sa/3.0/ 插件安装百度统计注册百度统计账号 在网站列表中新增网站，填写信息保存后。点击获取代码。将hm.js?后面的ID复制到主题配置文件中 12# Baidu Analytics IDbaidu_analytics: 59*************** 保存完毕后，可以执行命令，重新生成发布。 1hexo g -d 发布成功后，可以到百度统计点击首页代码状态进行测试，测试成功会提示代码安装正确。 Local Search搜索1 在根目前安装 hexo-generator-searchdb,安装时要使用管理员权限运行命令行工具，切记!!!!! 1npm install hexo-generator-searchdb --save 2 编辑网站根目前下的_config.yml配置文件，添加 12345search: path: search.xml field: post format: html limit: 10000 3 编辑主题配置文件,启用本地搜索功能： 123# Local searchlocal_search: enable: true 百度分享留言评论404网页集成参考链接 Next 官方文档 hexo文章添加版权声明及一些特效 使用七牛为Hexo存储图片 npm install 安装软件，出现 operation not permitted, mkdir]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GitHub-Hexo-NEXT-博客搭建日记]]></title>
+    <url>%2F2017%2F09%2F04%2FGitHub-Hexo-NEXT-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[00 前言 今年已经三十了，从事程序开发工作也已经10年了。这10年在技术上可以说一直在原地踏步。主要使用的语言.NET也还维持在.NET2.0的水平。刚参加 工作时还感觉自己挺牛的，到现在感觉自己很渺小。我也一直想学习新的技术，但都从入门到放弃了。这次搭建这个博客就是希望能通过写博客的方式让自己的技术水平能有所提高，逼自己在努力一把。 01 软件安装GIT安装下载 git for Windows,安装过程非常简单。 NODE安装下载NODE,我安装的是CURRENT版本,安装过程非常简单。 02 创建GITHUB项目，配置GIT环境注册账号账号注册非常简单 注册地址 创建Repository创建与自己GITHUB账号同名的Repository比如账号是qzdotnet,新建的Repository名称应该是qzdotnet.github.io。 配置SSH生成SSH检查是否已经有SSH Key，打开Git Bash,输入 1cd ~/.ssh 如果没有找到这个目录就需要使用 1ssh-keygen -t rsa -C &quot;e-mail&quot; 输入该命令以后一路回车。 配置Github公钥本人是在Windows7环境下安装的所以成生的文件在目录C:\Users\Administrator.WIN7-1704221339.ssh 下使用文本编辑器打开id_rsa.pub文件，复制 文件里的全部内容。 登录GitHub，点击右上角的角户图标，选择settings菜单。点击左侧的SSH and GPG keys 菜单，点击New SSH key按钮。将复制的 内容粘贴到KEY输入框中。Title 可以随意设置。设置完毕 后点 Add SSH key按钮。保存设置。 这里要注意，SSH key保存不是立即生效的，可以等待3到5分钟。我测试的时候大概三分钟生效的。 测试SSH是否正确配置打开Git Bash 输入 123ssh -t git@github.com 如果提示,说明配置成功了。 12Hi username! You&apos;ve successfully authenticated, but GitHub does notprovide shell access. 如果提示IP之类的错误将下面代码复制 到HOST文件中 1192.30.255.113 github.com 配置Git全局参数12git config --global user.name &quot;username&quot;git config --global user.email &quot;email&quot; 配置完成后可以通过1git config --list查看配置 03 安装 Hexo安装Hexo打开Node.js命令行工具，输入 123npm install -g hexo-cli 完成Hexo的全局安装。 创建Hexo站点选择一个本地文件夹做为站点的根目录。如F:\qzdotnet，输入 123456789hexo init f:\qzdotnetcd f:\qzdotnetf:npm install npm install hexo-deployer-git 完成对hexo的安装 输入 1hexo s 如果部署没有问题，网站就已经启动了。可以使用http://localhost:4000进行访问 配置Git账户打开 f:\qzdotnet文件夹下面的_config.yml文件配置deploy: 结点的内容 1234deploy: type: git repo: git@github.com:qzdotnet/qzdotnet.github.io branch: master 注意yml配置文件配置节点:后面要添加空格。 04 配置Next 主题下载Next本人下载的是v5.1.2稳定版本的压缩包，当然也可以从GitHub克隆最新版， 下载后可以将文件解压缩并将文件名修改成Next，复制到 f:\qzdotnet的themes文件夹中。 配置主题打开 f:\qzdotnet文件夹下的_config.yml文件，修改theme结点 1theme: next 05 发布到GitHub创建文章在Git Bash中输入 1hexo new &quot;Hello World!&quot; 添加一篇新的博文。 发布到GitHub输入完成发布 1hexo g -d 发布成功后可以打开https://qzdotnet.github.io/查看已经的博客了。到此博客搭建就已经顺利完成了。后面的文章会对Hexo与Next的相关配置和功能使用做一些介绍 99 参考链接 Github+Hexo+NEXT主题+域名绑定 博客搭建全记录 Hexo官网 NexT使用文档]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Hexo</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F08%2F30%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
