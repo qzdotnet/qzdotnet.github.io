@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://qzdotnet.github.io/tags/index.html">
 <meta property="og:site_name" content="QuZheng">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-04T12:15:15.723Z">
+<meta property="og:updated_time" content="2017-09-05T10:20:49.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tags">
 
@@ -353,44 +353,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-        <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-        <div id="container" style="display:none"></div>
-        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-        <script>
-        const myTheme = {
-          render(state, instance) {
-            const container = document.createElement('div');
-            container.lang = "en-US";
-            container.className = 'gitment-container gitment-root-container';
-            container.appendChild(instance.renderHeader(state, instance));
-            container.appendChild(instance.renderEditor(state, instance));
-            container.appendChild(instance.renderComments(state, instance));
-            container.appendChild(instance.renderFooter(state, instance));
-            return container;
-          }
-        }
-        function showGitment() {
-          $("#gitment_title").attr("style", "display:none");
-          $("#container").attr("style", "").addClass("gitment_container");
-          var gitment = new Gitment({
-            id: window.location.pathname,
-            theme: myTheme,
-            owner: 'qzdotnet',
-            repo: 'qzdotnet.github.io',
-            oauth: {
-              client_id: 'fa11a893136049e19eea',
-              client_secret: '6047ffa1b9c66f68a089102ef3f0e52fb7520c0a'
-            }
-          });
-          gitment.render('container');
-        }
-        </script>
-    
-  </div>
-
 
         </div>
         
