@@ -84,6 +84,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="QuZheng" type="application/atom+xml" />
+
 
 
 
@@ -103,7 +105,7 @@
 <meta property="og:description" content="前言前二篇文章已经介绍了作者Hexo+Next搭建优化博客的全过程。本篇作为该系列的最后一篇，主要介绍Hexo的一些写作方面的设置和主题的美化。该篇结束后，作者也将停止对博客的折腾开始进行相关技术的学习整理阶段。今天和老同事聊天，他问我下一步想学什么？？？这个问题把我给难住 了好像什么都想学设计模式、ES6、ASP.NET MVC……现在也没什么方向。希望明天早上一觉醒来能有答应吧，不废话了进入正">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ovs80if20.bkt.clouddn.com/timg.jpg">
-<meta property="og:updated_time" content="2017-09-07T01:55:58.240Z">
+<meta property="og:updated_time" content="2017-09-07T02:17:07.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo优化与写作技巧">
 <meta name="twitter:description" content="前言前二篇文章已经介绍了作者Hexo+Next搭建优化博客的全过程。本篇作为该系列的最后一篇，主要介绍Hexo的一些写作方面的设置和主题的美化。该篇结束后，作者也将停止对博客的折腾开始进行相关技术的学习整理阶段。今天和老同事聊天，他问我下一步想学什么？？？这个问题把我给难住 了好像什么都想学设计模式、ES6、ASP.NET MVC……现在也没什么方向。希望明天早上一觉醒来能有答应吧，不废话了进入正">
@@ -474,17 +476,23 @@
 <p>先去选个样式<a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">传送门</a></p>
 <p>复制代码到主题文件F:\Tools\qzdotnet\themes\next\layout的_layout.swig文件中</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"headband"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://github.com/qzdotnet"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">"position: absolute; top: 0; left: 0; border: 0;"</span> <span class="attr">src</span>=<span class="string">"https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67"</span> <span class="attr">alt</span>=<span class="string">"Fork me on GitHub"</span> <span class="attr">data-canonical-src</span>=<span class="string">"https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="添加RSS"><a href="#添加RSS" class="headerlink" title="添加RSS"></a>添加RSS</h3><h3 id="阅读量"><a href="#阅读量" class="headerlink" title="阅读量"></a>阅读量</h3><p>阅读量分两部分，每一篇文章的阅读量和网站总体的阅读量。</p>
+<h3 id="添加RSS"><a href="#添加RSS" class="headerlink" title="添加RSS"></a>添加RSS</h3><p>想要实现RSS需求安装插件<code>hexo-generator-feed</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed</div></pre></td></tr></table></figure>
+<p>然后配置<em>站点配置文件</em> 添加</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#RSS订阅</span></div><div class="line"><span class="attr">plugin:</span></div><div class="line"><span class="bullet">-</span> <span class="string">hexo-generator-feed</span></div><div class="line"><span class="comment">#Feed Atom</span></div><div class="line"><span class="attr">feed:</span></div><div class="line"><span class="attr">type:</span> <span class="string">atom</span></div><div class="line"><span class="attr">path:</span> <span class="string">atom.xml</span></div><div class="line"><span class="attr">limit:</span> <span class="number">30</span></div></pre></td></tr></table></figure>
+<p>最后配置<code>主题配置文件</code>的<code>rss</code>结点</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Set rss to false to disable feed link.</span></div><div class="line"><span class="comment"># Leave rss as empty to use site's feed link.</span></div><div class="line"><span class="comment"># Set rss to specific value if you have burned your feed already.</span></div><div class="line"><span class="attr">rss:</span> <span class="string">/atom.xml</span></div></pre></td></tr></table></figure>
+<h3 id="阅读量"><a href="#阅读量" class="headerlink" title="阅读量"></a>阅读量</h3><p>阅读量分两部分，每一篇文章的阅读量和网站总体的阅读量。</p>
 <p>文章阅读量请参考：<a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="external">为NexT主题添加文章阅读量统计功能</a> ，基本的步骤呢是先到LeanCloud注册，然后配置<em>主题配置文件</em></p>
 <p>网站总体的阅读量使用的不蒜子统计，Next新版本已经集成了只需要修改主题配置文件</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">busuanzi_count:</div><div class="line">  # count values only if the other configs are false</div><div class="line">  enable: true                      </div><div class="line">  # custom uv span for the whole site</div><div class="line">  site_uv: true</div><div class="line">  site_uv_header: 本站访客数 #<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-user"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">  site_uv_footer: 人次</div><div class="line">  # custom pv span for the whole site</div><div class="line">  site_pv: true</div><div class="line">  site_pv_header: 本站总访问量 # <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-eye"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">  site_pv_footer: 次</div></pre></td></tr></table></figure>
 <h3 id="本文结束"><a href="#本文结束" class="headerlink" title="本文结束"></a>本文结束</h3><p>给每一篇文章未尾增加本文结束提示语，在<code>\themes\next\layout\_macro</code>目录下新建<code>post-end-tag.swig</code>内容如下</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">	&#123;% if not is_index %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color: #ccc;font-size:14px;"</span>&gt;</span></div><div class="line">			-------------本文结束</div><div class="line">			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-space-shuttle"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">			感谢您的阅读-------------</div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	&#123;% endif %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color: #ccc;font-size:14px;margin:10px 0"</span>&gt;</span></div><div class="line">  -------------本文结束</div><div class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-space-shuttle"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">   感谢您的阅读-------------</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>然后编辑同目录下的<code>post.swig</code>文件在<code>&lt;footer class=&quot;post-footer&quot;&gt;</code>之前插入</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% if theme.post_end_tag.enable and  not is_index %&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>      </div><div class="line">     &#123;% include 'post-end-tag.swig' %&#125;      </div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% if theme.post_end_tag.enable and not is_index %&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>      </div><div class="line">     &#123;% include 'post-end-tag.swig' %&#125;      </div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
 <p>最后在<em>主题配置文件中</em>增加配置项</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_end_tag:</span></div><div class="line"><span class="attr">  enabled:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>三天的时候终于将博客搭建起来了。虽然大部分内容都是照着网上的内容做的，自己也没有学到太多的知识。但是整体的效果我还是非常满意的。从无到有，还了解了Hexo、Next还查了一些Swig的资料也算有收获。博客就不在花时间折腾了下一步还是抓紧确认要学习的技术，并开始深度学习。加油！！！！！！！！！！！！！！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>三天的时候终于将博客搭建起来了。虽然大部分内容都是照着网上的内容做的，自己也没有学到太多的知识。但是整体的效果我还是非常满意的。从无到有，还了解了Hexo、Next还查了一些Swig、Yaml的资料也算有收获。博客就不再花时间折腾了。下一步还是抓紧确认要学习的技术，并开始深度学习。加油！！！！！！！！！！！！！！</p>
 <h2 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h2><ul>
 <li><a href="http://www.bijishequ.com/detail/390936?p=" target="_blank" rel="external">hexo的next主题个性化配置教程</a></li>
 <li><a href="https://segmentfault.com/a/1190000009009697" target="_blank" rel="external">hexo高阶教程</a></li>
@@ -550,15 +558,6 @@
       </div>
     
 
-    
-      <div>
-         <div style="text-align:center;color: #ccc;font-size:14px;">
-  -------------本文结束
-    <i class="fa fa-space-shuttle"></i>
-   感谢您的阅读-------------
-</div>
-
-       </div>
     
 
     <footer class="post-footer">
@@ -767,6 +766,13 @@
 
         </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">
