@@ -15,6 +15,14 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
 
 
 
@@ -105,7 +113,7 @@
 <meta property="og:description" content="前言前二篇文章已经介绍了作者Hexo+Next搭建优化博客的全过程。本篇作为该系列的最后一篇，主要介绍Hexo的一些写作方面的设置和主题的美化。该篇结束后，作者也将停止对博客的折腾开始进行相关技术的学习整理阶段。今天和老同事聊天，他问我下一步想学什么？？？这个问题把我给难住 了好像什么都想学设计模式、ES6、ASP.NET MVC……现在也没什么方向。希望明天早上一觉醒来能有答应吧，不废话了进入正">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ovs80if20.bkt.clouddn.com/timg.jpg">
-<meta property="og:updated_time" content="2017-09-07T02:17:07.357Z">
+<meta property="og:updated_time" content="2017-09-07T02:33:16.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo优化与写作技巧">
 <meta name="twitter:description" content="前言前二篇文章已经介绍了作者Hexo+Next搭建优化博客的全过程。本篇作为该系列的最后一篇，主要介绍Hexo的一些写作方面的设置和主题的美化。该篇结束后，作者也将停止对博客的折腾开始进行相关技术的学习整理阶段。今天和老同事聊天，他问我下一步想学什么？？？这个问题把我给难住 了好像什么都想学设计模式、ES6、ASP.NET MVC……现在也没什么方向。希望明天早上一觉醒来能有答应吧，不废话了进入正">
@@ -434,9 +442,9 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前二篇文章已经介绍了作者Hexo+Next搭建优化博客的全过程。本篇作为该系列的最后一篇，主要介绍Hexo的一些写作方面的设置和主题的美化。该篇结束后，作者也将停止对博客的折腾开始进行相关技术的学习整理阶段。今天和老同事聊天，他问我下一步想学什么？？？这个问题把我给难住 了好像什么都想学设计模式、ES6、ASP.NET MVC……现在也没什么方向。希望明天早上一觉醒来能有答应吧，不废话了进入正题。</p>
 <a id="more"></a>
 <h2 id="文章写作技巧"><a href="#文章写作技巧" class="headerlink" title="文章写作技巧"></a>文章写作技巧</h2><h3 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h3><p>使用<code>Hexo n [文章名]</code>创建一篇新的文章时，Hexo会自动使用scaffold文件下的布局文件为模版创建一个新的MD文件。默认的布局文件都包含Front-matter的内容。</p>
-<p>Front-matter 可以设置文章的全局参数，在文章的最上方以—开头结尾。一般需要自己设置的参数是<code>tags</code>,<code>categories</code>。tags 用来设置文章的标签，categories用来设置文章的分类。Hexo目前不支持多级分类，文章分类只能有一级。设置方法如下。</p>
+<p>Front-matter 可以设置文章的全局参数，在文章的最上方以<code>---</code>开头结尾。一般需要自己设置的参数是<code>tags</code>,<code>categories</code>。tags 用来设置文章的标签，categories用来设置文章的分类。Hexo目前不支持多级分类，文章分类只能有一级。设置方法如下。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">categories:</span></div><div class="line"><span class="bullet">-</span> <span class="string">博客搭建</span></div><div class="line"><span class="attr">tags:</span></div><div class="line"><span class="bullet">-</span> <span class="string">Hexo</span></div><div class="line"><span class="bullet">-</span> <span class="string">Next</span></div></pre></td></tr></table></figure>
-<h3 id="首页添加阅读全文"><a href="#首页添加阅读全文" class="headerlink" title="首页添加阅读全文"></a>首页添加阅读全文</h3><p>写前两往篇文章的时候，首页的文章列表显示了每一篇文章的详细内容。我刚开始以为就是这样后来通过<a href="http:\\www.baidu.com" target="_blank" rel="external">BAIDU</a>才知道原来可以通过在文章或者加全局设置解决该问题。</p>
+<h3 id="首页添加阅读全文"><a href="#首页添加阅读全文" class="headerlink" title="首页添加阅读全文"></a>首页添加阅读全文</h3><p>写前两篇文章的时候，首页的文章列表显示了每一篇文章的详细内容。我刚开始以为就是这样后来通过<a href="http:\\www.baidu.com" target="_blank" rel="external">BAIDU</a>才知道原来可以通过设置文章参数或者加标记的方式解决该问题。</p>
 <h4 id="方法一-添加more标记"><a href="#方法一-添加more标记" class="headerlink" title="方法一 添加more标记"></a>方法一 添加more标记</h4><p>在文章中合适的位置添加</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--more--&gt;</span></div></pre></td></tr></table></figure>
 <p>重新生成后首页的文章列表就会将该标记之前的内容作为描述信息，描述信息后面会显示阅读全文按钮。</p>
@@ -444,6 +452,8 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span> <span class="string">Hexo优化与写作技巧</span></div><div class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="bullet">-09</span><span class="bullet">-06</span> <span class="number">18</span><span class="string">:56:34</span></div><div class="line"><span class="attr">tags:</span> <span class="string">[Hexo,Next]</span></div><div class="line"><span class="attr">categories:</span> <span class="string">博客搭建</span></div><div class="line"><span class="attr">description:</span> <span class="string">Hexo优化与写作技巧Hexo优化与写作技巧Hexo优化与写作技巧Hexo优化与写作技巧</span></div></pre></td></tr></table></figure>
 <p>推荐使用第一种方法。比较灵活，可以自己控制 。</p>
 <h3 id="七牛床图"><a href="#七牛床图" class="headerlink" title="七牛床图"></a>七牛床图</h3><p>虽然作者审美不太好，也不喜欢找图片。但感觉总会需要用到图片的时候，使用的git的空间好像有300M的限制，所以还是用外链的图片比较好。找了一些文章基本上都是用的<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛</a>存储的，所以作者也使用了<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛</a>。设置的过程也比较简单可以参考这两篇文章</p>
+<p><a href="http://blog.shiqichan.com/use-qiniu-store-image-for-hexo/" target="_blank" rel="external">使用七牛为Hexo存储图片</a></p>
+<p><a href="http://www.jianshu.com/p/ec2c8acf63cd" target="_blank" rel="external">Hexo文章图片存储选七牛</a></p>
 <p><img src="http://ovs80if20.bkt.clouddn.com/timg.jpg" alt="图片" title="好看吧"></p>
 <h2 id="Hext常用标签插件"><a href="#Hext常用标签插件" class="headerlink" title="Hext常用标签插件"></a>Hext常用标签插件</h2><p>Hext通过标签可以插入特定的内容以下是我感觉比较有用的。详细的请参考<a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">网官文档</a></p>
 <h3 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h3><p>在文章中插入引言，可以包含作者来源和标题。</p>
@@ -494,7 +504,7 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_end_tag:</span></div><div class="line"><span class="attr">  enabled:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>三天的时候终于将博客搭建起来了。虽然大部分内容都是照着网上的内容做的，自己也没有学到太多的知识。但是整体的效果我还是非常满意的。从无到有，还了解了Hexo、Next还查了一些Swig、Yaml的资料也算有收获。博客就不再花时间折腾了。下一步还是抓紧确认要学习的技术，并开始深度学习。加油！！！！！！！！！！！！！！</p>
 <h2 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h2><ul>
-<li><a href="http://www.bijishequ.com/detail/390936?p=" target="_blank" rel="external">hexo的next主题个性化配置教程</a></li>
+<li><a href="http://www.jianshu.com/p/f054333ac9e6" target="_blank" rel="external">hexo的next主题个性化教程</a></li>
 <li><a href="https://segmentfault.com/a/1190000009009697" target="_blank" rel="external">hexo高阶教程</a></li>
 <li><a href="http://wangzeqi.website/2017/06/28/hexo-nexT%E9%85%8D%E7%BD%AE%E8%AF%A6%E6%83%85/" target="_blank" rel="external">Hexo之NexT主题配置</a></li>
 </ul>
