@@ -104,22 +104,22 @@
 
 
 
-<meta name="description" content="前言最近接到一个项目，主要功能是对业务单据的流程管理。但是要实现针式打印机对业务单据的连续打印。客户提供的单据格式如下，要求针式打印机一次可连续打印50-100张单据。  接到需求以后，迅速开搞，单据的流程管理开发非常顺利。但针式打印机连续打印单据的开发过程异常艰辛。本文主要讲述开发选型的过程、遇到的问题、以及填坑过程。 选型之前开发过的票据打印程序使用的是GoldPrinter（金质打印）。不过">
+<meta name="description" content="前言最近接到一个项目，主要功能是对业务单据的流程管理。但是要实现针式打印机对业务单据的连续打印。客户提供的单据格式如下，要求针式打印机一次可连续打印50-100张单据。">
 <meta name="keywords" content="C# 针式打印机 ActivexReport Rdlc 自定义纸张打印">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#针式打印机自定义纸张连续打印爬坑过程">
 <meta property="og:url" content="http://qzdotnet.github.io/2017/09/21/C-针式打印机自定义纸张l打印爬坑过程/index.html">
 <meta property="og:site_name" content="QuZheng">
-<meta property="og:description" content="前言最近接到一个项目，主要功能是对业务单据的流程管理。但是要实现针式打印机对业务单据的连续打印。客户提供的单据格式如下，要求针式打印机一次可连续打印50-100张单据。  接到需求以后，迅速开搞，单据的流程管理开发非常顺利。但针式打印机连续打印单据的开发过程异常艰辛。本文主要讲述开发选型的过程、遇到的问题、以及填坑过程。 选型之前开发过的票据打印程序使用的是GoldPrinter（金质打印）。不过">
+<meta property="og:description" content="前言最近接到一个项目，主要功能是对业务单据的流程管理。但是要实现针式打印机对业务单据的连续打印。客户提供的单据格式如下，要求针式打印机一次可连续打印50-100张单据。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ovs80if20.bkt.clouddn.com/T1.png">
 <meta property="og:image" content="http://ovs80if20.bkt.clouddn.com/T2.png">
 <meta property="og:image" content="http://ovs80if20.bkt.clouddn.com/T3.png">
 <meta property="og:image" content="http://ovs80if20.bkt.clouddn.com/T4.png">
-<meta property="og:updated_time" content="2017-09-21T03:00:00.538Z">
+<meta property="og:updated_time" content="2017-09-21T03:03:45.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#针式打印机自定义纸张连续打印爬坑过程">
-<meta name="twitter:description" content="前言最近接到一个项目，主要功能是对业务单据的流程管理。但是要实现针式打印机对业务单据的连续打印。客户提供的单据格式如下，要求针式打印机一次可连续打印50-100张单据。  接到需求以后，迅速开搞，单据的流程管理开发非常顺利。但针式打印机连续打印单据的开发过程异常艰辛。本文主要讲述开发选型的过程、遇到的问题、以及填坑过程。 选型之前开发过的票据打印程序使用的是GoldPrinter（金质打印）。不过">
+<meta name="twitter:description" content="前言最近接到一个项目，主要功能是对业务单据的流程管理。但是要实现针式打印机对业务单据的连续打印。客户提供的单据格式如下，要求针式打印机一次可连续打印50-100张单据。">
 <meta name="twitter:image" content="http://ovs80if20.bkt.clouddn.com/T1.png">
 
 
@@ -421,6 +421,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近接到一个项目，主要功能是对业务单据的流程管理。但是要实现针式打印机对业务单据的连续打印。客户提供的单据格式如下，要求针式打印机一次可连续打印50-100张单据。</p>
+<a id="more"></a>
 <p><img src="http://ovs80if20.bkt.clouddn.com/T1.png" alt="客户提供的单据格式"></p>
 <p>接到需求以后，迅速开搞，单据的流程管理开发非常顺利。但针式打印机连续打印单据的开发过程异常艰辛。本文主要讲述开发选型的过程、遇到的问题、以及填坑过程。</p>
 <h2 id="选型"><a href="#选型" class="headerlink" title="选型"></a>选型</h2><p>之前开发过的票据打印程序使用的是<code>GoldPrinter（金质打印）</code>。不过客户提供的单据格式和传统的发票类票据格式不太一样。思来想去决定使用报表工具。之前使用过<code>ActivexReport</code>，但是感觉太庞大了。发现.NET自带了报表工具RDLC,决定尝试一下。</p>
@@ -437,13 +438,9 @@
 <li>感觉好像也没什么问题啊，使用的A4纸打印机。横向打印和竖向打印的放纸也都是一样的。是不是应该调整报表？</li>
 </ul>
 <p>带着上面的问题，楼主开始搜索。后来找到一篇文章说针式打印机实现连续打印需要自定义纸张，具体过程如下。</p>
-<ol>
-<li>打印机添加自定义纸张设置成纵向，调整纸张的宽度和高度。</li>
-</ol>
+<p>[1] 打印机添加自定义纸张设置成纵向，调整纸张的宽度和高度。</p>
 <p><img src="http://ovs80if20.bkt.clouddn.com/T4.png" alt="打印机设置"></p>
-<ol>
-<li>调整报表的纸张于面前打印机设置的纸张一样的规格。</li>
-</ol>
+<p>[2] 调整报表的纸张于面前打印机设置的纸张一样的规格。</p>
 <p>测试打印成功了，完美。</p>
 <h2 id="连续打印调试"><a href="#连续打印调试" class="headerlink" title="连续打印调试"></a>连续打印调试</h2><p>连续打印的测试过程还是比较轻松的。用了两个晚上搞定的。第一夜将纸张的高度设置成了14.0，打印了20张以后。打印错位就比较严重了。隐隐感觉是纸张设置的有点大了。</p>
 <p>于是开始各种找资料，使用的打印机型号EPSON LQ-635K，从爱普生的官网下载了<code>LQ-630K635K730K735K新机使用指南</code>。在文档中发现常用的纸张规格有21.4*13.97。瞬间感觉有救了，晚上回家重新设置了报表纸张格式和打印机的自定义纸张格式。测试打印了30页，没有出现偏移。爱普生的打印机还是非常靠谱的。说明书更靠谱。</p>
