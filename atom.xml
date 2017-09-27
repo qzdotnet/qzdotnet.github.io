@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qzdotnet.github.io/"/>
-  <updated>2017-09-21T04:04:52.833Z</updated>
+  <updated>2017-09-27T11:01:52.914Z</updated>
   <id>http://qzdotnet.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微软WebCast视频下载辅助工具</title>
+    <link href="http://qzdotnet.github.io/2017/09/27/%E5%BE%AE%E8%BD%AFWebCast%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/"/>
+    <id>http://qzdotnet.github.io/2017/09/27/微软WebCast视频下载辅助工具/</id>
+    <published>2017-09-27T08:26:59.000Z</published>
+    <updated>2017-09-27T11:01:52.914Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>最近公司开始让我们小组搞内部培训。培训内容主要是C#语言，ADO.NET、Winfrom等内容。我们小组共6个人，平时的主要工作是维护实施公司一套10年前开发的VB产品。只有两个人有基础，其余4人完全小白。为了能够达到理想的培训效果，开始从网上找相关的教学视频。我大学的时候学习微软技术都是从<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>上下载视频，所以我就本能的想到了<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>。不过不知道为什么<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>上的下载链接全部失效了。。。</p><p>微软官方的失效了，其他网站应该有吧，毕竟这个<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>还是挺出名的，于是我就各种搜索。知道了微软<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>现在已经停办了，新的全球化教学网站叫<a href="https://mva.microsoft.com/" target="_blank" rel="external">微软虚拟学院</a>。浏览了一下基本上我们想学的知识都没有，都是最前沿的技术。对于我们小组目前来说也用不到，而且大部分都是老外英文教学，中文字幕。对于我们这种听不懂英文的人，看了想睡觉。更令人失望的是，从网上搜不到<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>的视频。只有51TCO上有部分视频，但是搞笑的是，有一些视频下载竟然要收费。靠有没有点互联网精神。</p><h2 id="契机"><a href="#契机" class="headerlink" title="契机"></a>契机</h2><p>偶然发现<a href="http://blog.csdn.net/zanfeng/article/details/52863687" target="_blank" rel="external">足球中国</a>文章下面的下载链接是可以下载到<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>的视频。还发现了一个神奇的网站<a href="http://msdnwebcast.azurewebsites.net/" target="_blank" rel="external">msdnwebcast.azurewebsites.net</a>，这个网站上有所有的<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>的课程链接，不过都是失效的链接打开都是404。</p><p>链接虽然是无效的，但是发现和<a href="http://blog.csdn.net/zanfeng/article/details/52863687" target="_blank" rel="external">足球中国</a>提供的下载链接很像。</p><ul><li>无效链接 - <a href="http://www.microsoft.com/china/msdn/webcast/download.aspx?id=1243938&amp;type=video&amp;source=msdnwebcast.net" target="_blank" rel="external">http://www.microsoft.com/china/msdn/webcast/download.aspx?id=1243938&amp;type=video&amp;source=msdnwebcast.net</a></li><li>足球中国有效链接 -<a href="http://download.microsoft.com/download/4/D/0/4D047617-CA60-428B-B2C5-EB7D977E9BC6/WebCast20100901_Video.zip" target="_blank" rel="external">http://download.microsoft.com/download/4/D/0/4D047617-CA60-428B-B2C5-EB7D977E9BC6/WebCast20100901_Video.zip</a></li></ul><p>格式好像也差不多嘛，如果把链接中的<code>www</code>改成<code>download</code>是不是就可以了。试了一下果真可以，看来就是微软的链接出了错，文件都没丢。</p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>知道了怎么下载，我就开始手动下载之路。但是下载起来太费劲了，来回的点链接，改链接。头疼不想搞了。由于下载过程太复杂，所以我就想通过写个程序来实现自动下载。之前WEBCAST有一个工具<a href="http://ireaper.codeplex.com/" target="_blank" rel="external">ireaper</a>,我本来想下载下来改改源代码。下载后感觉太复杂有一种看不懂的感觉，还是自己写一个吧。</p><p>创建项目编码，思路比较简单。</p><ol><li>分析msdnwebcast.azurewebsites.net相关页面的html。</li><li>找到下载链接</li><li>下载。</li></ol><p>使用的技术也比较简单，请用HTML用之前从网上下载的HttpHelper类库，从来没用过，正好 试试。下载用webclient。</p><p><img src="http://ovs80if20.bkt.clouddn.com/webcast1.png" alt="界面"></p><p>说干就干，大概3个小时，基本的代码写完了，当然非常简陋。但是能成功下载文件了。但是呢下载的速度非常慢，想实现下载过过程监控也比较麻烦。于是就改变思路将下载链接都获取到，然后到使用迅雷下载。</p><p><img src="http://ovs80if20.bkt.clouddn.com/webcast2.png" alt="最终效果"></p><h2 id="GITHUB"><a href="#GITHUB" class="headerlink" title="GITHUB"></a>GITHUB</h2><p>虽然在GITHUB上注册账号已经好几年了，也开始用Github写博客。但是从来没上传过有用的代码，所以就想把这个非常简陋的代码开源上传，虽然可以大家也不可能从代码上学到什么东西。但是感觉应该也有和我有一样需求的人。敢于尝试总是好的。</p><p><a href="https://github.com/qzdotnet/DownLoadWebCastVideo" target="_blank" rel="external">GitHub传送门</a></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>为了下载视频，耗费了一下午的时间。但是第一次上传将自己的代码上传到GitHub上，还是很兴奋的。今后一定努力提高多上传优质的代码。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;事件&quot;&gt;&lt;a href=&quot;#事件&quot; class=&quot;headerlink&quot; title=&quot;事件&quot;&gt;&lt;/a&gt;事件&lt;/h2&gt;&lt;p&gt;最近公司开始让我们小组搞内部培训。培训内容主要是C#语言，ADO.NET、Winfrom等内容。我们小组共6个人，平时的主要工作是维护实施公
+      
+    
+    </summary>
+    
+      <category term="杂记" scheme="http://qzdotnet.github.io/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+    
+      <category term="webcast" scheme="http://qzdotnet.github.io/tags/webcast/"/>
+    
+      <category term="下载" scheme="http://qzdotnet.github.io/tags/%E4%B8%8B%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>C#针式打印机自定义纸张连续打印爬坑过程</title>
@@ -41,9 +68,9 @@
     <link href="http://qzdotnet.github.io/2017/09/20/Design-Patterns-OBSERVER/"/>
     <id>http://qzdotnet.github.io/2017/09/20/Design-Patterns-OBSERVER/</id>
     <published>2017-09-20T11:21:05.000Z</published>
-    <updated>2017-09-20T12:34:08.013Z</updated>
+    <updated>2017-09-22T00:51:41.287Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="模式说明"><a href="#模式说明" class="headerlink" title="模式说明"></a>模式说明</h2><p> 观察者模式是作者接触的比较早的设计模式，也是作者比较早理解的设计模式。该模式属与行为模式。该模式也叫依赖（Dependents）,发布-订阅（publish-Subscribe）</p><h3 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h3><blockquote class="blockquote-center"><p>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p><ul><li>GOF,设计模式：可复用面向对象软件的基础 *</li></ul></blockquote><h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>依赖（Dependents）,发布-订阅（publish-Subscribe）</p><h3 id="适用性"><a href="#适用性" class="headerlink" title="适用性"></a>适用性</h3><ul><li>当一个抽象模型有两个方面，其中一个方面依赖于另一方面。将这二者封装在独立的对象中以使它们可以各自独立地改变和复用。【这条博主也不是很理解。】</li><li>当对一个对象的改变需要同时改变其他对象，而不知道具体有多少对象有待改变。</li><li>当一个对象必须通知其他对象。而它又不能假定其他对象是谁。换言之，你不希望这些对象是紧密耦合的。</li></ul><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="http://ovs80if20.bkt.clouddn.com/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F-1.png" alt="观察者模式UML图"></p><h3 id="参与者"><a href="#参与者" class="headerlink" title="参与者"></a>参与者</h3>]]></content>
+    <content type="html"><![CDATA[<h2 id="模式说明"><a href="#模式说明" class="headerlink" title="模式说明"></a>模式说明</h2><p> 观察者模式是作者接触的比较早的设计模式，也是作者比较早理解的设计模式。该模式属与行为模式。该模式也叫依赖（Dependents）,发布-订阅（publish-Subscribe）</p><h3 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h3><blockquote class="blockquote-center"><p>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p><p><em>GOF,设计模式：可复用面向对象软件的基础</em></p></blockquote><h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>依赖（Dependents）,发布-订阅（publish-Subscribe）</p><h3 id="适用性"><a href="#适用性" class="headerlink" title="适用性"></a>适用性</h3><ul><li>当一个抽象模型有两个方面，其中一个方面依赖于另一方面。将这二者封装在独立的对象中以使它们可以各自独立地改变和复用。【这条博主也不是很理解。】</li><li>当对一个对象的改变需要同时改变其他对象，而不知道具体有多少对象有待改变。</li><li>当一个对象必须通知其他对象。而它又不能假定其他对象是谁。换言之，你不希望这些对象是紧密耦合的。</li></ul><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="http://ovs80if20.bkt.clouddn.com/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png" alt="观察者模式UML图"></p><h3 id="参与者"><a href="#参与者" class="headerlink" title="参与者"></a>参与者</h3><ul><li><p>Subject(目标)</p><ul><li>目标知道它的观察者，可以有人以多个个观察者观察同一个目标。</li><li>提供注册和删除观察者对象的接口</li></ul></li><li><p>Observer(观察者)</p><ul><li>为那些在目标发生改变时需要获取通知的对象定义一个接口。</li></ul></li><li><p>ConcreteSubject(具体的目标)</p><ul><li>将有关状态存入各ConcreteObserver对象</li><li>当它的状态发生改变，向他的各个观察者发出通知。</li></ul></li><li><p>ConcreteObserver</p><ul><li>维护一个指向ConcreteSubject对象的引用。</li><li>存储有关状态，这些状态应与目标对象的状态保持一致。</li><li>实现Observer的更新接口以使自身的状态与目标的状态保持一致。</li></ul><p>​</p></li></ul>]]></content>
     
     <summary type="html">
     
