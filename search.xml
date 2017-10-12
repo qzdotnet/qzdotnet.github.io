@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[基于 CentOS 搭建 Discuz 论坛]]></title>
+    <url>%2F2017%2F10%2F12%2F%E5%9F%BA%E4%BA%8E-CentOS-%E6%90%AD%E5%BB%BA-Discuz-%E8%AE%BA%E5%9D%9B%2F</url>
+    <content type="text"><![CDATA[准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum 安装 MySQL: 1yum install mysql-server -y 安装完成后，启用 MySQL 服务： 1service mysqld restart 可以设置自己的 MySQL 账户名和密码，参考下面的内容 1/usr/bin/mysqladmin -u root password 'Password' 将 MySQL 设置为开机自动启动 1chkconfig mysqld on 安装 Apache 组件使用 yum 安装 Apache 组件: 1yum install httpd -y 安装之后，启动 httpd 进程： 1service httpd start 把 httpd 也设置成开机自动启动 1chkconfig httpd on 安装PHP使用 yum 安装 PHP: 1yum install php php-fpm php-mysql -y 安装之后，启动 PHP-FPM 进程 ： 1service php-fpm start 启动之后，可以使用下面的命令查看 PHP-FPM 进程监听哪个端口 1netstat -nlpt | grep php-fpm 把 PHP-FPM 也设置成开机自动启动 1chkconfig php-fpm on 安装并配置Discuz安装 DiscuzCentOS 6 没有 Discuz 的 yum 源，所以我们需要下载一个 Discuz 压缩包： 1wget http://download.comsenz.com/DiscuzX/3.2/Discuz_X3.2_SC_UTF8.zip 下载完成后，解压这个安装包 1uzip Discuz_X3.2_SC_UTF8.zip 解压完后，就能再 upload 文件夹里看到 Discuz 的源代码了 配置 Discuz由于 PHP 默认访问 /var/www/html/ 文件夹，所以我们需要把 upload 文件夹里的文件豆腐知道 /var/www/html/ 文件夹 1mv -r upload/* /var/www/html/ 给 /var/www/html/ 目录及子目录赋予权限 1chmod -R 777 /var/www/html 重启 Apache 1service httpd restart 准备域名和证书域名注册域名解析]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Linux 基础入门]]></title>
     <url>%2F2017%2F10%2F09%2FLinux-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%2F</url>
     <content type="text"><![CDATA[目录操作创建目录使用 mkdir 命令创建目录 1mkdir $HOME/testFolder 切换目录使用 cd 命令切换目录 1cd $HOME/testFolder 使用 cd../ 命令切换到上一级目录 1cd ../ 移动目录使用 mv 命令移动目录 1mv $HOME/testFolder /var/tmp 删除目录使用 rm -rf 命令删除目录 1rm -rf /var/tmp/testFolder 查看目录下的文件1ls /etc 文件操作创建文件使用 touch 命令创建文件 1touch ~/testFile 复制文件使用 cp 命令复制文件 1cp ~/testFile ~/testNewFile 删除文件使用 rm 命令删除文件，输入 y后回车确认删除 1rm ~/testFile 查看文件内容使用 cat 命令查看 .bash_history 文件内容, bash_history 文件保存执行命令的历史记录 1cat ~/.bash_history 过滤，管道与重定向过滤过滤出 /etc/passwd 文件中包含 root 的记录 1grep 'root' /etc/passwd 递归过滤出 /var/log/ 目录中包含 lindex的记录 1grep -r 'linux' /var/log/ 管道简单来说，linux中的管道的作用是将上一个命令的输出作为下一个命令的输入，像 pipe 一样将各个命令串联起来执行，管道的操作符是 | 比如，我们可以将 cat 和 grep 两个命令用管道组合在一起 1cat /etc/passwd | grep 'root' 过滤出/etc目录中名字包含ssh的目录（不包括子目录) 1ls /etc | grep 'ssh' 重定向可以使用 &gt; 或者 &lt; 将命令的输出重定向到一个文件中 1echo &apos;Hello World&apos; &gt; ~/test.txt 常用的运维明令ping 命令对 cloud.tencent.com 发送 4 个 ping 包，检查与其是否联通 1ping -c 4 cloud.tencent.com netstat 命令netstat 命令用户显示各种网络相关信息，如网络连接、路由表、接口状态等等 列出所有处于监听状态的 tcp 端口 1netstat -lt 查看所有的端口信息，包括 PID 和进程名称 1netstat -tulpn ps 命令过滤得到当前系统中的 ssh 进程信息 1ps -aux | grep 'ssh']]></content>
@@ -85,9 +90,9 @@
         <category>博客搭建</category>
       </categories>
       <tags>
-        <tag>GitHub</tag>
         <tag>Hexo</tag>
         <tag>Next</tag>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>

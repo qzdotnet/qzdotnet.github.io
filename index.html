@@ -334,6 +334,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-Discuz-论坛/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/12/基于-CentOS-搭建-Discuz-论坛/" itemprop="url">基于 CentOS 搭建 Discuz 论坛</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T09:00:18+08:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/12/基于-CentOS-搭建-Discuz-论坛/" class="leancloud_visitors" data-flag-title="基于 CentOS 搭建 Discuz 论坛">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="准备-LAMP-环境"><a href="#准备-LAMP-环境" class="headerlink" title="准备 LAMP 环境"></a>准备 LAMP 环境</h2><p>LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境</p>
+<h3 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h3><p>使用 <code>yum</code>  安装 MySQL:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-server -y</div></pre></td></tr></table></figure>
+<p>安装完成后，启用 MySQL 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mysqld restart</div></pre></td></tr></table></figure>
+<p>可以设置自己的 MySQL 账户名和密码，参考下面的内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/mysqladmin -u root password 'Password'</div></pre></td></tr></table></figure>
+<p>将 MySQL 设置为开机自动启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig mysqld on</div></pre></td></tr></table></figure>
+<h3 id="安装-Apache-组件"><a href="#安装-Apache-组件" class="headerlink" title="安装 Apache 组件"></a>安装 Apache 组件</h3><p>使用 <code>yum</code> 安装 Apache 组件:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install httpd -y</div></pre></td></tr></table></figure>
+<p>安装之后，启动 httpd 进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service httpd start</div></pre></td></tr></table></figure>
+<p>把 httpd 也设置成开机自动启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig httpd on</div></pre></td></tr></table></figure>
+<h3 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h3><p>使用 <code>yum</code> 安装 PHP:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install php php-fpm php-mysql -y</div></pre></td></tr></table></figure>
+<p>安装之后，启动 PHP-FPM 进程 ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service php-fpm start</div></pre></td></tr></table></figure>
+<p>启动之后，可以使用下面的命令查看 PHP-FPM 进程监听哪个端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -nlpt | grep php-fpm</div></pre></td></tr></table></figure>
+<p>把 PHP-FPM 也设置成开机自动启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig php-fpm on</div></pre></td></tr></table></figure>
+<h2 id="安装并配置Discuz"><a href="#安装并配置Discuz" class="headerlink" title="安装并配置Discuz"></a>安装并配置Discuz</h2><h3 id="安装-Discuz"><a href="#安装-Discuz" class="headerlink" title="安装 Discuz"></a>安装 Discuz</h3><p>CentOS 6 没有 Discuz 的 <code>yum</code> 源，所以我们需要下载一个 Discuz 压缩包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://download.comsenz.com/DiscuzX/3.2/Discuz_X3.2_SC_UTF8.zip</div></pre></td></tr></table></figure>
+<p>下载完成后，解压这个安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uzip Discuz_X3.2_SC_UTF8.zip</div></pre></td></tr></table></figure>
+<p>解压完后，就能再 <em>upload</em> 文件夹里看到 Discuz 的源代码了</p>
+<h3 id="配置-Discuz"><a href="#配置-Discuz" class="headerlink" title="配置 Discuz"></a>配置 Discuz</h3><p>由于 PHP 默认访问 <code>/var/www/html/</code> 文件夹，所以我们需要把 <code>upload</code> 文件夹里的文件豆腐知道 <code>/var/www/html/</code> 文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv -r upload/* /var/www/html/</div></pre></td></tr></table></figure>
+<p>给 <code>/var/www/html/</code> 目录及子目录赋予权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod -R 777 /var/www/html</div></pre></td></tr></table></figure>
+<p>重启 Apache</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service httpd restart</div></pre></td></tr></table></figure>
+<h2 id="准备域名和证书"><a href="#准备域名和证书" class="headerlink" title="准备域名和证书"></a>准备域名和证书</h2><h3 id="域名注册"><a href="#域名注册" class="headerlink" title="域名注册"></a>域名注册</h3><h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/09/Linux-基础入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1796,7 +1962,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
