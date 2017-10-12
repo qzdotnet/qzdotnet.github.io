@@ -104,17 +104,17 @@
 
 
 
-<meta name="description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y 安装完成后，启用 MySQL 服务： 1service mysqld restart 可以设置自己的 MySQL 账户名和密">
+<meta name="description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于 CentOS 搭建 Discuz 论坛">
 <meta property="og:url" content="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-Discuz-论坛/index.html">
 <meta property="og:site_name" content="QuZheng">
-<meta property="og:description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y 安装完成后，启用 MySQL 服务： 1service mysqld restart 可以设置自己的 MySQL 账户名和密">
+<meta property="og:description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-12T01:59:42.717Z">
+<meta property="og:updated_time" content="2017-10-12T02:46:00.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于 CentOS 搭建 Discuz 论坛">
-<meta name="twitter:description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y 安装完成后，启用 MySQL 服务： 1service mysqld restart 可以设置自己的 MySQL 账户名和密">
+<meta name="twitter:description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y">
 
 
 
@@ -417,6 +417,7 @@
         <h2 id="准备-LAMP-环境"><a href="#准备-LAMP-环境" class="headerlink" title="准备 LAMP 环境"></a>准备 LAMP 环境</h2><p>LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境</p>
 <h3 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h3><p>使用 <code>yum</code>  安装 MySQL:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-server -y</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>安装完成后，启用 MySQL 服务：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mysqld restart</div></pre></td></tr></table></figure>
 <p>可以设置自己的 MySQL 账户名和密码，参考下面的内容</p>
@@ -448,7 +449,11 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod -R 777 /var/www/html</div></pre></td></tr></table></figure>
 <p>重启 Apache</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service httpd restart</div></pre></td></tr></table></figure>
-<h2 id="准备域名和证书"><a href="#准备域名和证书" class="headerlink" title="准备域名和证书"></a>准备域名和证书</h2><h3 id="域名注册"><a href="#域名注册" class="headerlink" title="域名注册"></a>域名注册</h3><h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3>
+<h2 id="准备域名和证书"><a href="#准备域名和证书" class="headerlink" title="准备域名和证书"></a>准备域名和证书</h2><h3 id="域名注册"><a href="#域名注册" class="headerlink" title="域名注册"></a>域名注册</h3><p>如果你还没有域名，可以从阿里云注册域名。</p>
+<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>购买完成后，需要进行域名机械。域名设置解析后需要过一段时间才会生效，通过 <code>ping</code> 命令检查域名是否生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping www.yourdomain.com</div></pre></td></tr></table></figure>
+<p>如果 <code>ping</code> 命令返回的信息中包含你设置的 IP 地址，说明解析成功了。恭喜，您的 Discuz 论坛已经部署完成，您可以通过浏览器访问论坛查看效果。</p>
+
       
     </div>
     
