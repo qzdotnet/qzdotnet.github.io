@@ -104,17 +104,17 @@
 
 
 
-<meta name="description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y">
+<meta name="description" content="准备 LNMP 环境安装 Nginx使用 yum 安装 Nginx : 1yum install nginx -y 修改 /etc/nginx/conf.d/default.conf ，去除对 IPv6地址的监听，可参考下面的示例：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于 CentOS 搭建 Discuz 论坛">
-<meta property="og:url" content="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-Discuz-论坛/index.html">
+<meta property="og:title" content="基于 CentOS 搭建 WorkPress 个人博客">
+<meta property="og:url" content="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-WorkPress-个人博客/index.html">
 <meta property="og:site_name" content="QuZheng">
-<meta property="og:description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y">
+<meta property="og:description" content="准备 LNMP 环境安装 Nginx使用 yum 安装 Nginx : 1yum install nginx -y 修改 /etc/nginx/conf.d/default.conf ，去除对 IPv6地址的监听，可参考下面的示例：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-12T02:46:00.309Z">
+<meta property="og:updated_time" content="2017-10-12T12:50:00.859Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于 CentOS 搭建 Discuz 论坛">
-<meta name="twitter:description" content="准备 LAMP 环境LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境 安装 MySQL使用 yum  安装 MySQL: 1yum install mysql-server -y">
+<meta name="twitter:title" content="基于 CentOS 搭建 WorkPress 个人博客">
+<meta name="twitter:description" content="准备 LNMP 环境安装 Nginx使用 yum 安装 Nginx : 1yum install nginx -y 修改 /etc/nginx/conf.d/default.conf ，去除对 IPv6地址的监听，可参考下面的示例：">
 
 
 
@@ -143,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-Discuz-论坛/"/>
+  <link rel="canonical" href="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-WorkPress-个人博客/"/>
 
 
 
 
 
-  <title>基于 CentOS 搭建 Discuz 论坛 | QuZheng</title>
+  <title>基于 CentOS 搭建 WorkPress 个人博客 | QuZheng</title>
   
 
 
@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-Discuz-论坛/">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-WorkPress-个人博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="QuZheng">
@@ -353,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于 CentOS 搭建 Discuz 论坛</h1>
+          <h1 class="post-title" itemprop="name headline">基于 CentOS 搭建 WorkPress 个人博客</h1>
         
 
         <div class="post-meta">
@@ -365,7 +365,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T09:00:18+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T20:11:20+08:00">
                 2017-10-12
               </time>
             
@@ -383,7 +383,7 @@
 
           
           
-             <span id="/2017/10/12/基于-CentOS-搭建-Discuz-论坛/" class="leancloud_visitors" data-flag-title="基于 CentOS 搭建 Discuz 论坛">
+             <span id="/2017/10/12/基于-CentOS-搭建-WorkPress-个人博客/" class="leancloud_visitors" data-flag-title="基于 CentOS 搭建 WorkPress 个人博客">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -414,46 +414,49 @@
       
 
       
-        <h2 id="准备-LAMP-环境"><a href="#准备-LAMP-环境" class="headerlink" title="准备 LAMP 环境"></a>准备 LAMP 环境</h2><p>LAMP 是 Linux、Apache、MySQL 和 PHP 的缩写，是 Discuz 论坛系统以来的基础运行环境。我们先来搭建LAMP 环境</p>
-<h3 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h3><p>使用 <code>yum</code>  安装 MySQL:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-server -y</div></pre></td></tr></table></figure>
+        <h2 id="准备-LNMP-环境"><a href="#准备-LNMP-环境" class="headerlink" title="准备 LNMP 环境"></a>准备 LNMP 环境</h2><h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>使用 <code>yum</code> 安装 Nginx :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install nginx -y</div></pre></td></tr></table></figure>
+<p>修改 /etc/nginx/conf.d/default.conf ，去除对 IPv6地址的监听，可参考下面的示例：</p>
 <a id="more"></a>
-<p>安装完成后，启用 MySQL 服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80 default_server;</div><div class="line">    # listen       [::]:80 default_server;</div><div class="line">    server_name  _;</div><div class="line">    root         /usr/share/nginx/html;</div><div class="line"></div><div class="line">    # Load configuration files for the default server block.</div><div class="line">    include /etc/nginx/default.d/*.conf;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    error_page 404 /404.html;</div><div class="line">        location = /40x.html &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    error_page 500 502 503 504 /50x.html;</div><div class="line">        location = /50x.html &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改完成后，启动 Nginx :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx</div></pre></td></tr></table></figure>
+<p>此时，可访问外网 HTTP (<a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a>) 来确认是否已经安装成功</p>
+<p>将 Nginx 加入开机自动启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig nginx on</div></pre></td></tr></table></figure>
+<h3 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h3><p>使用 <code>yum</code> 安装 MySQL</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-server -y</div></pre></td></tr></table></figure>
+<p>启动 MySQL</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mysqld restart</div></pre></td></tr></table></figure>
-<p>可以设置自己的 MySQL 账户名和密码，参考下面的内容</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/mysqladmin -u root password 'Password'</div></pre></td></tr></table></figure>
-<p>将 MySQL 设置为开机自动启动</p>
+<p>设置 MySQL 账户的密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/mysqladmin -u root password &apos;MyPas$word4Word_Press&apos;</div></pre></td></tr></table></figure>
+<p>将 MySQL 加入开机自动启动</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig mysqld on</div></pre></td></tr></table></figure>
-<h3 id="安装-Apache-组件"><a href="#安装-Apache-组件" class="headerlink" title="安装 Apache 组件"></a>安装 Apache 组件</h3><p>使用 <code>yum</code> 安装 Apache 组件:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install httpd -y</div></pre></td></tr></table></figure>
-<p>安装之后，启动 httpd 进程：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service httpd start</div></pre></td></tr></table></figure>
-<p>把 httpd 也设置成开机自动启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig httpd on</div></pre></td></tr></table></figure>
-<h3 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h3><p>使用 <code>yum</code> 安装 PHP:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install php php-fpm php-mysql -y</div></pre></td></tr></table></figure>
-<p>安装之后，启动 PHP-FPM 进程 ：</p>
+<h3 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h3><p>使用 <code>yum</code> 安装 PHP</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install php-fpm php-mysql -y</div></pre></td></tr></table></figure>
+<p>安装之后，启动 PHP-FPM 进程</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service php-fpm start</div></pre></td></tr></table></figure>
-<p>启动之后，可以使用下面的命令查看 PHP-FPM 进程监听哪个端口</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -nlpt | grep php-fpm</div></pre></td></tr></table></figure>
-<p>把 PHP-FPM 也设置成开机自动启动</p>
+<p>把 PHP-FPM 加入开机自动启动</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig php-fpm on</div></pre></td></tr></table></figure>
-<h2 id="安装并配置Discuz"><a href="#安装并配置Discuz" class="headerlink" title="安装并配置Discuz"></a>安装并配置Discuz</h2><h3 id="安装-Discuz"><a href="#安装-Discuz" class="headerlink" title="安装 Discuz"></a>安装 Discuz</h3><p>CentOS 6 没有 Discuz 的 <code>yum</code> 源，所以我们需要下载一个 Discuz 压缩包：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://download.comsenz.com/DiscuzX/3.2/Discuz_X3.2_SC_UTF8.zip</div></pre></td></tr></table></figure>
-<p>下载完成后，解压这个安装包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uzip Discuz_X3.2_SC_UTF8.zip</div></pre></td></tr></table></figure>
-<p>解压完后，就能再 <em>upload</em> 文件夹里看到 Discuz 的源代码了</p>
-<h3 id="配置-Discuz"><a href="#配置-Discuz" class="headerlink" title="配置 Discuz"></a>配置 Discuz</h3><p>由于 PHP 默认访问 <code>/var/www/html/</code> 文件夹，所以我们需要把 <code>upload</code> 文件夹里的文件豆腐知道 <code>/var/www/html/</code> 文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv -r upload/* /var/www/html/</div></pre></td></tr></table></figure>
-<p>给 <code>/var/www/html/</code> 目录及子目录赋予权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod -R 777 /var/www/html</div></pre></td></tr></table></figure>
-<p>重启 Apache</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service httpd restart</div></pre></td></tr></table></figure>
-<h2 id="准备域名和证书"><a href="#准备域名和证书" class="headerlink" title="准备域名和证书"></a>准备域名和证书</h2><h3 id="域名注册"><a href="#域名注册" class="headerlink" title="域名注册"></a>域名注册</h3><p>如果你还没有域名，可以从阿里云注册域名。</p>
-<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>购买完成后，需要进行域名机械。域名设置解析后需要过一段时间才会生效，通过 <code>ping</code> 命令检查域名是否生效</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping www.yourdomain.com</div></pre></td></tr></table></figure>
-<p>如果 <code>ping</code> 命令返回的信息中包含你设置的 IP 地址，说明解析成功了。恭喜，您的 Discuz 论坛已经部署完成，您可以通过浏览器访问论坛查看效果。</p>
-
+<h2 id="安装并配置-WordPress"><a href="#安装并配置-WordPress" class="headerlink" title="安装并配置 WordPress"></a>安装并配置 WordPress</h2><h3 id="安装-WordPress"><a href="#安装-WordPress" class="headerlink" title="安装 WordPress"></a>安装 WordPress</h3><p>配置好 LNMP 环境以后我们，继续使用 <code>yum</code> 来安装 WordPress:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install wordpress-y</div></pre></td></tr></table></figure>
+<p>安装完成后，就可以在 /usr/share/wordpress 看到 WordPress 的源代码了</p>
+<h3 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h3><p>进入 MySQL :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -uroot --password='MyPas$word4Word_Press'</div></pre></td></tr></table></figure>
+<p>为 WordPress 创建一个数据库:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE DATABASE WORDPRESS;</div></pre></td></tr></table></figure>
+<p>MySQL 部分设置完了，我们退出 MySQL 环境：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exit</div></pre></td></tr></table></figure>
+<p>把上述的 DB 配置<a href="">同步到 WordPress 的配置</a>文件中，可参考下面的配置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * The base configuration for WordPress</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * The wp-config.php creation script uses this file during the</span></div><div class="line"><span class="comment"> * installation. You don't have to use the web site, you can</span></div><div class="line"><span class="comment"> * copy this file to "wp-config.php" and fill in the values.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * This file contains the following configurations:</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * * MySQL settings</span></div><div class="line"><span class="comment"> * * Secret keys</span></div><div class="line"><span class="comment"> * * Database table prefix</span></div><div class="line"><span class="comment"> * * ABSPATH</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@link</span> https://codex.wordpress.org/Editing_wp-config.php</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@package</span> WordPress</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="comment">// ** MySQL settings - You can get this info from your web host ** //</span></div><div class="line"><span class="comment">/** The name of the database for WordPress */</span></div><div class="line">define(<span class="string">'DB_NAME'</span>, <span class="string">'wordpress'</span>);</div><div class="line"></div><div class="line"><span class="comment">/** MySQL database username */</span></div><div class="line">define(<span class="string">'DB_USER'</span>, <span class="string">'root'</span>);</div><div class="line"></div><div class="line"><span class="comment">/** MySQL database password */</span></div><div class="line">define(<span class="string">'DB_PASSWORD'</span>, <span class="string">'MyPas$word4Word_Press'</span>);</div><div class="line"></div><div class="line"><span class="comment">/** MySQL hostname */</span></div><div class="line">define(<span class="string">'DB_HOST'</span>, <span class="string">'localhost'</span>);</div><div class="line"></div><div class="line"><span class="comment">/** Database Charset to use in creating database tables. */</span></div><div class="line">define(<span class="string">'DB_CHARSET'</span>, <span class="string">'utf8'</span>);</div><div class="line"></div><div class="line"><span class="comment">/** The Database Collate type. Don't change this if in doubt. */</span></div><div class="line">define(<span class="string">'DB_COLLATE'</span>, <span class="string">''</span>);</div><div class="line"></div><div class="line"><span class="comment">/**#@+</span></div><div class="line"><span class="comment"> * Authentication Unique Keys and Salts.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * Change these to different unique phrases!</span></div><div class="line"><span class="comment"> * You can generate these using the &#123;<span class="doctag">@link</span> https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service&#125;</span></div><div class="line"><span class="comment"> * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@since</span> 2.6.0</span></div><div class="line"><span class="comment"> */</span></div><div class="line">define(<span class="string">'AUTH_KEY'</span>,         <span class="string">'put your unique phrase here'</span>);</div><div class="line">define(<span class="string">'SECURE_AUTH_KEY'</span>,  <span class="string">'put your unique phrase here'</span>);</div><div class="line">define(<span class="string">'LOGGED_IN_KEY'</span>,    <span class="string">'put your unique phrase here'</span>);</div><div class="line">define(<span class="string">'NONCE_KEY'</span>,        <span class="string">'put your unique phrase here'</span>);</div><div class="line">define(<span class="string">'AUTH_SALT'</span>,        <span class="string">'put your unique phrase here'</span>);</div><div class="line">define(<span class="string">'SECURE_AUTH_SALT'</span>, <span class="string">'put your unique phrase here'</span>);</div><div class="line">define(<span class="string">'LOGGED_IN_SALT'</span>,   <span class="string">'put your unique phrase here'</span>);</div><div class="line">define(<span class="string">'NONCE_SALT'</span>,       <span class="string">'put your unique phrase here'</span>);</div><div class="line"></div><div class="line"><span class="comment">/**#@-*/</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * WordPress Database Table prefix.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * You can have multiple installations in one database if you give each</span></div><div class="line"><span class="comment"> * a unique prefix. Only numbers, letters, and underscores please!</span></div><div class="line"><span class="comment"> */</span></div><div class="line">$table_prefix  = <span class="string">'wp_'</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * See http://make.wordpress.org/core/2013/10/25/the-definitive-guide-to-disabling-auto-updates-in-wordpress-3-7</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="comment">/* Disable all file change, as RPM base installation are read-only */</span></div><div class="line">define(<span class="string">'DISALLOW_FILE_MODS'</span>, <span class="keyword">true</span>);</div><div class="line"></div><div class="line"><span class="comment">/* Disable automatic updater, in case you want to allow</span></div><div class="line"><span class="comment">   above FILE_MODS for plugins, themes, ... */</span></div><div class="line">define(<span class="string">'AUTOMATIC_UPDATER_DISABLED'</span>, <span class="keyword">true</span>);</div><div class="line"></div><div class="line"><span class="comment">/* Core update is always disabled, WP_AUTO_UPDATE_CORE value is ignore */</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * For developers: WordPress debugging mode.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * Change this to true to enable the display of notices during development.</span></div><div class="line"><span class="comment"> * It is strongly recommended that plugin and theme developers use WP_DEBUG</span></div><div class="line"><span class="comment"> * in their development environments.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * For information on other constants that can be used for debugging,</span></div><div class="line"><span class="comment"> * visit the Codex.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@link</span> https://codex.wordpress.org/Debugging_in_WordPress</span></div><div class="line"><span class="comment"> */</span></div><div class="line">define(<span class="string">'WP_DEBUG'</span>, <span class="keyword">false</span>);</div><div class="line"></div><div class="line"><span class="comment">/* That's all, stop editing! Happy blogging. */</span></div><div class="line"></div><div class="line"><span class="comment">/** Absolute path to the WordPress directory. */</span></div><div class="line"><span class="keyword">if</span> ( !defined(<span class="string">'ABSPATH'</span>) )</div><div class="line">    define(<span class="string">'ABSPATH'</span>, <span class="string">'/usr/share/wordpress'</span>);</div><div class="line"></div><div class="line"><span class="comment">/** Sets up WordPress vars and included files. */</span></div><div class="line"><span class="keyword">require_once</span>(ABSPATH . <span class="string">'wp-settings.php'</span>);</div></pre></td></tr></table></figure>
+<h3 id="配置-Nginx"><a href="#配置-Nginx" class="headerlink" title="配置 Nginx"></a>配置 Nginx</h3><p>WordPress 已经安装完毕，我们配置 Nginx  把请求转发给 PHP-FPM 来处理：</p>
+<p>首先，重命名默认的配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/nginx/conf.d/</div><div class="line">mv default.conf defaut.conf.bak</div></pre></td></tr></table></figure>
+<p>在 <code>/etc/nginx/conf.d</code> <a href="">创建 wordpress.conf 配置</a>，参考下面的内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    root /usr/share/wordpress;</div><div class="line">    location / &#123;</div><div class="line">        index index.php index.html index.htm;</div><div class="line">        try_files $uri $uri/ /index.php index.php;</div><div class="line">    &#125;</div><div class="line">    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</div><div class="line">    location ~ .php$ &#123;</div><div class="line">        fastcgi_pass   127.0.0.1:9000;</div><div class="line">        fastcgi_index  index.php;</div><div class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</div><div class="line">        include        fastcgi_params;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>配置后，通知 Nginx 进程重新加载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -s reload</div></pre></td></tr></table></figure>
+<h2 id="准备域名和解析"><a href="#准备域名和解析" class="headerlink" title="准备域名和解析"></a>准备域名和解析</h2><h3 id="域名注册"><a href="#域名注册" class="headerlink" title="域名注册"></a>域名注册</h3><h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3>
       
     </div>
     
@@ -502,7 +505,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-Discuz-论坛/" title="基于 CentOS 搭建 Discuz 论坛">http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-Discuz-论坛/</a>
+    <a href="http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-WorkPress-个人博客/" title="基于 CentOS 搭建 WorkPress 个人博客">http://qzdotnet.github.io/2017/10/12/基于-CentOS-搭建-WorkPress-个人博客/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -526,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/09/Linux-基础入门/" rel="next" title="Linux 基础入门">
-                <i class="fa fa-chevron-left"></i> Linux 基础入门
+              <a href="/2017/10/12/基于-CentOS-搭建-Discuz-论坛/" rel="next" title="基于 CentOS 搭建 Discuz 论坛">
+                <i class="fa fa-chevron-left"></i> 基于 CentOS 搭建 Discuz 论坛
               </a>
             
           </div>
@@ -535,10 +538,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/12/基于-CentOS-搭建-WorkPress-个人博客/" rel="prev" title="基于 CentOS 搭建 WorkPress 个人博客">
-                基于 CentOS 搭建 WorkPress 个人博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -751,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备-LAMP-环境"><span class="nav-number">1.</span> <span class="nav-text">准备 LAMP 环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-MySQL"><span class="nav-number">1.1.</span> <span class="nav-text">安装 MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Apache-组件"><span class="nav-number">1.2.</span> <span class="nav-text">安装 Apache 组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装PHP"><span class="nav-number">1.3.</span> <span class="nav-text">安装PHP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装并配置Discuz"><span class="nav-number">2.</span> <span class="nav-text">安装并配置Discuz</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Discuz"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Discuz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Discuz"><span class="nav-number">2.2.</span> <span class="nav-text">配置 Discuz</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备域名和证书"><span class="nav-number">3.</span> <span class="nav-text">准备域名和证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域名注册"><span class="nav-number">3.1.</span> <span class="nav-text">域名注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名解析"><span class="nav-number">3.2.</span> <span class="nav-text">域名解析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备-LNMP-环境"><span class="nav-number">1.</span> <span class="nav-text">准备 LNMP 环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Nginx"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-MySQL"><span class="nav-number">1.2.</span> <span class="nav-text">安装 MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装PHP"><span class="nav-number">1.3.</span> <span class="nav-text">安装PHP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装并配置-WordPress"><span class="nav-number">2.</span> <span class="nav-text">安装并配置 WordPress</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-WordPress"><span class="nav-number">2.1.</span> <span class="nav-text">安装 WordPress</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置数据库"><span class="nav-number">2.2.</span> <span class="nav-text">配置数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Nginx"><span class="nav-number">2.3.</span> <span class="nav-text">配置 Nginx</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备域名和解析"><span class="nav-number">3.</span> <span class="nav-text">准备域名和解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域名注册"><span class="nav-number">3.1.</span> <span class="nav-text">域名注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名解析"><span class="nav-number">3.2.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大功告成"><span class="nav-number">3.3.</span> <span class="nav-text">大功告成</span></a></li></ol></li></ol></div>
             
 
           </div>
