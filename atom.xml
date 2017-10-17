@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qzdotnet.github.io/"/>
-  <updated>2017-10-17T02:20:12.749Z</updated>
+  <updated>2017-10-17T12:20:03.745Z</updated>
   <id>http://qzdotnet.github.io/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux 系统简介</title>
+    <link href="http://qzdotnet.github.io/2017/10/17/Linux-%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B/"/>
+    <id>http://qzdotnet.github.io/2017/10/17/Linux-系统简介/</id>
+    <published>2017-10-17T12:20:03.000Z</published>
+    <updated>2017-10-17T12:20:03.745Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>基于 CentOS 搭建个人网盘</title>
@@ -299,11 +313,11 @@
       <category term="博客搭建" scheme="http://qzdotnet.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
     
-      <category term="GitHub" scheme="http://qzdotnet.github.io/tags/GitHub/"/>
-    
       <category term="Hexo" scheme="http://qzdotnet.github.io/tags/Hexo/"/>
     
       <category term="Next" scheme="http://qzdotnet.github.io/tags/Next/"/>
+    
+      <category term="GitHub" scheme="http://qzdotnet.github.io/tags/GitHub/"/>
     
   </entry>
   
