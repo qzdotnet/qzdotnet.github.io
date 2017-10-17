@@ -3,7 +3,13 @@
   <entry>
     <title><![CDATA[Linux 系统简介]]></title>
     <url>%2F2017%2F10%2F17%2FLinux-%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[UNIX 和 LINUX的发展历史UNIX 发展历史 1965 MIT、GE、AT&amp;T联合开发 Multics 工程计划，其目标是开发一种交互式的具有多道程序处理能力的分时操作系统，但因 Multics 追求的目标过于庞大复杂，项目进度远远落后与计划，最后贝尔实验室退出。 1969年，美国贝尔实验室的肯·汤普森在DEC PDP-7机器上开发出了UNIX系统。 1971年，肯·汤普森的同事丹尼斯·里奇发明了C语言，1973年，UNIX系统的绝大部分源代码用C语言重写，这为提高UNIX系统的可移植性打下基础。 UNIX 发型版本 操作系统 公司 硬件平台 AIX IBM PowerPC HP-UX HP PA-RISC Solaris Sun SPARC Linux Red Hat Linux、Ubuntu Linux…… IA(Intel、ADM、Cyrix、RISE) BSD 伯克利大学 LINUX 发展史Linux系统诞生与1991年，由芬兰大学生李纳斯(Linus Torvalds)和后来陆续加入的众多爱好者共同开发完成。 Linux是开源软件，源代码开放的UNIX。 LINUX 内核版本Linux 内核官网： www.kernel.org 内核版本说明：[主版本].[此版本].[末版本] 2.6.18 kernel源代码标记：mainline 、longterm、stable、linux-next、snapsho mainline：指由Linus Torvalds亲自制作的内核发布版，是官方当前最新版本的kernel source。在Torvalds对所有其他程序员所做出的重大变化进行整合，并且对先前版本的bug进行几轮修复之后，大约每十周正式发布一个新版本。mainline事实上代表着一个linux kernel分支，这个分支有另一个名称，叫做vanilla。 longterm：Long Term Support的缩写，长期维护的意思 stable ： 稳定版 linux-next、snapshot ：linux-next和snapshot，都是代码提交周期结束之前生成的快照 用于给Linux代码贡献者们做测试。 LINUX 发行版Linux 主要的发行版主要有两个系列 redhat 系列和 debian 系列,这两个操作系统使用的命令都差不多，但是安装软件的命令不太一样。 redhat readhat CentOS SuSE fedora 红旗Linux turbolinux gentoo linux Mandriva debian debian ubuntu KNOPPIX 开源软件简介###Linux上的开软软件列表 Linux上的服务器开源软件比WINODWS丰富，Windows服务器的个人软件更加丰富。 Apache Nginx MySQL php samba mongoDB python Ruby Sphinx 开源软件开源软件是指在软件发行的时候，附上软件的源代码，并授权允许用户更改/自由再散布/衍生著作，开源并不抵制商业收费。 主要的特点 使用的自由：绝大多数的开源软件免费 研究的自由：可以获得软件源代码 散布及改良的自由：可以自由传播、改良甚至销售 自由软件自由软件是一项思想运动，强调用户拥有如何使用软件的自由 可以自由地运行； 可以自由地拷贝； 可以自由地修改； 可以自由地再发行。 这里指的自由，并不是价格免费，这和价格无关而是使用软件对所有的用户来说是自由的。（英语中FREE有自由和免费的意思，比如自由的话语权，免费的夜宵）。 免费软件免费软件就是免费提供给用户使用的软件，但是其免费的时候，通常都会有其他的限制，比如其源码不一定会公开，而且使用者也并没有使用、复制、研究、修改和再散布的权利。 支撑互联网的开源技术LAMP : Linux 、Apache、MySQL、PHP LNMP : Linux、Nginx、MySQL、PHP Linux 应用领域基于Linux的企业服务器和网站服务器通过扫描网站：netcraft.com，可以扫描网站使用的服务器类型。国内大型的网站都使用Linux 全球前500的计算服务器基本上也都使用的Linux服务器：www.top500.org 嵌入式应用 手机 、平板电脑（Android） 智能电视（Android） 小米盒子、乐视盒子（Android） 航空系统、银行系统、卡拉OK点歌系统 智能汽车 Linux 学习方法为什么使用命令行WINDOWS主要是图形界面，Linux早期都是用于服务器操作系统的。所以基本上都是使用命令控制的，图形界面是占用资源的。 解决问题的智慧 帮助 文档 示例 查找 英文提示的困惑Command not found No Such file or directory Linux 学习方法 计划 专注 坚持 练习]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[基于 CentOS 搭建个人网盘]]></title>
