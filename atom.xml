@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qzdotnet.github.io/"/>
-  <updated>2017-10-17T12:22:51.938Z</updated>
+  <updated>2017-10-17T12:35:25.738Z</updated>
   <id>http://qzdotnet.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux 操作系统安装</title>
+    <link href="http://qzdotnet.github.io/2017/10/17/Linux-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
+    <id>http://qzdotnet.github.io/2017/10/17/Linux-操作系统安装/</id>
+    <published>2017-10-17T12:31:37.000Z</published>
+    <updated>2017-10-17T12:35:25.738Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p> 本文主要介绍基于 VMware Workstations Pro  安装 CentOS 7 系统的介绍，并简单介绍 Linux 文件格式和远程连接</p></blockquote><h2 id="VMware-虚拟机的安装与使用"><a href="#VMware-虚拟机的安装与使用" class="headerlink" title="VMware 虚拟机的安装与使用"></a>VMware 虚拟机的安装与使用</h2><h3 id="下载VMware"><a href="#下载VMware" class="headerlink" title="下载VMware"></a>下载VMware</h3><p>下载<a href="https://my.vmware.com/en/web/vmware/info/slug/desktop_end_user_computing/vmware_workstation_pro/14_0?wd=&amp;eqid=b304d84f000280ff0000000259e5a313" target="_blank" rel="external">传送门</a></p><p>下载完毕后就可以对软件进行安装了，安装过程比较简单就不介绍了。</p><a id="more"></a><h3 id="虚拟机快照"><a href="#虚拟机快照" class="headerlink" title="虚拟机快照"></a>虚拟机快照</h3><p>VMware 可以给虚拟机创建快照，恢复快照将系统恢复到快照时的状态</p><h3 id="虚拟机克隆"><a href="#虚拟机克隆" class="headerlink" title="虚拟机克隆"></a>虚拟机克隆</h3><p>如果需要多个操作系统，可以使用克隆命令。</p><p>克隆有两种：链接克隆和完全克隆。</p><p>链接克隆创建被克隆机器的镜像。如果原始机删除克隆机无法使用。但是占用资源较少。</p><p><a href="https://docs.vmware.com/cn/VMware-Workstation-Pro/14.0/com.vmware.ws.using.doc/" target="_blank" rel="external">VMware文档</a></p><h2 id="CentOS安装"><a href="#CentOS安装" class="headerlink" title="CentOS安装"></a>CentOS安装</h2><h3 id="下载CentOS"><a href="#下载CentOS" class="headerlink" title="下载CentOS"></a>下载CentOS</h3><p>从CentOs的官方网站下载<a href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1708.iso" target="_blank" rel="external">CentOS</a></p><h3 id="使用VMware将ISO挂在到虚拟光驱"><a href="#使用VMware将ISO挂在到虚拟光驱" class="headerlink" title="使用VMware将ISO挂在到虚拟光驱"></a>使用VMware将ISO挂在到虚拟光驱</h3><p>打开VMware Workstation 的虚拟机设置对话框，选择CD/DVD,使用 ISO 映像文件(M): 点击浏览按钮，选中刚才下载的 ISO 文件</p><h3 id="打开电源开始安装"><a href="#打开电源开始安装" class="headerlink" title="打开电源开始安装"></a>打开电源开始安装</h3><p>安装过程比较简单，注意选择安装内容的时候不要使用最小安装，使用基本安装。</p><h3 id="设置密码，安装系统密码原则"><a href="#设置密码，安装系统密码原则" class="headerlink" title="设置密码，安装系统密码原则"></a>设置密码，安装系统密码原则</h3><p>复杂性</p><ul><li>八位字符以上，大小写字符、数字、符号</li><li>不能是英文单词</li><li>不能是和用户相关的内容</li></ul><p>易记忆性</p><p>时效性</p><h3 id="设置网络"><a href="#设置网络" class="headerlink" title="设置网络"></a>设置网络</h3><p>默认安装完毕后，登录系统是不能上网的，CentOS默认不启动网卡，需要手动启动</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">　　cd /etc/sysconfig/network-scripts/</div><div class="line">　　ls 查看一下ifcfg-eno后面对应的数字是什么，以ens33为例</div><div class="line"><span class="meta">　　#</span>切换到root用户下，</div><div class="line">　　vi ifcfg-ens33</div><div class="line"><span class="meta">　　#</span>编辑该文件</div><div class="line">　　IPADDR=192.168.x.xx（添加ip地址）</div><div class="line">NETWORK=255.255.255.0（添加默认网关）</div><div class="line">GETWAY=192.168.x.x（添加网关地址）</div><div class="line">UUID=04c1f501-d0af-41c4-b1b0-fc0f56c5edc7</div><div class="line">ONBOOT=yes  （由not改成yes）</div><div class="line"><span class="meta">　　#</span>即开启自动启用网络连接</div><div class="line">　　:wq 保存退出</div></pre></td></tr></table></figure><h2 id="系统分区"><a href="#系统分区" class="headerlink" title="系统分区"></a>系统分区</h2><h3 id="分区类型"><a href="#分区类型" class="headerlink" title="分区类型"></a>分区类型</h3><ul><li>主分区：最多只能有4个</li><li>扩展分区：扩展分区只能有一个，主分区加扩展分区最多有4个，用途就是存放逻辑分区定义，扩展分区不能存放数据。</li><li>逻辑分区：存放文件</li></ul><h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><p>格式化（高级格式化）又称逻辑格式化，它是指根据用户选定的文件系统（如FAT16、FAT32、NTFS、EXT2、EXT3、EXT4等），在磁盘的特定区域存放特定的数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间</p><h3 id="硬件设备文件名"><a href="#硬件设备文件名" class="headerlink" title="硬件设备文件名"></a>硬件设备文件名</h3><table><thead><tr><th>硬件</th><th>设备文件名</th></tr></thead><tbody><tr><td>IDE硬盘</td><td>/dev/hd[a-d]</td></tr><tr><td>SCSI/SATA/USB硬盘</td><td>/dev/sd[a-p]</td></tr><tr><td>光驱</td><td>/dev/cdrom或者/dev/sr0</td></tr><tr><td>软驱</td><td>dev/fd[0-1]</td></tr><tr><td>打印机(25针)</td><td>/dev/lp[0-2]</td></tr><tr><td>打印机（ＵＳＢ）</td><td>dev/usb/lp[0-15]</td></tr><tr><td>鼠标</td><td>/dev/mouse</td></tr></tbody></table><h3 id="分区设备文件名"><a href="#分区设备文件名" class="headerlink" title="分区设备文件名"></a>分区设备文件名</h3><p>IDE:133MB/s</p><p>SCSI:200MB/s</p><p>SATA:500MB/s</p><p>设备文件名</p><p>/dev/had1(IDE)</p><p>/dev/dev/sda1(SCSI\STAT)</p><h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><p>给每一个分区分配挂载点，分区的设备必须挂载了以后才能使用。</p><p>/ (根分区)</p><p>swap 分区 （交换分区，内存2倍，不超过2GB）</p><p>推荐分区</p><p>/boot  (启动分区，200MB)</p><h3 id="文件系统结构"><a href="#文件系统结构" class="headerlink" title="文件系统结构"></a>文件系统结构</h3><ul><li>/分区<ul><li>​/boot</li><li>/etc<ul><li>passwd</li><li>shadow</li><li>group</li></ul></li><li>/home</li></ul></li></ul><p>Linux 系统每一个文件夹都可以制定一个硬盘分区</p><h2 id="远程登录管理"><a href="#远程登录管理" class="headerlink" title="远程登录管理"></a>远程登录管理</h2><h3 id="管理工具"><a href="#管理工具" class="headerlink" title="管理工具"></a>管理工具</h3><p>SecureCRT  Linux的常用远程管理工具</p><p>Winscp 文件拷贝工具</p><p>VNC 图形界面远程管理Linux</p><h3 id="SecureCRT-远程登录"><a href="#SecureCRT-远程登录" class="headerlink" title="SecureCRT  远程登录"></a>SecureCRT  远程登录</h3><p>打开 SecureCRT 点击快速连接 输入主机名和用户名点击链接，在弹出的密码窗口中输入用户密码</p><p><img src="http://ovs80if20.bkt.clouddn.com/linuxyc2.png" alt=""></p><h3 id="乱码问题解决"><a href="#乱码问题解决" class="headerlink" title="乱码问题解决"></a>乱码问题解决</h3><p>由于我们安装的 Linux 是中文语言的，所以远程的时候可能会出现乱码的情况</p><p>使用查看分区的命令来测试是否能显示中文</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df</div></pre></td></tr></table></figure><p>如果显示乱码就需要对 SecureCRT  进行配置 <code>选项</code> -&gt; <code>会话选项</code> ，调整外观中的字符编码和字体。</p><p>字体需要设置成支持中文的字体，字符编码需要设置成 GB2312，字符编码需要设置成 UFT-8</p><p><img src="http://ovs80if20.bkt.clouddn.com/linuxyc.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt; 本文主要介绍基于 VMware Workstations Pro  安装 CentOS 7 系统的介绍，并简单介绍 Linux 文件格式和远程连接&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;VMware-虚拟机的安装与使用&quot;&gt;&lt;a href=&quot;#VMware-虚拟机的安装与使用&quot; class=&quot;headerlink&quot; title=&quot;VMware 虚拟机的安装与使用&quot;&gt;&lt;/a&gt;VMware 虚拟机的安装与使用&lt;/h2&gt;&lt;h3 id=&quot;下载VMware&quot;&gt;&lt;a href=&quot;#下载VMware&quot; class=&quot;headerlink&quot; title=&quot;下载VMware&quot;&gt;&lt;/a&gt;下载VMware&lt;/h3&gt;&lt;p&gt;下载&lt;a href=&quot;https://my.vmware.com/en/web/vmware/info/slug/desktop_end_user_computing/vmware_workstation_pro/14_0?wd=&amp;amp;eqid=b304d84f000280ff0000000259e5a313&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载完毕后就可以对软件进行安装了，安装过程比较简单就不介绍了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="-Linux" scheme="http://qzdotnet.github.io/categories/Linux/"/>
+    
+    
+      <category term="-Linux" scheme="http://qzdotnet.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux 系统简介</title>
     <link href="http://qzdotnet.github.io/2017/10/17/Linux-%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B/"/>
     <id>http://qzdotnet.github.io/2017/10/17/Linux-系统简介/</id>
     <published>2017-10-17T12:20:03.000Z</published>
-    <updated>2017-10-17T12:22:51.938Z</updated>
+    <updated>2017-10-17T12:32:12.983Z</updated>
     
     <content type="html"><![CDATA[<h2 id="UNIX-和-LINUX的发展历史"><a href="#UNIX-和-LINUX的发展历史" class="headerlink" title="UNIX 和 LINUX的发展历史"></a>UNIX 和 LINUX的发展历史</h2><h3 id="UNIX-发展历史"><a href="#UNIX-发展历史" class="headerlink" title="UNIX 发展历史"></a>UNIX 发展历史</h3><ol><li><p>1965 MIT、GE、AT&amp;T联合开发 Multics 工程计划，其目标是开发一种交互式的具有多道程序处理能力的分时操作系统，但因 Multics 追求的目标过于庞大复杂，项目进度远远落后与计划，最后贝尔实验室退出。</p></li><li><p>1969年，美国贝尔实验室的肯·汤普森在DEC PDP-7机器上开发出了UNIX系统。</p></li><li><p>1971年，肯·汤普森的同事丹尼斯·里奇发明了C语言，1973年，UNIX系统的绝大部分源代码用C语言重写，这为提高UNIX系统的可移植性打下基础。</p><a id="more"></a></li></ol><h3 id="UNIX-发型版本"><a href="#UNIX-发型版本" class="headerlink" title="UNIX 发型版本"></a>UNIX 发型版本</h3><table><thead><tr><th>操作系统</th><th>公司</th><th>硬件平台</th></tr></thead><tbody><tr><td>AIX</td><td>IBM</td><td>PowerPC</td></tr><tr><td>HP-UX</td><td>HP</td><td>PA-RISC</td></tr><tr><td>Solaris</td><td>Sun</td><td>SPARC</td></tr><tr><td>Linux</td><td>Red Hat Linux、Ubuntu Linux……</td><td>IA(Intel、ADM、Cyrix、RISE)</td></tr><tr><td>BSD</td><td>伯克利大学</td></tr></tbody></table><h3 id="LINUX-发展史"><a href="#LINUX-发展史" class="headerlink" title="LINUX 发展史"></a>LINUX 发展史</h3><p>Linux系统诞生与1991年，由芬兰大学生李纳斯(Linus Torvalds)和后来陆续加入的众多爱好者共同开发完成。</p><p>Linux是开源软件，源代码开放的UNIX。</p><h3 id="LINUX-内核版本"><a href="#LINUX-内核版本" class="headerlink" title="LINUX 内核版本"></a>LINUX 内核版本</h3><p>Linux 内核官网： <a href="http://www.kernel.org" target="_blank" rel="external">www.kernel.org</a></p><p>内核版本说明：[主版本].[此版本].[末版本] 2.6.18</p><p>kernel源代码标记：mainline 、longterm、stable、linux-next、snapsho</p><ul><li>mainline：指由Linus Torvalds亲自制作的内核发布版，是官方当前最新版本的kernel source。在Torvalds对所有其他程序员所做出的重大变化进行整合，并且对先前版本的bug进行几轮修复之后，大约每十周正式发布一个新版本。mainline事实上代表着一个linux kernel分支，这个分支有另一个名称，叫做vanilla。</li><li>longterm：Long Term Support的缩写，长期维护的意思</li><li>stable ： 稳定版</li><li>linux-next、snapshot ：linux-next和snapshot，都是代码提交周期结束之前生成的快照 用于给Linux代码贡献者们做测试。</li></ul><h3 id="LINUX-发行版"><a href="#LINUX-发行版" class="headerlink" title="LINUX 发行版"></a>LINUX 发行版</h3><p>Linux 主要的发行版主要有两个系列 redhat 系列和 debian 系列,这两个操作系统使用的命令都差不多，但是安装软件的命令不太一样。</p><ul><li>redhat<ul><li>readhat</li><li>CentOS</li><li>SuSE</li><li>fedora</li><li>红旗Linux</li><li>turbolinux</li><li>gentoo linux</li><li>Mandriva</li></ul></li><li>debian<ul><li>debian</li><li>ubuntu</li><li>KNOPPIX</li></ul></li></ul><h2 id="开源软件简介"><a href="#开源软件简介" class="headerlink" title="开源软件简介"></a>开源软件简介</h2><p>###Linux上的开软软件列表</p><p>Linux上的服务器开源软件比WINODWS丰富，Windows服务器的个人软件更加丰富。</p><ul><li><p>Apache</p></li><li><p>Nginx</p></li><li><p>MySQL</p></li><li><p>php</p></li><li><p>samba</p></li><li><p>mongoDB</p></li><li><p>python</p></li><li><p>Ruby</p></li><li><p>Sphinx</p></li></ul><h3 id="开源软件"><a href="#开源软件" class="headerlink" title="开源软件"></a>开源软件</h3><p>开源软件是指在软件发行的时候，附上软件的源代码，并授权允许用户更改/自由再散布/衍生著作，开源并不抵制商业收费。 主要的特点</p><ul><li>使用的自由：绝大多数的开源软件免费</li><li>研究的自由：可以获得软件源代码</li><li>散布及改良的自由：可以自由传播、改良甚至销售</li></ul><h3 id="自由软件"><a href="#自由软件" class="headerlink" title="自由软件"></a>自由软件</h3><p>自由软件是一项思想运动，强调用户拥有如何使用软件的自由</p><ol><li>可以自由地运行；</li><li>可以自由地拷贝；</li><li>可以自由地修改；</li><li>可以自由地再发行。</li></ol><p>这里指的自由，并不是价格免费，这和价格无关而是使用软件对所有的用户来说是自由的。（英语中FREE有自由和免费的意思，比如自由的话语权，免费的夜宵）。</p><h3 id="免费软件"><a href="#免费软件" class="headerlink" title="免费软件"></a>免费软件</h3><p>免费软件就是免费提供给用户使用的软件，但是其免费的时候，通常都会有其他的限制，比如其源码不一定会公开，而且使用者也并没有使用、复制、研究、修改和再散布的权利。</p><h3 id="支撑互联网的开源技术"><a href="#支撑互联网的开源技术" class="headerlink" title="支撑互联网的开源技术"></a>支撑互联网的开源技术</h3><p>LAMP :  Linux 、Apache、MySQL、PHP</p><p>LNMP :  Linux、Nginx、MySQL、PHP</p><h2 id="Linux-应用领域"><a href="#Linux-应用领域" class="headerlink" title="Linux 应用领域"></a>Linux 应用领域</h2><h3 id="基于Linux的企业服务器和网站服务器"><a href="#基于Linux的企业服务器和网站服务器" class="headerlink" title="基于Linux的企业服务器和网站服务器"></a>基于Linux的企业服务器和网站服务器</h3><p>通过扫描网站：<a href="http://www.netcraft.com" target="_blank" rel="external">netcraft.com</a>，可以扫描网站使用的服务器类型。国内大型的网站都使用Linux</p><p>全球前500的计算服务器基本上也都使用的Linux服务器：<a href="http://www.top500.org" target="_blank" rel="external">www.top500.org</a></p><h3 id="嵌入式应用"><a href="#嵌入式应用" class="headerlink" title="嵌入式应用"></a>嵌入式应用</h3><ol><li>手机 、平板电脑（Android）</li><li>智能电视（Android）</li><li>小米盒子、乐视盒子（Android）</li><li>航空系统、银行系统、卡拉OK点歌系统</li><li>智能汽车</li></ol><h2 id="Linux-学习方法"><a href="#Linux-学习方法" class="headerlink" title="Linux 学习方法"></a>Linux 学习方法</h2><h3 id="为什么使用命令行"><a href="#为什么使用命令行" class="headerlink" title="为什么使用命令行"></a>为什么使用命令行</h3><p>WINDOWS主要是图形界面，Linux早期都是用于服务器操作系统的。所以基本上都是使用命令控制的，图形界面是占用资源的。</p><h3 id="解决问题的智慧"><a href="#解决问题的智慧" class="headerlink" title="解决问题的智慧"></a>解决问题的智慧</h3><ol><li><p>帮助</p></li><li><p>文档</p></li><li><p>示例</p></li><li><p>查找</p></li></ol><h3 id="英文提示的困惑"><a href="#英文提示的困惑" class="headerlink" title="英文提示的困惑"></a>英文提示的困惑</h3><p>Command not found</p><p>No Such file or directory</p><h3 id="Linux-学习方法-1"><a href="#Linux-学习方法-1" class="headerlink" title="Linux 学习方法"></a>Linux 学习方法</h3><ol><li>计划</li><li>专注</li><li>坚持</li><li>练习</li></ol>]]></content>
     
@@ -36,10 +62,10 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://qzdotnet.github.io/categories/Linux/"/>
+      <category term="-Linux" scheme="http://qzdotnet.github.io/categories/Linux/"/>
     
     
-      <category term="Linux" scheme="http://qzdotnet.github.io/tags/Linux/"/>
+      <category term="-Linux" scheme="http://qzdotnet.github.io/tags/Linux/"/>
     
   </entry>
   
@@ -326,11 +352,11 @@
       <category term="博客搭建" scheme="http://qzdotnet.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
     
+      <category term="GitHub" scheme="http://qzdotnet.github.io/tags/GitHub/"/>
+    
       <category term="Hexo" scheme="http://qzdotnet.github.io/tags/Hexo/"/>
     
       <category term="Next" scheme="http://qzdotnet.github.io/tags/Next/"/>
-    
-      <category term="GitHub" scheme="http://qzdotnet.github.io/tags/GitHub/"/>
     
   </entry>
   

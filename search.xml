@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux 操作系统安装]]></title>
+    <url>%2F2017%2F10%2F17%2FLinux-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[本文主要介绍基于 VMware Workstations Pro 安装 CentOS 7 系统的介绍，并简单介绍 Linux 文件格式和远程连接 VMware 虚拟机的安装与使用下载VMware下载传送门 下载完毕后就可以对软件进行安装了，安装过程比较简单就不介绍了。 虚拟机快照VMware 可以给虚拟机创建快照，恢复快照将系统恢复到快照时的状态 虚拟机克隆如果需要多个操作系统，可以使用克隆命令。 克隆有两种：链接克隆和完全克隆。 链接克隆创建被克隆机器的镜像。如果原始机删除克隆机无法使用。但是占用资源较少。 VMware文档 CentOS安装下载CentOS从CentOs的官方网站下载CentOS 使用VMware将ISO挂在到虚拟光驱打开VMware Workstation 的虚拟机设置对话框，选择CD/DVD,使用 ISO 映像文件(M): 点击浏览按钮，选中刚才下载的 ISO 文件 打开电源开始安装安装过程比较简单，注意选择安装内容的时候不要使用最小安装，使用基本安装。 设置密码，安装系统密码原则复杂性 八位字符以上，大小写字符、数字、符号 不能是英文单词 不能是和用户相关的内容 易记忆性 时效性 设置网络默认安装完毕后，登录系统是不能上网的，CentOS默认不启动网卡，需要手动启动 123456789101112 cd /etc/sysconfig/network-scripts/ ls 查看一下ifcfg-eno后面对应的数字是什么，以ens33为例 #切换到root用户下， vi ifcfg-ens33 #编辑该文件 IPADDR=192.168.x.xx（添加ip地址）NETWORK=255.255.255.0（添加默认网关）GETWAY=192.168.x.x（添加网关地址）UUID=04c1f501-d0af-41c4-b1b0-fc0f56c5edc7ONBOOT=yes （由not改成yes） #即开启自动启用网络连接 :wq 保存退出 系统分区分区类型 主分区：最多只能有4个 扩展分区：扩展分区只能有一个，主分区加扩展分区最多有4个，用途就是存放逻辑分区定义，扩展分区不能存放数据。 逻辑分区：存放文件 格式化格式化（高级格式化）又称逻辑格式化，它是指根据用户选定的文件系统（如FAT16、FAT32、NTFS、EXT2、EXT3、EXT4等），在磁盘的特定区域存放特定的数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间 硬件设备文件名 硬件 设备文件名 IDE硬盘 /dev/hd[a-d] SCSI/SATA/USB硬盘 /dev/sd[a-p] 光驱 /dev/cdrom或者/dev/sr0 软驱 dev/fd[0-1] 打印机(25针) /dev/lp[0-2] 打印机（ＵＳＢ） dev/usb/lp[0-15] 鼠标 /dev/mouse 分区设备文件名IDE:133MB/s SCSI:200MB/s SATA:500MB/s 设备文件名 /dev/had1(IDE) /dev/dev/sda1(SCSI\STAT) 挂载给每一个分区分配挂载点，分区的设备必须挂载了以后才能使用。 / (根分区) swap 分区 （交换分区，内存2倍，不超过2GB） 推荐分区 /boot (启动分区，200MB) 文件系统结构 /分区 ​/boot /etc passwd shadow group /home Linux 系统每一个文件夹都可以制定一个硬盘分区 远程登录管理管理工具SecureCRT Linux的常用远程管理工具 Winscp 文件拷贝工具 VNC 图形界面远程管理Linux SecureCRT 远程登录打开 SecureCRT 点击快速连接 输入主机名和用户名点击链接，在弹出的密码窗口中输入用户密码 乱码问题解决由于我们安装的 Linux 是中文语言的，所以远程的时候可能会出现乱码的情况 使用查看分区的命令来测试是否能显示中文 1df 如果显示乱码就需要对 SecureCRT 进行配置 选项 -&gt; 会话选项 ，调整外观中的字符编码和字体。 字体需要设置成支持中文的字体，字符编码需要设置成 GB2312，字符编码需要设置成 UFT-8]]></content>
+      <categories>
+        <category>-Linux</category>
+      </categories>
+      <tags>
+        <tag>-Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux 系统简介]]></title>
     <url>%2F2017%2F10%2F17%2FLinux-%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B%2F</url>
     <content type="text"><![CDATA[UNIX 和 LINUX的发展历史UNIX 发展历史 1965 MIT、GE、AT&amp;T联合开发 Multics 工程计划，其目标是开发一种交互式的具有多道程序处理能力的分时操作系统，但因 Multics 追求的目标过于庞大复杂，项目进度远远落后与计划，最后贝尔实验室退出。 1969年，美国贝尔实验室的肯·汤普森在DEC PDP-7机器上开发出了UNIX系统。 1971年，肯·汤普森的同事丹尼斯·里奇发明了C语言，1973年，UNIX系统的绝大部分源代码用C语言重写，这为提高UNIX系统的可移植性打下基础。 UNIX 发型版本 操作系统 公司 硬件平台 AIX IBM PowerPC HP-UX HP PA-RISC Solaris Sun SPARC Linux Red Hat Linux、Ubuntu Linux…… IA(Intel、ADM、Cyrix、RISE) BSD 伯克利大学 LINUX 发展史Linux系统诞生与1991年，由芬兰大学生李纳斯(Linus Torvalds)和后来陆续加入的众多爱好者共同开发完成。 Linux是开源软件，源代码开放的UNIX。 LINUX 内核版本Linux 内核官网： www.kernel.org 内核版本说明：[主版本].[此版本].[末版本] 2.6.18 kernel源代码标记：mainline 、longterm、stable、linux-next、snapsho mainline：指由Linus Torvalds亲自制作的内核发布版，是官方当前最新版本的kernel source。在Torvalds对所有其他程序员所做出的重大变化进行整合，并且对先前版本的bug进行几轮修复之后，大约每十周正式发布一个新版本。mainline事实上代表着一个linux kernel分支，这个分支有另一个名称，叫做vanilla。 longterm：Long Term Support的缩写，长期维护的意思 stable ： 稳定版 linux-next、snapshot ：linux-next和snapshot，都是代码提交周期结束之前生成的快照 用于给Linux代码贡献者们做测试。 LINUX 发行版Linux 主要的发行版主要有两个系列 redhat 系列和 debian 系列,这两个操作系统使用的命令都差不多，但是安装软件的命令不太一样。 redhat readhat CentOS SuSE fedora 红旗Linux turbolinux gentoo linux Mandriva debian debian ubuntu KNOPPIX 开源软件简介###Linux上的开软软件列表 Linux上的服务器开源软件比WINODWS丰富，Windows服务器的个人软件更加丰富。 Apache Nginx MySQL php samba mongoDB python Ruby Sphinx 开源软件开源软件是指在软件发行的时候，附上软件的源代码，并授权允许用户更改/自由再散布/衍生著作，开源并不抵制商业收费。 主要的特点 使用的自由：绝大多数的开源软件免费 研究的自由：可以获得软件源代码 散布及改良的自由：可以自由传播、改良甚至销售 自由软件自由软件是一项思想运动，强调用户拥有如何使用软件的自由 可以自由地运行； 可以自由地拷贝； 可以自由地修改； 可以自由地再发行。 这里指的自由，并不是价格免费，这和价格无关而是使用软件对所有的用户来说是自由的。（英语中FREE有自由和免费的意思，比如自由的话语权，免费的夜宵）。 免费软件免费软件就是免费提供给用户使用的软件，但是其免费的时候，通常都会有其他的限制，比如其源码不一定会公开，而且使用者也并没有使用、复制、研究、修改和再散布的权利。 支撑互联网的开源技术LAMP : Linux 、Apache、MySQL、PHP LNMP : Linux、Nginx、MySQL、PHP Linux 应用领域基于Linux的企业服务器和网站服务器通过扫描网站：netcraft.com，可以扫描网站使用的服务器类型。国内大型的网站都使用Linux 全球前500的计算服务器基本上也都使用的Linux服务器：www.top500.org 嵌入式应用 手机 、平板电脑（Android） 智能电视（Android） 小米盒子、乐视盒子（Android） 航空系统、银行系统、卡拉OK点歌系统 智能汽车 Linux 学习方法为什么使用命令行WINDOWS主要是图形界面，Linux早期都是用于服务器操作系统的。所以基本上都是使用命令控制的，图形界面是占用资源的。 解决问题的智慧 帮助 文档 示例 查找 英文提示的困惑Command not found No Such file or directory Linux 学习方法 计划 专注 坚持 练习]]></content>
       <categories>
-        <category>Linux</category>
+        <category>-Linux</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
+        <tag>-Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -128,9 +139,9 @@
         <category>博客搭建</category>
       </categories>
       <tags>
+        <tag>GitHub</tag>
         <tag>Hexo</tag>
         <tag>Next</tag>
-        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
