@@ -334,6 +334,506 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/20/Linux-系统常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/20/Linux-系统常用命令/" itemprop="url">Linux 系统常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T08:39:22+08:00">
+                2017-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/20/Linux-系统常用命令/" class="leancloud_visitors" data-flag-title="Linux 系统常用命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h2><h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><p>命令格式： 命令 [-选项] [参数]</p>
+<p>例： ls -la /etc</p>
+<p>说明</p>
+<ul>
+<li>个别命令使用不遵循此格式</li>
+<li>当有多个选项时，可以写在一起</li>
+<li>简化选项与完整选项 -a  等于  –all</li>
+</ul>
+<h3 id="目录处理命令"><a href="#目录处理命令" class="headerlink" title="目录处理命令"></a>目录处理命令</h3><h4 id="ls-查看目录"><a href="#ls-查看目录" class="headerlink" title="ls 查看目录"></a><strong>ls</strong> 查看目录</h4><p>英文原意：list</p>
+<p>命令所在路径：/bin/ls</p>
+<p>执行权限： 所有用户</p>
+<p>功能描述：显示目录文件</p>
+<p>语法： ls [-ald] [文件或目录]</p>
+<ul>
+<li>-a 显示所有的文件，包括隐藏文件，隐藏文件以.开头</li>
+<li>-l 详细信息显示</li>
+<li>-d 查看目录属性</li>
+<li>-h 人性化选项，可以显示</li>
+<li>-i 查询文件的 i 节点，可以理解为文件的ID或者索引号码</li>
+</ul>
+<p>文件属性主要包含7个方面的内容：[权限][索引[ 所有者][用户组][\文件大小][最后修改时间][名称],权限描述Linux 将文件的访问属性分为三类，所有者(u)、所属组(g)、其他人(o)。</p>
+<p>-rw-r–r–</p>
+<ul>
+<li><p>第一个字符 -  代表文件类型 （- 二进制文件 d 目录 l 软连接文件）</p>
+</li>
+<li><p>rw- r– r–</p>
+<ul>
+<li>rw- 代表 u 所有者的权限</li>
+<li>r– 代表 g 用户组的权限</li>
+<li>r– 代表 o 其他用户的权限</li>
+</ul>
+<p>r 代表具有读权限 w 代表具有写权限 x代表具有执行的权限（命令和脚本有意义）</p>
+</li>
+</ul>
+<h4 id="mkdir-目录创建命令"><a href="#mkdir-目录创建命令" class="headerlink" title="mkdir 目录创建命令"></a>mkdir 目录创建命令</h4><p>英文原意： <em>m</em>a<em>k</em>e <em>dir</em>ectories</p>
+<p>所在路径：/bin/mkdir</p>
+<p>执行权限：所有用户</p>
+<p>语法 ： mkdir [-p] [目录名称]</p>
+<ul>
+<li>-p 递归创建</li>
+<li>-m 或 –mode 建立目录同时设置目录权限</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir -p /tmp/china/quzheng</div><div class="line"><span class="meta">#</span> 可以使用 mkdir 一次创建多个文件</div><div class="line">mkdir /tmp/china/quzheng / /tmp/china/quzheng2 </div><div class="line"><span class="meta">#</span> 创建目录，所有者有读、写和执行权限，其他人无权访问</div><div class="line">mkdir -p-m 700 /tmp/quzheng</div></pre></td></tr></table></figure>
+<h4 id="cd-移动目录"><a href="#cd-移动目录" class="headerlink" title="cd 移动目录"></a>cd 移动目录</h4><p>英文原意： <em>c</em>hange <em>d</em>irectory</p>
+<p>执行权限：所有用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>进入用户主目录；</div><div class="line">cd </div><div class="line"><span class="meta">#</span>进入用户主目录；</div><div class="line">cd ~  </div><div class="line"><span class="meta">#</span>返回进入此目录之前所在的目录； </div><div class="line">cd - </div><div class="line"><span class="meta">#</span>返回上级目录（若当前目录为“/“，则执行完后还在“/"；".."为上级目录的意思）；</div><div class="line">cd ..  </div><div class="line"><span class="meta">#</span>返回上两级目录；</div><div class="line">cd ../..  </div><div class="line"><span class="meta">#</span> 把上个命令的参数作为cd参数使用。</div><div class="line">cd !$</div></pre></td></tr></table></figure>
+<h4 id="pwd-显示当前目录"><a href="#pwd-显示当前目录" class="headerlink" title="pwd 显示当前目录"></a>pwd 显示当前目录</h4><p>英文原意： <em>p</em>rint <em>w</em>orking <em>d</em>irectory</p>
+<p>命令所在路径：/bin/</p>
+<p>执行权限：所有用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pwd</div></pre></td></tr></table></figure>
+<h4 id="rmdir-删除空目录"><a href="#rmdir-删除空目录" class="headerlink" title="rmdir 删除空目录"></a>rmdir 删除空目录</h4><p>英文原意： <em>r</em>e<em>m</em>ove empty <em>dir</em>ectory</p>
+<p>命令所在路径：/bin/</p>
+<p>执行权限：所有用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rmdir /tmp/quzheng</div></pre></td></tr></table></figure>
+<h4 id="cp-复制文件或目录"><a href="#cp-复制文件或目录" class="headerlink" title="cp 复制文件或目录"></a>cp 复制文件或目录</h4><p>英文原意： <em>c</em>o<em>p</em>y</p>
+<p>命令所在路径：/bin/</p>
+<p>语法：cp -rp [原文件或目录] [目标目录]</p>
+<ul>
+<li>-r 复制目录</li>
+<li>-p 保留文件属性</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>复制目录</div><div class="line">cp -r /tmp/quzheng /bin/</div><div class="line"><span class="meta">#</span>复制文件</div><div class="line">cp /etc/grub.conf /tmp</div><div class="line"><span class="meta">#</span>同时复制多个文件</div><div class="line">cp /root/install.log /root/install.log.syslog /tmp</div><div class="line"><span class="meta">#</span>复制同时修改名称</div><div class="line">cp /tmp/quzheng</div></pre></td></tr></table></figure>
+<h4 id="mv-剪切文件改名"><a href="#mv-剪切文件改名" class="headerlink" title="mv 剪切文件改名"></a>mv 剪切文件改名</h4><p>英文原意： <em>m</em>o<em>v</em>e</p>
+<p>命令所在路径：/bin/</p>
+<p>语法： mv [源文件或目录] [目标目录]</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mv /tmp/quzheng /root</div><div class="line"><span class="meta">#</span> 剪切改名</div><div class="line">mv /tmp/quzheng /root/quzheng2</div><div class="line"><span class="meta">#</span> 当前目录改名</div><div class="line">mv /tmp/quzheng /tmp/quzheng3</div></pre></td></tr></table></figure>
+<h4 id="rm-删除文件和目录"><a href="#rm-删除文件和目录" class="headerlink" title="rm 删除文件和目录"></a>rm 删除文件和目录</h4><p>英文原意： <em>r</em>e<em>m</em>ove</p>
+<p>命令所在路径：/bin/</p>
+<p>语法： rm -rf  [文件或目录]</p>
+<ul>
+<li>-r 删除目录</li>
+<li>-f 强制删除</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 删除文件</div><div class="line">rm /tmp/confg.conf</div><div class="line"><span class="meta">#</span> 删除目录</div><div class="line">rm -rf /tmp/quzheng2</div></pre></td></tr></table></figure>
+<h3 id="文件处理命令-1"><a href="#文件处理命令-1" class="headerlink" title="文件处理命令"></a>文件处理命令</h3><h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><h3 id="链接命令"><a href="#链接命令" class="headerlink" title="链接命令"></a>链接命令</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/20/Linux-系统注意事项/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/20/Linux-系统注意事项/" itemprop="url">Linux系统注意事项</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T08:39:04+08:00">
+                2017-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/20/Linux-系统注意事项/" class="leancloud_visitors" data-flag-title="Linux系统注意事项">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="Linux-严格区分大小写"><a href="#Linux-严格区分大小写" class="headerlink" title="Linux 严格区分大小写"></a>Linux 严格区分大小写</h3><p>Linux 系统严格区分大小写，文件名称 、目录名称、Shell 命令的参数 都是严格区分大小写的。Linux 的 Shell 命令都是小写的。</p>
+<h3 id="Linux-系统中所有的内容都是已文件的形式保存的，包括硬件保存硬件的文件夹-dev"><a href="#Linux-系统中所有的内容都是已文件的形式保存的，包括硬件保存硬件的文件夹-dev" class="headerlink" title="Linux 系统中所有的内容都是已文件的形式保存的，包括硬件保存硬件的文件夹/dev/"></a>Linux 系统中所有的内容都是已文件的形式保存的，包括硬件保存硬件的文件夹/dev/</h3><ul>
+<li>硬盘文件是 /dev/sd[a-p]</li>
+<li>光盘文件是 /dev/sr0 等</li>
+</ul>
+<h3 id="Linux-不靠扩展名区分文件类型"><a href="#Linux-不靠扩展名区分文件类型" class="headerlink" title="Linux 不靠扩展名区分文件类型"></a>Linux 不靠扩展名区分文件类型</h3><p>Linux 系统本身不依靠扩展名来区分文件，但是最好还是讲需要的文件进行扩展名命名。</p>
+<ul>
+<li>压缩包：“*.gz”、”*.bz2”、”*.tar.bz2”、”*.tgz”</li>
+<li>二进制软件包：”*.rpm”</li>
+<li>网页文件：”*.html”、”*.php”</li>
+<li>脚本文件：”*.sh”</li>
+<li>配置文件：”*.conf”</li>
+</ul>
+<h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><p>Linux 所有的存储设备都必须挂载之后用户才能使用，包括硬盘、U盘和光盘</p>
+<h3 id="Windows程序"><a href="#Windows程序" class="headerlink" title="Windows程序"></a>Windows程序</h3><p>Windows 的程序不能直接在 Linux 中的安装和运行, 但是可以在 Linux 系统上安装 Windows 模拟器进行安装使用。但是模拟器不是所有的程序都能运行，也不稳定。</p>
+<h2 id="服务器的管理和维护建议"><a href="#服务器的管理和维护建议" class="headerlink" title="服务器的管理和维护建议"></a>服务器的管理和维护建议</h2><h3 id="Linux-各目录的作用"><a href="#Linux-各目录的作用" class="headerlink" title="Linux 各目录的作用"></a>Linux 各目录的作用</h3><table>
+<thead>
+<tr>
+<th>目录名</th>
+<th>目录作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/bin/</td>
+<td>存放系统命令的目录，普通用户和超级用户都可以执行。不过放在/bin下的命令在单用户模式下也可以执行</td>
+</tr>
+<tr>
+<td>/sbin/</td>
+<td>保存和系统环境设置相关的命令，只有超级用户可以使用这些命令进行系统环境设置，但是有些命令可以允许普通用户查看</td>
+</tr>
+<tr>
+<td>/usr/bin/</td>
+<td>存放系统命令的目录，普通用户和超级用户都可以执行，这些命令和系统启动无关。在单用户模式下不能执行。</td>
+</tr>
+<tr>
+<td>/usr/sbin/</td>
+<td>存放根文件系统不必要的系统命令，例如多数的服务器程序。只有超级用户可以使用。大家其实可以注意到 Linux 的系统，在所有 sbin 目录中保存的命令只有超级用户可以使用， bin 目录中保存的命令所有用户都可以使用。</td>
+</tr>
+<tr>
+<td>/boot/</td>
+<td>系统启动目录，保存系统启动相关的目录，如内核文件和启动引导程序(grup)</td>
+</tr>
+<tr>
+<td>/dev/</td>
+<td>设备文件保存位置。这个目录用来存放所有硬件设备文件</td>
+</tr>
+<tr>
+<td>/etc/</td>
+<td>配置文件保存位置。系统内所有采用默认安装方式(rpm 安装) 的服务的配置文件全部都保存在这个目录中，如用户账户和密码，服务的启动脚本，常用服务的配置文件等。</td>
+</tr>
+<tr>
+<td>/home/</td>
+<td>普通用户的加目录。建立每个用户时，每个用户要有一个默认登录位置，这个位置就是这个用户的家（宿主）目录，所有的普通用户的家目录就是在 /home 下建立一个和用户名相同的目录。如用户 user1 的家目录就是 /home/user1 ，只有管理员的目录是一级目录 /root/</td>
+</tr>
+<tr>
+<td>/lib/</td>
+<td>系统调用的函数库保存位置。</td>
+</tr>
+<tr>
+<td>/lost+found/</td>
+<td>当系统意外崩溃或机器意外关机，而产生一些文件碎片放在这里。当系统启动的过程中 fsck 工具会检查这里，并修复已经损坏的文件系统。这个目录只在每个分区中出现，例如/lost+found 就是根分区的备份恢复目录， /boot/lost+found 就是 /boot 分区的备份恢复目录。</td>
+</tr>
+<tr>
+<td>/media/</td>
+<td>挂载目录。系统建议是用来挂载媒体设备的。例如软盘和光盘</td>
+</tr>
+<tr>
+<td>/mnt/</td>
+<td>ls挂载目录，早期 Linux 中只有这一个挂载目录，并没有细分。现在这个目录系统建议挂载额外设备，如U盘，移动硬盘和其他操作系统的分区。</td>
+</tr>
+<tr>
+<td>/misc/</td>
+<td>挂载目录。系统建议用来挂载 NFS 服务的共享目录。只要是一个已经建立的空目录就可以作为挂载点。那么系统虽然准备了桑格挂载目录，但是到底在哪个目录中挂载什么设备可以又管理员自己决定。</td>
+</tr>
+<tr>
+<td>/opt/</td>
+<td>第三方安装软件保存位置。这个目录就是防止和安装其他软件的位置，手工安装的源码包软件都可以安装到这个目录中。还有一个常用的软件安装目录 /usr/local/</td>
+</tr>
+<tr>
+<td>/proc/</td>
+<td>虚拟文件系统，该目录中的数据不保存在硬盘当中，而是保存在内存当中。主要保存系统的内核，进程，外部设备状态和网络状态灯。如 /proc/cpuinfo 是保存 CPU 信息的，proc/devices 是保存设备驱动的列表， /proc/filesystems 是保存文件系统列表的，/proc/net 是保存网络协议信息的。</td>
+</tr>
+<tr>
+<td>/sys/</td>
+<td>虚拟文件系统。和/proc目录相似，都是保存在内存当中的，主要保存内核相关信息。</td>
+</tr>
+<tr>
+<td>/root/</td>
+<td>超级用户的家目录/src</td>
+</tr>
+<tr>
+<td>/srv/</td>
+<td>服务数据目录。一些系统服务启动之后，可以在这个目录中保存所需要的数据。</td>
+</tr>
+<tr>
+<td>/tmp/</td>
+<td>临时目录。系统存放临时目录的，该目录下所有的用户都可以访问和写入。建议在此目录中不要保存重要数据，最好每次开机都把该目录清空</td>
+</tr>
+<tr>
+<td>/usr/</td>
+<td>系统软件资源目录。usr 不是 user 的缩写，而是 Unix Software Resource 的缩写，所以不是存放用户数据，而是存放系统软件资源的目录。系统中安装软件大多书保存在这里。</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>动态数据目录，主要保存缓存、日志以及软件运行所产生的文件。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="服务器的注意事项"><a href="#服务器的注意事项" class="headerlink" title="服务器的注意事项"></a>服务器的注意事项</h3><ul>
+<li>远程服务器不允许关机，只能重启</li>
+<li>重启时应该关闭服务</li>
+<li>不要再服务器访问高峰运行高负载命令</li>
+<li>远程配置防火墙时，不要把自己踢出服务器</li>
+<li>制定合理的密码规范并定期更新</li>
+<li>合理分配权限</li>
+<li>定期备份重要数据和日志，备份的原则不要把鸡蛋放在同一个篮子里</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/19/搭建-Docker-环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,6 +875,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -679,7 +1201,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/17/Linux-系统简介/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/10/17/Linux-系统简介/" itemprop="url">Linux 系统简介</a></h1>
         
 
         <div class="post-meta">
@@ -702,6 +1224,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -709,7 +1253,7 @@
 
           
           
-             <span id="/2017/10/17/Linux-系统简介/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2017/10/17/Linux-系统简介/" class="leancloud_visitors" data-flag-title="Linux 系统简介">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -741,10 +1285,7 @@
 
       
         
-          <hr>
-<p>title: Linux 系统简介<br>date: 2017-10-17 20:20:03<br>categories:<br> -Linux<br>tags:</p>
-<p> -Linux</p>
-<h2 id="UNIX-和-LINUX的发展历史"><a href="#UNIX-和-LINUX的发展历史" class="headerlink" title="UNIX 和 LINUX的发展历史"></a>UNIX 和 LINUX的发展历史</h2><h3 id="UNIX-发展历史"><a href="#UNIX-发展历史" class="headerlink" title="UNIX 发展历史"></a>UNIX 发展历史</h3><ol>
+          <h2 id="UNIX-和-LINUX的发展历史"><a href="#UNIX-和-LINUX的发展历史" class="headerlink" title="UNIX 和 LINUX的发展历史"></a>UNIX 和 LINUX的发展历史</h2><h3 id="UNIX-发展历史"><a href="#UNIX-发展历史" class="headerlink" title="UNIX 发展历史"></a>UNIX 发展历史</h3><ol>
 <li><p>1965 MIT、GE、AT&amp;T联合开发 Multics 工程计划，其目标是开发一种交互式的具有多道程序处理能力的分时操作系统，但因 Multics 追求的目标过于庞大复杂，项目进度远远落后与计划，最后贝尔实验室退出。</p>
 </li>
 <li><p>1969年，美国贝尔实验室的肯·汤普森在DEC PDP-7机器上开发出了UNIX系统。</p>
@@ -1657,325 +2198,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/09/搭建-GIT-服务器教程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/09/搭建-GIT-服务器教程/" itemprop="url">搭建 GIT 服务器教程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T13:58:37+08:00">
-                2017-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/09/搭建-GIT-服务器教程/" class="leancloud_visitors" data-flag-title="搭建 GIT 服务器教程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>转载自<a href="https://cloud.tencent.com/developer/labs/lab/10045" target="_blank" rel="external">腾讯云 开发者实验室</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/09/搭建-GIT-服务器教程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/09/27/微软WebCast视频下载辅助工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/27/微软WebCast视频下载辅助工具/" itemprop="url">微软WebCast视频下载辅助工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T16:26:59+08:00">
-                2017-09-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂记/" itemprop="url" rel="index">
-                    <span itemprop="name">杂记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/09/27/微软WebCast视频下载辅助工具/" class="leancloud_visitors" data-flag-title="微软WebCast视频下载辅助工具">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>最近公司开始让我们小组搞内部培训。培训内容主要是C#语言，ADO.NET、Winfrom等内容。我们小组共6个人，平时的主要工作是维护实施公司一套10年前开发的VB产品。只有两个人有.NET基础，其余4人完全小白。为了能够达到理想的培训效果，开始从网上找相关的教学视频。我大学的时候学习微软技术都是从<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>下载视频，所以我就本能的想到了<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>。不过不知道为什么<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>上的下载链接全部失效了。。。</p>
-<p>微软官方的失效了，其他网站应该有吧，毕竟这个<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>还是挺出名的，于是我就各种搜索。知道了微软<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>现在已经停办了，新的全球化教学网站叫<a href="https://mva.microsoft.com/" target="_blank" rel="external">微软虚拟学院</a>。浏览了一下基本上我们想学的知识都没有，都是最前沿的技术。对于我们小组目前来说也用不到，而且大部分都是老外英文教学，中文字幕。对于我们这种听不懂英文的人，看了想睡觉。更令人失望的是，从网上搜不到<a href="https://msdn.microsoft.com/zh-cn/dd796167" target="_blank" rel="external">WEBCAST</a>的视频。只有51TCO上有部分视频，但是搞笑的是，部分视频下载竟然要收费。靠有没有点互联网精神。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/27/微软WebCast视频下载辅助工具/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2026,7 +2248,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2037,7 +2259,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

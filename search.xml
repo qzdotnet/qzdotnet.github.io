@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux 系统常用命令]]></title>
+    <url>%2F2017%2F10%2F20%2FLinux-%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[文件处理命令命令格式命令格式： 命令 [-选项] [参数] 例： ls -la /etc 说明 个别命令使用不遵循此格式 当有多个选项时，可以写在一起 简化选项与完整选项 -a 等于 –all 目录处理命令ls 查看目录英文原意：list 命令所在路径：/bin/ls 执行权限： 所有用户 功能描述：显示目录文件 语法： ls [-ald] [文件或目录] -a 显示所有的文件，包括隐藏文件，隐藏文件以.开头 -l 详细信息显示 -d 查看目录属性 -h 人性化选项，可以显示 -i 查询文件的 i 节点，可以理解为文件的ID或者索引号码 文件属性主要包含7个方面的内容：[权限][索引[ 所有者][用户组][\文件大小][最后修改时间][名称],权限描述Linux 将文件的访问属性分为三类，所有者(u)、所属组(g)、其他人(o)。 -rw-r–r– 第一个字符 - 代表文件类型 （- 二进制文件 d 目录 l 软连接文件） rw- r– r– rw- 代表 u 所有者的权限 r– 代表 g 用户组的权限 r– 代表 o 其他用户的权限 r 代表具有读权限 w 代表具有写权限 x代表具有执行的权限（命令和脚本有意义） mkdir 目录创建命令英文原意： make directories 所在路径：/bin/mkdir 执行权限：所有用户 语法 ： mkdir [-p] [目录名称] -p 递归创建 -m 或 –mode 建立目录同时设置目录权限 12345mkdir -p /tmp/china/quzheng# 可以使用 mkdir 一次创建多个文件mkdir /tmp/china/quzheng / /tmp/china/quzheng2 # 创建目录，所有者有读、写和执行权限，其他人无权访问mkdir -p-m 700 /tmp/quzheng cd 移动目录英文原意： change directory 执行权限：所有用户 123456789101112#进入用户主目录；cd #进入用户主目录；cd ~ #返回进入此目录之前所在的目录； cd - #返回上级目录（若当前目录为“/“，则执行完后还在“/"；".."为上级目录的意思）；cd .. #返回上两级目录；cd ../.. # 把上个命令的参数作为cd参数使用。cd !$ pwd 显示当前目录英文原意： print working directory 命令所在路径：/bin/ 执行权限：所有用户 1pwd rmdir 删除空目录英文原意： remove empty directory 命令所在路径：/bin/ 执行权限：所有用户 1rmdir /tmp/quzheng cp 复制文件或目录英文原意： copy 命令所在路径：/bin/ 语法：cp -rp [原文件或目录] [目标目录] -r 复制目录 -p 保留文件属性 12345678#复制目录cp -r /tmp/quzheng /bin/#复制文件cp /etc/grub.conf /tmp#同时复制多个文件cp /root/install.log /root/install.log.syslog /tmp#复制同时修改名称cp /tmp/quzheng mv 剪切文件改名英文原意： move 命令所在路径：/bin/ 语法： mv [源文件或目录] [目标目录] 12345mv /tmp/quzheng /root# 剪切改名mv /tmp/quzheng /root/quzheng2# 当前目录改名mv /tmp/quzheng /tmp/quzheng3 rm 删除文件和目录英文原意： remove 命令所在路径：/bin/ 语法： rm -rf [文件或目录] -r 删除目录 -f 强制删除 1234# 删除文件rm /tmp/confg.conf# 删除目录rm -rf /tmp/quzheng2 文件处理命令 链接命令]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux系统注意事项]]></title>
+    <url>%2F2017%2F10%2F20%2FLinux-%E7%B3%BB%E7%BB%9F%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%2F</url>
+    <content type="text"><![CDATA[注意事项Linux 严格区分大小写Linux 系统严格区分大小写，文件名称 、目录名称、Shell 命令的参数 都是严格区分大小写的。Linux 的 Shell 命令都是小写的。 Linux 系统中所有的内容都是已文件的形式保存的，包括硬件保存硬件的文件夹/dev/ 硬盘文件是 /dev/sd[a-p] 光盘文件是 /dev/sr0 等 Linux 不靠扩展名区分文件类型Linux 系统本身不依靠扩展名来区分文件，但是最好还是讲需要的文件进行扩展名命名。 压缩包：“*.gz”、”*.bz2”、”*.tar.bz2”、”*.tgz” 二进制软件包：”*.rpm” 网页文件：”*.html”、”*.php” 脚本文件：”*.sh” 配置文件：”*.conf” 挂载Linux 所有的存储设备都必须挂载之后用户才能使用，包括硬盘、U盘和光盘 Windows程序Windows 的程序不能直接在 Linux 中的安装和运行, 但是可以在 Linux 系统上安装 Windows 模拟器进行安装使用。但是模拟器不是所有的程序都能运行，也不稳定。 服务器的管理和维护建议Linux 各目录的作用 目录名 目录作用 /bin/ 存放系统命令的目录，普通用户和超级用户都可以执行。不过放在/bin下的命令在单用户模式下也可以执行 /sbin/ 保存和系统环境设置相关的命令，只有超级用户可以使用这些命令进行系统环境设置，但是有些命令可以允许普通用户查看 /usr/bin/ 存放系统命令的目录，普通用户和超级用户都可以执行，这些命令和系统启动无关。在单用户模式下不能执行。 /usr/sbin/ 存放根文件系统不必要的系统命令，例如多数的服务器程序。只有超级用户可以使用。大家其实可以注意到 Linux 的系统，在所有 sbin 目录中保存的命令只有超级用户可以使用， bin 目录中保存的命令所有用户都可以使用。 /boot/ 系统启动目录，保存系统启动相关的目录，如内核文件和启动引导程序(grup) /dev/ 设备文件保存位置。这个目录用来存放所有硬件设备文件 /etc/ 配置文件保存位置。系统内所有采用默认安装方式(rpm 安装) 的服务的配置文件全部都保存在这个目录中，如用户账户和密码，服务的启动脚本，常用服务的配置文件等。 /home/ 普通用户的加目录。建立每个用户时，每个用户要有一个默认登录位置，这个位置就是这个用户的家（宿主）目录，所有的普通用户的家目录就是在 /home 下建立一个和用户名相同的目录。如用户 user1 的家目录就是 /home/user1 ，只有管理员的目录是一级目录 /root/ /lib/ 系统调用的函数库保存位置。 /lost+found/ 当系统意外崩溃或机器意外关机，而产生一些文件碎片放在这里。当系统启动的过程中 fsck 工具会检查这里，并修复已经损坏的文件系统。这个目录只在每个分区中出现，例如/lost+found 就是根分区的备份恢复目录， /boot/lost+found 就是 /boot 分区的备份恢复目录。 /media/ 挂载目录。系统建议是用来挂载媒体设备的。例如软盘和光盘 /mnt/ ls挂载目录，早期 Linux 中只有这一个挂载目录，并没有细分。现在这个目录系统建议挂载额外设备，如U盘，移动硬盘和其他操作系统的分区。 /misc/ 挂载目录。系统建议用来挂载 NFS 服务的共享目录。只要是一个已经建立的空目录就可以作为挂载点。那么系统虽然准备了桑格挂载目录，但是到底在哪个目录中挂载什么设备可以又管理员自己决定。 /opt/ 第三方安装软件保存位置。这个目录就是防止和安装其他软件的位置，手工安装的源码包软件都可以安装到这个目录中。还有一个常用的软件安装目录 /usr/local/ /proc/ 虚拟文件系统，该目录中的数据不保存在硬盘当中，而是保存在内存当中。主要保存系统的内核，进程，外部设备状态和网络状态灯。如 /proc/cpuinfo 是保存 CPU 信息的，proc/devices 是保存设备驱动的列表， /proc/filesystems 是保存文件系统列表的，/proc/net 是保存网络协议信息的。 /sys/ 虚拟文件系统。和/proc目录相似，都是保存在内存当中的，主要保存内核相关信息。 /root/ 超级用户的家目录/src /srv/ 服务数据目录。一些系统服务启动之后，可以在这个目录中保存所需要的数据。 /tmp/ 临时目录。系统存放临时目录的，该目录下所有的用户都可以访问和写入。建议在此目录中不要保存重要数据，最好每次开机都把该目录清空 /usr/ 系统软件资源目录。usr 不是 user 的缩写，而是 Unix Software Resource 的缩写，所以不是存放用户数据，而是存放系统软件资源的目录。系统中安装软件大多书保存在这里。 /var 动态数据目录，主要保存缓存、日志以及软件运行所产生的文件。 服务器的注意事项 远程服务器不允许关机，只能重启 重启时应该关闭服务 不要再服务器访问高峰运行高负载命令 远程配置防火墙时，不要把自己踢出服务器 制定合理的密码规范并定期更新 合理分配权限 定期备份重要数据和日志，备份的原则不要把鸡蛋放在同一个篮子里]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[搭建 Docker 环境]]></title>
     <url>%2F2017%2F10%2F19%2F%E6%90%AD%E5%BB%BA-Docker-%E7%8E%AF%E5%A2%83%2F</url>
     <content type="text"><![CDATA[安装配置Docker安装DockerDocker 软件包已经包括在默认的 CentOS-Extras 软件源里。因此想要安装 docker，只需要运行下面的 yum 命令： 1yum install docker-io -y 使用 yum 命令安装完成后可以查看版本 1docker -v 设置开机启动 1chkconfig docker on 配置 Docker因为国内访问 Docker Hub 较慢，可以使用腾讯云提供的国内镜像源，加速访问 Docker Hub 依次执行以下命令 1echo "OPTIONS='--registry-mirror=https://mirror.ccs.tencentyun.com'" &gt;&gt; /etc/sysconfig/docker 1systemctl daemon-reload 1service docker restart Docker 简单操作下载镜像下载一个官方的 CentOS 镜像到本地 1docker pull centos 下载好的镜像就会出现在镜像列表里 1docker images 运行容器知识我们可以在刚才下载的 CentOS 镜像生成的容器内操作了。 生成一个 centos 进项为模板的内容并使用 bashshell 1docker run -it centos /bin/bash 这个时候可以看到命令行的前端已经变成了 [root@(一串 hash Id)] 的形式, 这说明我们已经成功进入了 CentOS 容器。 在容器内执行任意命令, 不会影响到宿主机, 如下 1mkdir -p /data/simple_docker 可以看到 /data 目录下已经创建成功了 simple_docker 文件夹 1ls /data 退出容器 1exit 查看宿主机的 /data 目录, 并没有 simple_docker 文件夹, 说明容器内的操作不会影响到宿主机 1ls /data 保存容器查看所有容器信息，能狗获取容器的 id 1docker ps =a 然后执行如下命令，保存镜像 1docker commit -m="备注" 你的CONTAINER_ID 你的IMAGE]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Docker</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Linux 操作系统安装]]></title>
@@ -17,9 +46,15 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title><![CDATA[Linux 系统简介]]></title>
     <url>%2F2017%2F10%2F17%2FLinux-%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B%2F</url>
-    <content type="text"><![CDATA[title: Linux 系统简介date: 2017-10-17 20:20:03categories: -Linuxtags: -Linux UNIX 和 LINUX的发展历史UNIX 发展历史 1965 MIT、GE、AT&amp;T联合开发 Multics 工程计划，其目标是开发一种交互式的具有多道程序处理能力的分时操作系统，但因 Multics 追求的目标过于庞大复杂，项目进度远远落后与计划，最后贝尔实验室退出。 1969年，美国贝尔实验室的肯·汤普森在DEC PDP-7机器上开发出了UNIX系统。 1971年，肯·汤普森的同事丹尼斯·里奇发明了C语言，1973年，UNIX系统的绝大部分源代码用C语言重写，这为提高UNIX系统的可移植性打下基础。 UNIX 发型版本 操作系统 公司 硬件平台 AIX IBM PowerPC HP-UX HP PA-RISC Solaris Sun SPARC Linux Red Hat Linux、Ubuntu Linux…… IA(Intel、ADM、Cyrix、RISE) BSD 伯克利大学 LINUX 发展史Linux系统诞生与1991年，由芬兰大学生李纳斯(Linus Torvalds)和后来陆续加入的众多爱好者共同开发完成。 Linux是开源软件，源代码开放的UNIX。 LINUX 内核版本Linux 内核官网： www.kernel.org 内核版本说明：[主版本].[此版本].[末版本] 2.6.18 kernel源代码标记：mainline 、longterm、stable、linux-next、snapsho mainline：指由Linus Torvalds亲自制作的内核发布版，是官方当前最新版本的kernel source。在Torvalds对所有其他程序员所做出的重大变化进行整合，并且对先前版本的bug进行几轮修复之后，大约每十周正式发布一个新版本。mainline事实上代表着一个linux kernel分支，这个分支有另一个名称，叫做vanilla。 longterm：Long Term Support的缩写，长期维护的意思 stable ： 稳定版 linux-next、snapshot ：linux-next和snapshot，都是代码提交周期结束之前生成的快照 用于给Linux代码贡献者们做测试。 LINUX 发行版Linux 主要的发行版主要有两个系列 redhat 系列和 debian 系列,这两个操作系统使用的命令都差不多，但是安装软件的命令不太一样。 redhat readhat CentOS SuSE fedora 红旗Linux turbolinux gentoo linux Mandriva debian debian ubuntu KNOPPIX 开源软件简介###Linux上的开软软件列表 Linux上的服务器开源软件比WINODWS丰富，Windows服务器的个人软件更加丰富。 Apache Nginx MySQL php samba mongoDB python Ruby Sphinx 开源软件开源软件是指在软件发行的时候，附上软件的源代码，并授权允许用户更改/自由再散布/衍生著作，开源并不抵制商业收费。 主要的特点 使用的自由：绝大多数的开源软件免费 研究的自由：可以获得软件源代码 散布及改良的自由：可以自由传播、改良甚至销售 自由软件自由软件是一项思想运动，强调用户拥有如何使用软件的自由 可以自由地运行； 可以自由地拷贝； 可以自由地修改； 可以自由地再发行。 这里指的自由，并不是价格免费，这和价格无关而是使用软件对所有的用户来说是自由的。（英语中FREE有自由和免费的意思，比如自由的话语权，免费的夜宵）。 免费软件免费软件就是免费提供给用户使用的软件，但是其免费的时候，通常都会有其他的限制，比如其源码不一定会公开，而且使用者也并没有使用、复制、研究、修改和再散布的权利。 支撑互联网的开源技术LAMP : Linux 、Apache、MySQL、PHP LNMP : Linux、Nginx、MySQL、PHP Linux 应用领域基于Linux的企业服务器和网站服务器通过扫描网站：netcraft.com，可以扫描网站使用的服务器类型。国内大型的网站都使用Linux 全球前500的计算服务器基本上也都使用的Linux服务器：www.top500.org 嵌入式应用 手机 、平板电脑（Android） 智能电视（Android） 小米盒子、乐视盒子（Android） 航空系统、银行系统、卡拉OK点歌系统 智能汽车 Linux 学习方法为什么使用命令行WINDOWS主要是图形界面，Linux早期都是用于服务器操作系统的。所以基本上都是使用命令控制的，图形界面是占用资源的。 解决问题的智慧 帮助 文档 示例 查找 英文提示的困惑Command not found No Such file or directory Linux 学习方法 计划 专注 坚持 练习]]></content>
+    <content type="text"><![CDATA[UNIX 和 LINUX的发展历史UNIX 发展历史 1965 MIT、GE、AT&amp;T联合开发 Multics 工程计划，其目标是开发一种交互式的具有多道程序处理能力的分时操作系统，但因 Multics 追求的目标过于庞大复杂，项目进度远远落后与计划，最后贝尔实验室退出。 1969年，美国贝尔实验室的肯·汤普森在DEC PDP-7机器上开发出了UNIX系统。 1971年，肯·汤普森的同事丹尼斯·里奇发明了C语言，1973年，UNIX系统的绝大部分源代码用C语言重写，这为提高UNIX系统的可移植性打下基础。 UNIX 发型版本 操作系统 公司 硬件平台 AIX IBM PowerPC HP-UX HP PA-RISC Solaris Sun SPARC Linux Red Hat Linux、Ubuntu Linux…… IA(Intel、ADM、Cyrix、RISE) BSD 伯克利大学 LINUX 发展史Linux系统诞生与1991年，由芬兰大学生李纳斯(Linus Torvalds)和后来陆续加入的众多爱好者共同开发完成。 Linux是开源软件，源代码开放的UNIX。 LINUX 内核版本Linux 内核官网： www.kernel.org 内核版本说明：[主版本].[此版本].[末版本] 2.6.18 kernel源代码标记：mainline 、longterm、stable、linux-next、snapsho mainline：指由Linus Torvalds亲自制作的内核发布版，是官方当前最新版本的kernel source。在Torvalds对所有其他程序员所做出的重大变化进行整合，并且对先前版本的bug进行几轮修复之后，大约每十周正式发布一个新版本。mainline事实上代表着一个linux kernel分支，这个分支有另一个名称，叫做vanilla。 longterm：Long Term Support的缩写，长期维护的意思 stable ： 稳定版 linux-next、snapshot ：linux-next和snapshot，都是代码提交周期结束之前生成的快照 用于给Linux代码贡献者们做测试。 LINUX 发行版Linux 主要的发行版主要有两个系列 redhat 系列和 debian 系列,这两个操作系统使用的命令都差不多，但是安装软件的命令不太一样。 redhat readhat CentOS SuSE fedora 红旗Linux turbolinux gentoo linux Mandriva debian debian ubuntu KNOPPIX 开源软件简介###Linux上的开软软件列表 Linux上的服务器开源软件比WINODWS丰富，Windows服务器的个人软件更加丰富。 Apache Nginx MySQL php samba mongoDB python Ruby Sphinx 开源软件开源软件是指在软件发行的时候，附上软件的源代码，并授权允许用户更改/自由再散布/衍生著作，开源并不抵制商业收费。 主要的特点 使用的自由：绝大多数的开源软件免费 研究的自由：可以获得软件源代码 散布及改良的自由：可以自由传播、改良甚至销售 自由软件自由软件是一项思想运动，强调用户拥有如何使用软件的自由 可以自由地运行； 可以自由地拷贝； 可以自由地修改； 可以自由地再发行。 这里指的自由，并不是价格免费，这和价格无关而是使用软件对所有的用户来说是自由的。（英语中FREE有自由和免费的意思，比如自由的话语权，免费的夜宵）。 免费软件免费软件就是免费提供给用户使用的软件，但是其免费的时候，通常都会有其他的限制，比如其源码不一定会公开，而且使用者也并没有使用、复制、研究、修改和再散布的权利。 支撑互联网的开源技术LAMP : Linux 、Apache、MySQL、PHP LNMP : Linux、Nginx、MySQL、PHP Linux 应用领域基于Linux的企业服务器和网站服务器通过扫描网站：netcraft.com，可以扫描网站使用的服务器类型。国内大型的网站都使用Linux 全球前500的计算服务器基本上也都使用的Linux服务器：www.top500.org 嵌入式应用 手机 、平板电脑（Android） 智能电视（Android） 小米盒子、乐视盒子（Android） 航空系统、银行系统、卡拉OK点歌系统 智能汽车 Linux 学习方法为什么使用命令行WINDOWS主要是图形界面，Linux早期都是用于服务器操作系统的。所以基本上都是使用命令控制的，图形界面是占用资源的。 解决问题的智慧 帮助 文档 示例 查找 英文提示的困惑Command not found No Such file or directory Linux 学习方法 计划 专注 坚持 练习]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[基于 CentOS 搭建个人网盘]]></title>
@@ -29,8 +64,8 @@
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Seafile</tag>
         <tag>Linux</tag>
+        <tag>Seafile</tag>
       </tags>
   </entry>
   <entry>
@@ -65,8 +100,8 @@
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Discuz</tag>
         <tag>Linux</tag>
+        <tag>Discuz</tag>
       </tags>
   </entry>
   <entry>
@@ -88,8 +123,8 @@
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>git</tag>
         <tag>Linux</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -164,10 +199,5 @@
         <tag>Hexo</tag>
         <tag>Next</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F08%2F30%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
