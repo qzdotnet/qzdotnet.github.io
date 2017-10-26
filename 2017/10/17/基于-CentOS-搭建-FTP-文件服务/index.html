@@ -104,18 +104,18 @@
 
 
 
-<meta name="description" content="安装并启动 FTP 服务安装 VSFTPD使用 yum 安装 vsftpd ： 1yum install vsftpd -y 启动 VSFTPD安装完成后，启动 FTP 服务 1service vsftpd start 启动后，可以看到系统已经监听了 21 端口 1netstat -nltp | grep 21 配置 FTP 权限目前 FTP 服务器允许匿名登录，也无法区分用户访问，我们需要配置">
+<meta name="description" content="安装并启动 FTP 服务安装 VSFTPD使用 yum 安装 vsftpd ： 1yum install vsftpd -y 启动 VSFTPD安装完成后，启动 FTP 服务 1service vsftpd start 启动后，可以看到系统已经监听了 21 端口 1netstat -nltp | grep 21">
 <meta name="keywords" content="FTP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于 CentOS 搭建 FTP 文件服务">
 <meta property="og:url" content="http://qzdotnet.github.io/2017/10/17/基于-CentOS-搭建-FTP-文件服务/index.html">
 <meta property="og:site_name" content="QuZheng">
-<meta property="og:description" content="安装并启动 FTP 服务安装 VSFTPD使用 yum 安装 vsftpd ： 1yum install vsftpd -y 启动 VSFTPD安装完成后，启动 FTP 服务 1service vsftpd start 启动后，可以看到系统已经监听了 21 端口 1netstat -nltp | grep 21 配置 FTP 权限目前 FTP 服务器允许匿名登录，也无法区分用户访问，我们需要配置">
+<meta property="og:description" content="安装并启动 FTP 服务安装 VSFTPD使用 yum 安装 vsftpd ： 1yum install vsftpd -y 启动 VSFTPD安装完成后，启动 FTP 服务 1service vsftpd start 启动后，可以看到系统已经监听了 21 端口 1netstat -nltp | grep 21">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T06:27:22.075Z">
+<meta property="og:updated_time" content="2017-10-26T02:08:41.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于 CentOS 搭建 FTP 文件服务">
-<meta name="twitter:description" content="安装并启动 FTP 服务安装 VSFTPD使用 yum 安装 vsftpd ： 1yum install vsftpd -y 启动 VSFTPD安装完成后，启动 FTP 服务 1service vsftpd start 启动后，可以看到系统已经监听了 21 端口 1netstat -nltp | grep 21 配置 FTP 权限目前 FTP 服务器允许匿名登录，也无法区分用户访问，我们需要配置">
+<meta name="twitter:description" content="安装并启动 FTP 服务安装 VSFTPD使用 yum 安装 vsftpd ： 1yum install vsftpd -y 启动 VSFTPD安装完成后，启动 FTP 服务 1service vsftpd start 启动后，可以看到系统已经监听了 21 端口 1netstat -nltp | grep 21">
 
 
 
@@ -443,6 +443,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service vsftpd start</div></pre></td></tr></table></figure>
 <p>启动后，可以看到系统已经监听了 21 端口</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -nltp | grep 21</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="配置-FTP-权限"><a href="#配置-FTP-权限" class="headerlink" title="配置 FTP 权限"></a>配置 FTP 权限</h2><p>目前 FTP 服务器允许匿名登录，也无法区分用户访问，我们需要配置 FTP 的访问权限</p>
 <h3 id="了解-VSFTP-配置"><a href="#了解-VSFTP-配置" class="headerlink" title="了解 VSFTP 配置"></a>了解 VSFTP 配置</h3><p>vsftpd 的配置目录为 <a href="">/etc/vsftpd</a>，包含下列的配置文件：</p>
 <ul>
@@ -735,7 +736,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -757,7 +758,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
