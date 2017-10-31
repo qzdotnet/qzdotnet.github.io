@@ -104,18 +104,18 @@
 
 
 
-<meta name="description" content="安装配置Docker安装DockerDocker 软件包已经包括在默认的 CentOS-Extras 软件源里。因此想要安装 docker，只需要运行下面的 yum 命令： 1yum install docker-io -y 使用 yum 命令安装完成后可以查看版本 1docker -v 设置开机启动 1chkconfig docker on 配置 Docker因为国内访问 Docker Hub">
+<meta name="description" content="安装配置Docker安装DockerDocker 软件包已经包括在默认的 CentOS-Extras 软件源里。因此想要安装 docker，只需要运行下面的 yum 命令： 1yum install docker-io -y 使用 yum 命令安装完成后可以查看版本 1docker -v 设置开机启动 1chkconfig docker on">
 <meta name="keywords" content="Linux,Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建 Docker 环境">
 <meta property="og:url" content="http://qzdotnet.github.io/2017/10/19/搭建-Docker-环境/index.html">
 <meta property="og:site_name" content="QuZheng">
-<meta property="og:description" content="安装配置Docker安装DockerDocker 软件包已经包括在默认的 CentOS-Extras 软件源里。因此想要安装 docker，只需要运行下面的 yum 命令： 1yum install docker-io -y 使用 yum 命令安装完成后可以查看版本 1docker -v 设置开机启动 1chkconfig docker on 配置 Docker因为国内访问 Docker Hub">
+<meta property="og:description" content="安装配置Docker安装DockerDocker 软件包已经包括在默认的 CentOS-Extras 软件源里。因此想要安装 docker，只需要运行下面的 yum 命令： 1yum install docker-io -y 使用 yum 命令安装完成后可以查看版本 1docker -v 设置开机启动 1chkconfig docker on">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T00:38:16.743Z">
+<meta property="og:updated_time" content="2017-10-26T02:12:53.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建 Docker 环境">
-<meta name="twitter:description" content="安装配置Docker安装DockerDocker 软件包已经包括在默认的 CentOS-Extras 软件源里。因此想要安装 docker，只需要运行下面的 yum 命令： 1yum install docker-io -y 使用 yum 命令安装完成后可以查看版本 1docker -v 设置开机启动 1chkconfig docker on 配置 Docker因为国内访问 Docker Hub">
+<meta name="twitter:description" content="安装配置Docker安装DockerDocker 软件包已经包括在默认的 CentOS-Extras 软件源里。因此想要安装 docker，只需要运行下面的 yum 命令： 1yum install docker-io -y 使用 yum 命令安装完成后可以查看版本 1docker -v 设置开机启动 1chkconfig docker on">
 
 
 
@@ -443,6 +443,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker -v</div></pre></td></tr></table></figure>
 <p>设置开机启动</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig docker on</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="配置-Docker"><a href="#配置-Docker" class="headerlink" title="配置 Docker"></a>配置 Docker</h3><p>因为国内访问 Docker Hub 较慢，可以使用腾讯云提供的国内镜像源，加速访问 Docker Hub</p>
 <p>依次执行以下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo "OPTIONS='--registry-mirror=https://mirror.ccs.tencentyun.com'" &gt;&gt; /etc/sysconfig/docker</div></pre></td></tr></table></figure>
@@ -710,7 +711,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

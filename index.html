@@ -334,6 +334,624 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/27/搭建-LNMP-环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/27/搭建-LNMP-环境/" itemprop="url">搭建 LNMP 环境</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-27T17:35:50+08:00">
+                2017-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/27/搭建-LNMP-环境/" class="leancloud_visitors" data-flag-title="搭建 LNMP 环境">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>LNMP是建立web应用的平台，是Linux、NGINX，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的简称。 </p>
+</blockquote>
+<h2 id="搭建-Nginx-静态服务器"><a href="#搭建-Nginx-静态服务器" class="headerlink" title="搭建 Nginx 静态服务器"></a>搭建 Nginx 静态服务器</h2><h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>使用 <code>yum</code> 安装 Nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install nginx</div></pre></td></tr></table></figure>
+<p>修改  <a href="">/etc/nginx/conf.d/default.conf</a> ，去除对 IPv6 地址的监听，可以参考下面的示例代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80 default_server;</div><div class="line">    # listen       [::]:80 default_server;</div><div class="line">    server_name  _;</div><div class="line">    root         /usr/share/nginx/html;</div><div class="line"></div><div class="line">    # Load configuration files for the default server block.</div><div class="line">    include /etc/nginx/default.d/*.conf;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    error_page 404 /404.html;</div><div class="line">        location = /40x.html &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    error_page 500 502 503 504 /50x.html;</div><div class="line">        location = /50x.html &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改完成后，启动 Nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx</div></pre></td></tr></table></figure>
+<p>此时，可以访问 http://\<ip地址\> 来确认是否安装成功</ip地址\></p>
+<p>将 nginx 设置为开机自动启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig nginx</div></pre></td></tr></table></figure>
+<h2 id="安装-MySQL-数据库服务"><a href="#安装-MySQL-数据库服务" class="headerlink" title="安装 MySQL 数据库服务"></a>安装 MySQL 数据库服务</h2><p>使用 <code>yum</code> 安装 MySQL :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install mysql-server</div></pre></td></tr></table></figure>
+<p>安装完成后，启动 MySQL 服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mysqld start</div></pre></td></tr></table></figure>
+<p>设置 MySQL 管理员密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/mysqladmin -u root password 'QuZheng'</div></pre></td></tr></table></figure>
+<p>将 MySQL 设置开机自动启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig mysql on</div></pre></td></tr></table></figure>
+<h2 id="安装-PHP"><a href="#安装-PHP" class="headerlink" title="安装 PHP"></a>安装 PHP</h2><p>使用 <code>yum</code> 安装 PHP:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install php php-fpm php-mysql</div></pre></td></tr></table></figure>
+<p>安装之后，启动 php-fpm 进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service php-fpm start</div></pre></td></tr></table></figure>
+<p>启动之后，可以使用下面的命令查看 PHP-FPM 进程监听那个端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -nplt | grep php-fpm</div></pre></td></tr></table></figure>
+<p>将 PHP-FPM 设置开机自动启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig php-fpm on</div></pre></td></tr></table></figure>
+<h2 id="配置-Nginx-并运行-PHP-程序"><a href="#配置-Nginx-并运行-PHP-程序" class="headerlink" title="配置 Nginx 并运行 PHP 程序"></a>配置 Nginx 并运行 PHP 程序</h2><h3 id="配置-Nginx"><a href="#配置-Nginx" class="headerlink" title="配置 Nginx"></a>配置 Nginx</h3><p>在 <a href="">/etc/nginx/conf.d</a> 目录中新建一个名为 php.conf 的文件，并配置 Nginx 端口 ，配置示例如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 8000;</div><div class="line">    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</div><div class="line">    location ~ .php$ &#123;</div><div class="line">        root           /usr/share/php;</div><div class="line">        fastcgi_pass   127.0.0.1:9000;</div><div class="line">        fastcgi_index  index.php;</div><div class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</div><div class="line">        include        fastcgi_params;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改配置完成后，重启 nginx 服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service nginx restart</div></pre></td></tr></table></figure>
+<p>这时候，我们就可以在<a href="">/usr/share/php</a> 目录下新建一个 info.php 文件来检查 php 是否安装成功了，文件内容参考如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> phpinfo(); <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/27/搭建-LAMP-服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/27/搭建-LAMP-服务/" itemprop="url">搭建 LAMP 服务</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-27T13:49:19+08:00">
+                2017-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/27/搭建-LAMP-服务/" class="leancloud_visitors" data-flag-title="搭建 LAMP 服务">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="搭建-MYSQL-数据库"><a href="#搭建-MYSQL-数据库" class="headerlink" title="搭建 MYSQL 数据库"></a>搭建 MYSQL 数据库</h2><p>使用 <code>yum</code> 安装 MySQL :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-server -y</div></pre></td></tr></table></figure>
+<p>安装完成后启动 MySQL 服务 :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mysqld restart</div></pre></td></tr></table></figure>
+<p>将 MySQL 加入开机自动启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig mysqld on</div></pre></td></tr></table></figure>
+<p>设置 MySQL  账户 root 密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr/bin/mysqladmin -u root password 'QuZheng'</div></pre></td></tr></table></figure>
+<h2 id="安装-APACHE-服务器"><a href="#安装-APACHE-服务器" class="headerlink" title="安装 APACHE 服务器"></a>安装 APACHE 服务器</h2><p>使用 <code>yum</code> 安装 Apache</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install httpd</div></pre></td></tr></table></figure>
+<p>启动 Apache 服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service httpd start</div></pre></td></tr></table></figure>
+<p>将 Apache 加入开机自动启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig httpd on</div></pre></td></tr></table></figure>
+<h2 id="安装-PHP"><a href="#安装-PHP" class="headerlink" title="安装 PHP"></a>安装 PHP</h2><h3 id="安装-PHP-和-PHP-MYSQL-支持工具："><a href="#安装-PHP-和-PHP-MYSQL-支持工具：" class="headerlink" title="安装 PHP 和 PHP-MYSQL 支持工具："></a>安装 PHP 和 PHP-MYSQL 支持工具：</h3><p>使用 <code>yum</code> 安装 PHP:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install php php-mysql -y</div></pre></td></tr></table></figure>
+<h2 id="检查安装是否成功"><a href="#检查安装是否成功" class="headerlink" title="检查安装是否成功"></a>检查安装是否成功</h2><h3 id="检测-PHP-是否安装成功"><a href="#检测-PHP-是否安装成功" class="headerlink" title="检测 PHP 是否安装成功"></a>检测 PHP 是否安装成功</h3><p>我们在 /var/www/html 目录下创建一个 info.php 文件来检查 php 是否安装成功 ，示例代码参考如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch /var/www/html/info.php</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> phpinfo(); <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>重启 Apache 服务 ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service httpd restart</div></pre></td></tr></table></figure>
+<p>此时，访问 <a href="http://1270.0.0.1/info.php" target="_blank" rel="external">http://1270.0.0.1/info.php</a> 可浏览到我们刚刚创建的 info.php 页面了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/26/搭建-ShowDoc-文档工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/26/搭建-ShowDoc-文档工具/" itemprop="url">搭建 ShowDoc 文档工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T14:34:32+08:00">
+                2017-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/26/搭建-ShowDoc-文档工具/" class="leancloud_visitors" data-flag-title="搭建 ShowDoc 文档工具">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>程序员都很希望别人能写文档，而自己却不愿意写文档。文档的编写和管理影响了团队沟通协作的效率，ShowDoc 是一个非常适合 IT 团队的在线文档分享工具，为提升团队之间的沟通协作效率而生。本实验在 centos 系统上搭建基于 Nginx + PHP 的 ShowDoc 文档工具。</p>
+<h2 id="准备-Nginx-PHP-环境"><a href="#准备-Nginx-PHP-环境" class="headerlink" title="准备 Nginx + PHP 环境"></a>准备 Nginx + PHP 环境</h2><h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>使用 <code>yum</code> 安装 Nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install nginx</div></pre></td></tr></table></figure>
+<p>修改 /etc/nginx/nginx.conf 文件的内容如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">user nginx;</div><div class="line">worker_processes auto;</div><div class="line">error_log /var/log/nginx/error.log;</div><div class="line">pid /run/nginx.pid;</div><div class="line"></div><div class="line">include /usr/share/nginx/modules/*.conf;</div><div class="line"></div><div class="line">events &#123;</div><div class="line">    worker_connections 1024;</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;</div><div class="line">    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</div><div class="line">                      '$status $body_bytes_sent "$http_referer" '</div><div class="line">                      '"$http_user_agent" "$http_x_forwarded_for"';</div><div class="line"></div><div class="line">    access_log  /var/log/nginx/access.log  main;</div><div class="line"></div><div class="line">    sendfile            on;</div><div class="line">    tcp_nopush          on;</div><div class="line">    tcp_nodelay         on;</div><div class="line">    keepalive_timeout   65;</div><div class="line">    types_hash_max_size 2048;</div><div class="line"></div><div class="line">    include             /etc/nginx/mime.types;</div><div class="line">    default_type        application/octet-stream;</div><div class="line">    include /etc/nginx/conf.d/*.conf;</div><div class="line"></div><div class="line">    server &#123;</div><div class="line">        listen       80;</div><div class="line">        server_name  127.0.0.1;</div><div class="line">        root         /var/www/html;</div><div class="line">        index index.php index.html</div><div class="line">        error_page  404              /404.html;</div><div class="line">        location = /40x.html &#123;</div><div class="line">        &#125;</div><div class="line">        error_page   500 502 503 504  /50x.html;</div><div class="line">        location = /50x.html &#123;</div><div class="line">        &#125;</div><div class="line">        location ~ .php$ &#123;</div><div class="line">            root           /var/www/html;</div><div class="line">            fastcgi_pass   127.0.0.1:9000;</div><div class="line">            fastcgi_index  index.php;</div><div class="line">            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</div><div class="line">            include        fastcgi_params;</div><div class="line">        &#125;</div><div class="line">        location ~ /.ht &#123;</div><div class="line">            deny  all;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>启动 Nginx 并设置为开机启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service nginx start</div><div class="line">chkconfig nginx on</div></pre></td></tr></table></figure>
+<h3 id="安装-PHP"><a href="#安装-PHP" class="headerlink" title="安装 PHP"></a>安装 PHP</h3><p>使用 <code>yum</code> 安装 php-fpm:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install php php-gd php-fpm php-mcrypt php-mbstring php-mysql php-pdo</div></pre></td></tr></table></figure>
+<p>启动 php-fpm 并设置开机启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service  php-fpm start</div><div class="line">chkconfig php-fpm on</div></pre></td></tr></table></figure>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="下载安装-Composer"><a href="#下载安装-Composer" class="headerlink" title="下载安装 Composer"></a>下载安装 Composer</h3><p>Composer 是 PHP 的一个依赖管理工具，推荐使用 Composer 创建 ShowDoc 项目。</p>
+<p>执行如下命令安装 Composer:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -sS https://getcomposer.org/installer | php</div><div class="line">mv composer.phar /usr/local/bin/composer</div></pre></td></tr></table></figure>
+<h3 id="设置-Compooser-使用国内镜像"><a href="#设置-Compooser-使用国内镜像" class="headerlink" title="设置 Compooser 使用国内镜像"></a>设置 Compooser 使用国内镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div></pre></td></tr></table></figure>
+<h3 id="使用-Compooser-创建项目"><a href="#使用-Compooser-创建项目" class="headerlink" title="使用 Compooser 创建项目"></a>使用 Compooser 创建项目</h3><p>执行命令创建项目：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /var/www/html/ &amp;&amp; composer create-project showdoc/showdoc</div></pre></td></tr></table></figure>
+<h3 id="设置-showdoc-目录写权限"><a href="#设置-showdoc-目录写权限" class="headerlink" title="设置 showdoc 目录写权限"></a>设置 showdoc 目录写权限</h3><p>执行命令赋予 showdoc 下部分目录的写权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">chmod a+w showdoc/install</div><div class="line">chmod a+w showdoc/Sqlite</div><div class="line">chmod a+w showdoc/Sqlite/showdoc.db.php</div><div class="line">chmod a+w showdoc/Public/Uploads/</div><div class="line">chmod a+w showdoc/Application/Runtime</div><div class="line">chmod a+w showdoc/server/Application/Runtime</div><div class="line">chmod a+w showdoc/Application/Common/Conf/config.php</div><div class="line">chmod a+w showdoc/Application/Home/Conf/config.php</div></pre></td></tr></table></figure>
+<p>创建完毕，您现在可以通过浏览器访问 http://&lt; IP地址&gt;/showdoc/install/ ，进行语言的选择以后即可通过 http://&lt; IP地址&gt;/showdoc 查看站点效果。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/26/搭建-Thinkjs-开发环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/26/搭建-Thinkjs-开发环境/" itemprop="url">搭建 Thinkjs 开发环境</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T14:20:32+08:00">
+                2017-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/26/搭建-Thinkjs-开发环境/" class="leancloud_visitors" data-flag-title="搭建 Thinkjs 开发环境">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>ThinkJS 是一款 Node.js 的MVC 框架，所以安装 ThinkJS 之前需要安装 Node.js 环境。</p>
+<h3 id="安装-Node-js-6-x0"><a href="#安装-Node-js-6-x0" class="headerlink" title="安装 Node.js 6.x0"></a>安装 Node.js 6.x0</h3><p>ThinkJS 支持 Node.js 的 0.12 以上版本，本教程以 Node.js 6.x 为例，其他版本安装过程相似</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -</div><div class="line">sudo apt-get install -y nodejs</div></pre></td></tr></table></figure>
+<h2 id="安装-ThinkJS"><a href="#安装-ThinkJS" class="headerlink" title="安装 ThinkJS"></a>安装 ThinkJS</h2><h3 id="npm-安装-ThinkJS"><a href="#npm-安装-ThinkJS" class="headerlink" title="npm 安装 ThinkJS"></a>npm 安装 ThinkJS</h3><p>执行如下命令安装 ThinkJS</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install thinkjs@2 -g --verbose</div></pre></td></tr></table></figure>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>执行如下命令创建项目：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">thinkjs new project_path;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">create : project_path</div><div class="line">create : project_path/package.json</div><div class="line">create : project_path/.babelrc</div><div class="line">create : project_path/.thinkjsrc</div><div class="line">create : project_path/nginx.conf</div><div class="line">create : project_path/pm2.json</div><div class="line">create : project_path/.gitignore</div><div class="line">create : project_path/README.md</div><div class="line">create : project_path/www</div><div class="line">create : project_path/www/development.js</div><div class="line">create : project_path/www/production.js</div><div class="line">create : project_path/www/testing.js</div><div class="line">create : project_path/www/README.md</div><div class="line">create : project_path/www/static</div><div class="line">create : project_path/www/static/js</div><div class="line">create : project_path/www/static/css</div><div class="line">create : project_path/www/static/img</div><div class="line">create : project_path/src</div><div class="line">create : project_path/src/common/bootstrap</div><div class="line">create : project_path/src/common/bootstrap/middleware.js</div><div class="line">create : project_path/src/common/bootstrap/global.js</div><div class="line">create : project_path/src/common/config</div><div class="line">create : project_path/src/common/config/config.js</div><div class="line">create : project_path/src/common/config/view.js</div><div class="line">create : project_path/src/common/config/db.js</div><div class="line">create : project_path/src/common/config/hook.js</div><div class="line">create : project_path/src/common/config/session.js</div><div class="line">create : project_path/src/common/config/error.js</div><div class="line">create : project_path/src/common/config/env</div><div class="line">create : project_path/src/common/config/env/development.js</div><div class="line">create : project_path/src/common/config/env/testing.js</div><div class="line">create : project_path/src/common/config/env/production.js</div><div class="line">create : project_path/src/common/config/locale</div><div class="line">create : project_path/src/common/config/locale/en.js</div><div class="line">create : project_path/src/common/controller</div><div class="line">create : project_path/src/common/controller/error.js</div><div class="line">create : project_path/view/common</div><div class="line">create : project_path/view/common/error_400.html</div><div class="line">create : project_path/view/common/error_403.html</div><div class="line">create : project_path/view/common/error_404.html</div><div class="line">create : project_path/view/common/error_500.html</div><div class="line">create : project_path/view/common/error_503.html</div><div class="line">create : project_path/src/home/config</div><div class="line">create : project_path/src/home/config/config.js</div><div class="line">create : project_path/src/home/controller</div><div class="line">create : project_path/src/home/controller/base.js</div><div class="line">create : project_path/src/home/controller/index.js</div><div class="line">create : project_path/src/home/logic</div><div class="line">create : project_path/src/home/logic/index.js</div><div class="line">create : project_path/src/home/model</div><div class="line">create : project_path/src/home/model/index.js</div><div class="line">create : project_path/view/home</div><div class="line">create : project_path/view/home/index_index.html</div><div class="line"></div><div class="line">enter path:</div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> project_path</span></div><div class="line"></div><div class="line">install dependencies:</div><div class="line"><span class="meta">$</span><span class="bash"> npm install</span></div><div class="line"></div><div class="line">run the app:</div><div class="line"><span class="meta">$</span><span class="bash"> npm start</span></div></pre></td></tr></table></figure>
+<h3 id="安装项目依赖"><a href="#安装项目依赖" class="headerlink" title="安装项目依赖"></a>安装项目依赖</h3><p>执行如下命令安装依赖：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd project_path</div><div class="line">npm install --verbose</div></pre></td></tr></table></figure>
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p>执行如下命令启动项目</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm start</div></pre></td></tr></table></figure>
+<p>启动成功将看到提示如截图所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/bootstrap/global.js 512ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/bootstrap/middleware.js 21ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/config.js 33ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/db.js 49ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/env/development.js 6ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/env/production.js 17ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/env/testing.js 5ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/error.js 18ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/hook.js 8ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/locale/en.js 11ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/session.js 20ms</div><div class="line">[2017-10-26 14:27:34] [Babel] Compile file common/config/view.js 26ms</div><div class="line">[2017-10-26 14:27:35] [Babel] Compile file common/controller/error.js 167ms</div><div class="line">[2017-10-26 14:27:35] [Babel] Compile file home/config/config.js 7ms</div><div class="line">[2017-10-26 14:27:35] [Babel] Compile file home/controller/base.js 18ms</div><div class="line">[2017-10-26 14:27:35] [Babel] Compile file home/controller/index.js 21ms</div><div class="line">[2017-10-26 14:27:35] [Babel] Compile file home/logic/index.js 34ms</div><div class="line">[2017-10-26 14:27:35] [Babel] Compile file home/model/index.js 27ms</div><div class="line">[2017-10-26 14:27:35] [THINK] Server running at http://127.0.0.1:8360/</div><div class="line">[2017-10-26 14:27:35] [THINK] ThinkJS Version: 2.2.24</div><div class="line">[2017-10-26 14:27:35] [THINK] Cluster Status: closed</div><div class="line">[2017-10-26 14:27:35] [THINK] WebSocket Status: closed</div><div class="line">[2017-10-26 14:27:35] [THINK] File Auto Compile: true</div><div class="line">[2017-10-26 14:27:35] [THINK] File Auto Reload: true</div><div class="line">[2017-10-26 14:27:35] [THINK] App Enviroment: development</div><div class="line"></div><div class="line">[2017-10-26 14:27:36] [HTTP] HEAD / 200 60ms</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/25/搭建-Node-js-环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1307,677 +1925,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/20/Linux-系统注意事项/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/20/Linux-系统注意事项/" itemprop="url">Linux系统注意事项</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T08:39:04+08:00">
-                2017-10-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/20/Linux-系统注意事项/" class="leancloud_visitors" data-flag-title="Linux系统注意事项">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="Linux-严格区分大小写"><a href="#Linux-严格区分大小写" class="headerlink" title="Linux 严格区分大小写"></a>Linux 严格区分大小写</h3><p>Linux 系统严格区分大小写，文件名称 、目录名称、Shell 命令的参数 都是严格区分大小写的。Linux 的 Shell 命令都是小写的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/20/Linux-系统注意事项/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/19/搭建-Docker-环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/搭建-Docker-环境/" itemprop="url">搭建 Docker 环境</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:37:53+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/19/搭建-Docker-环境/" class="leancloud_visitors" data-flag-title="搭建 Docker 环境">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装配置Docker"><a href="#安装配置Docker" class="headerlink" title="安装配置Docker"></a>安装配置Docker</h2><h3 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h3><p>Docker 软件包已经包括在默认的 CentOS-Extras 软件源里。因此想要安装 docker，只需要运行下面的 yum 命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install docker-io -y</div></pre></td></tr></table></figure>
-<p>使用 yum 命令安装完成后可以查看版本</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker -v</div></pre></td></tr></table></figure>
-<p>设置开机启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig docker on</div></pre></td></tr></table></figure>
-<h3 id="配置-Docker"><a href="#配置-Docker" class="headerlink" title="配置 Docker"></a>配置 Docker</h3><p>因为国内访问 Docker Hub 较慢，可以使用腾讯云提供的国内镜像源，加速访问 Docker Hub</p>
-<p>依次执行以下命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo "OPTIONS='--registry-mirror=https://mirror.ccs.tencentyun.com'" &gt;&gt; /etc/sysconfig/docker</div></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service docker restart</div></pre></td></tr></table></figure>
-<h2 id="Docker-简单操作"><a href="#Docker-简单操作" class="headerlink" title="Docker 简单操作"></a>Docker 简单操作</h2><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><p>下载一个官方的 CentOS 镜像到本地</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull centos</div></pre></td></tr></table></figure>
-<p> 下载好的镜像就会出现在镜像列表里</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images</div></pre></td></tr></table></figure>
-<h3 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h3><p>知识我们可以在刚才下载的 CentOS 镜像生成的容器内操作了。</p>
-<p>生成一个 centos 进项为模板的内容并使用 bashshell</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it centos /bin/bash</div></pre></td></tr></table></figure>
-<p>这个时候可以看到命令行的前端已经变成了 [root@(一串 hash Id)] 的形式, 这说明我们已经成功进入了 CentOS 容器。</p>
-<p>在容器内执行任意命令, 不会影响到宿主机, 如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /data/simple_docker</div></pre></td></tr></table></figure>
-<p> 可以看到 /data 目录下已经创建成功了 simple_docker  文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /data</div></pre></td></tr></table></figure>
-<p>退出容器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exit</div></pre></td></tr></table></figure>
-<p>查看宿主机的 /data 目录, 并没有 simple_docker 文件夹, 说明容器内的操作不会影响到宿主机</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /data</div></pre></td></tr></table></figure>
-<h3 id="保存容器"><a href="#保存容器" class="headerlink" title="保存容器"></a>保存容器</h3><p>查看所有容器信息，能狗获取容器的 id</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps =a</div></pre></td></tr></table></figure>
-<p>然后执行如下命令，保存镜像</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker commit -m="备注" 你的CONTAINER_ID 你的IMAGE</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/17/Linux-操作系统安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/17/Linux-操作系统安装/" itemprop="url">Linux 操作系统安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T20:31:37+08:00">
-                2017-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/17/Linux-操作系统安装/" class="leancloud_visitors" data-flag-title="Linux 操作系统安装">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p> 本文主要介绍基于 VMware Workstations Pro  安装 CentOS 7 系统的介绍，并简单介绍 Linux 文件格式和远程连接</p>
-</blockquote>
-<h2 id="VMware-虚拟机的安装与使用"><a href="#VMware-虚拟机的安装与使用" class="headerlink" title="VMware 虚拟机的安装与使用"></a>VMware 虚拟机的安装与使用</h2><h3 id="下载VMware"><a href="#下载VMware" class="headerlink" title="下载VMware"></a>下载VMware</h3><p>下载<a href="https://my.vmware.com/en/web/vmware/info/slug/desktop_end_user_computing/vmware_workstation_pro/14_0?wd=&amp;eqid=b304d84f000280ff0000000259e5a313" target="_blank" rel="external">传送门</a></p>
-<p>下载完毕后就可以对软件进行安装了，安装过程比较简单就不介绍了。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/Linux-操作系统安装/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/17/Linux-系统简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/17/Linux-系统简介/" itemprop="url">Linux 系统简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T20:20:03+08:00">
-                2017-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/17/Linux-系统简介/" class="leancloud_visitors" data-flag-title="Linux 系统简介">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="UNIX-和-LINUX的发展历史"><a href="#UNIX-和-LINUX的发展历史" class="headerlink" title="UNIX 和 LINUX的发展历史"></a>UNIX 和 LINUX的发展历史</h2><h3 id="UNIX-发展历史"><a href="#UNIX-发展历史" class="headerlink" title="UNIX 发展历史"></a>UNIX 发展历史</h3><ol>
-<li><p>1965 MIT、GE、AT&amp;T联合开发 Multics 工程计划，其目标是开发一种交互式的具有多道程序处理能力的分时操作系统，但因 Multics 追求的目标过于庞大复杂，项目进度远远落后与计划，最后贝尔实验室退出。</p>
-</li>
-<li><p>1969年，美国贝尔实验室的肯·汤普森在DEC PDP-7机器上开发出了UNIX系统。</p>
-</li>
-<li><p>1971年，肯·汤普森的同事丹尼斯·里奇发明了C语言，1973年，UNIX系统的绝大部分源代码用C语言重写，这为提高UNIX系统的可移植性打下基础。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/Linux-系统简介/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2028,7 +1975,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
