@@ -334,6 +334,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/26/搭建邮件服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/26/搭建邮件服务器/" itemprop="url">搭建邮件服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T13:36:11+08:00">
+                2017-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/26/搭建邮件服务器/" class="leancloud_visitors" data-flag-title="搭建邮件服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Postfix 是一个标准的 MTA [Mail Transfer Agent] 服务器 ，它负责通过 SMTP 协议管理发送到本机的邮件以及由本机发向外界的邮件；Dovecot 是一个优秀的 IMAP/POP 服务器用以接收外界发送到本机的邮件。</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>添加两条域名解析</p>
+<h4 id="A-记录"><a href="#A-记录" class="headerlink" title="A 记录"></a>A 记录</h4><p>记录类型：A</p>
+<p>主机记录：@</p>
+<p>记录值：IP 地址</p>
+<h4 id="MX-记录"><a href="#MX-记录" class="headerlink" title="MX 记录"></a>MX 记录</h4><p>记录类型：MX</p>
+<p>主机记录：@</p>
+<p>记录值：<code>yourdomain.com</code>（替换为自己域名）</p>
+<h3 id="生效检查"><a href="#生效检查" class="headerlink" title="生效检查"></a>生效检查</h3><p>域名设置解析后需要过一段时间才会生效，通过 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping  ping yourdomain.com</div></pre></td></tr></table></figure>
+<p> 命令检查域名是否生效 </p>
+<h4 id="检查-MX-记录"><a href="#检查-MX-记录" class="headerlink" title="检查 MX 记录"></a>检查 MX 记录</h4><p>替换下面命令中的 <code>yourdomain.com</code> 为您自己的注册的域名：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nslookup -q=mx yourdomain.com</div></pre></td></tr></table></figure>
+<p>如果 nslookup 命令返回的信息中含有你设置的域名的记录值，说明解析成功。</p>
+<h2 id="实验之前"><a href="#实验之前" class="headerlink" title="实验之前"></a>实验之前</h2><p>配置一个功能完善的邮件服务器并不是一项容易的工作，本实验知识搭建一个简单的邮件服务器，一些更为强大的功能还需要你去探索。</p>
+<h3 id="Postfix、Dovecot-简介"><a href="#Postfix、Dovecot-简介" class="headerlink" title="Postfix、Dovecot 简介"></a>Postfix、Dovecot 简介</h3><h4 id="Postfix"><a href="#Postfix" class="headerlink" title="Postfix"></a>Postfix</h4><p>Postfix 是一个标准的 MTA「Mail Transfer Agent」服务器，它负责通过 SMTP 协议管理发送到本机的邮件以及由本机发向外界的邮件。</p>
+<h4 id="Dovecot"><a href="#Dovecot" class="headerlink" title="Dovecot"></a>Dovecot</h4><p>Dovecot 是一个优秀的 IMAP/POP 服务器用以接收外界发送到本机的邮件。</p>
+<h4 id="Postfix、Dovecot-安装"><a href="#Postfix、Dovecot-安装" class="headerlink" title="Postfix、Dovecot 安装"></a>Postfix、Dovecot 安装</h4><p>在 CentOS 7 上，我们可以直接使用 <code>yum</code> 进行下载安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install postfix dovecot</div></pre></td></tr></table></figure>
+<h2 id="Postfix-1"><a href="#Postfix-1" class="headerlink" title="Postfix"></a>Postfix</h2><h3 id="配置-Postfix"><a href="#配置-Postfix" class="headerlink" title="配置 Postfix"></a>配置 Postfix</h3><p>有关配置参数的具体含义，请参考 <a href="http://www.postfix.org/documentation.html" target="_blank" rel="external">Postfix 配置文档</a></p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>在终端中输入一下命令修改 Postfix 相关配置：</p>
+<p>注意：记得将 yourdomain.com 替换为你自己的域名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">postconf -e 'myhostname = server.yourdomain.com'</div><div class="line">postconf -e 'mydestination = localhost, localhost.localdomain'</div><div class="line">postconf -e 'myorigin = $mydomain'</div><div class="line">postconf -e 'mynetworks = 127.0.0.0/8'</div><div class="line">postconf -e 'inet_interfaces = all'</div><div class="line">postconf -e 'inet_protocols = all'</div><div class="line">postconf -e 'mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain'</div><div class="line">postconf -e 'home_mailbox = Maildir/'</div><div class="line">postconf -e 'smtpd_sasl_type = dovecot'</div><div class="line">postconf -e 'smtpd_sasl_path = private/auth'</div><div class="line">postconf -e 'smtpd_sasl_auth_enable = yes'</div><div class="line">postconf -e 'broken_sasl_auth_clients = yes'</div><div class="line">postconf -e 'smtpd_sasl_authenticated_header = yes'</div><div class="line">postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination'</div><div class="line">postconf -e 'smtpd_use_tls = yes'</div><div class="line">postconf -e 'smtpd_tls_cert_file = /etc/pki/dovecot/certs/dovecot.pem'</div><div class="line">postconf -e 'smtpd_tls_key_file = /etc/pki/dovecot/private/dovecot.pem'</div></pre></td></tr></table></figure>
+<p>配置中 Postfix 使用 <strong>sasl</strong> 和 <strong>tls</strong> 来完成身份认证和传输信息加密。</p>
+<p>试验中使用了 Dovecot 默认的 <strong>ssl</strong> 证书和私钥，如果你需要修改为自己的，请替换最后两行配置的路径。</p>
+<h4 id="配置-smtps"><a href="#配置-smtps" class="headerlink" title="配置 smtps"></a>配置 smtps</h4><p>部分邮件客户端依赖于使用 465 端口提供加密连接，所以我们修改配置，允许 postfix 使用 465 端口发送邮件。</p>
+<p>打开 <a href="">/etc/postfix/master.cf</a> 文件，将如下两行前的 <code>#</code> 去除：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">smtps inet n - n - - smtpd</div><div class="line">-o smtpd_tls_wrappermode=yes</div></pre></td></tr></table></figure>
+<blockquote>
+<p>（注意：-o 前要保留空格）</p>
+</blockquote>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>使用以下命令，将 Postfix 设为自动启动并首次启动该服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl enable postfix.service</div><div class="line">systemctl start  postfix.service</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/25/搭建-Node-js-环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1793,170 +1980,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/17/Linux-系统简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/17/Linux-系统简介/" itemprop="url">Linux 系统简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T20:20:03+08:00">
-                2017-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/17/Linux-系统简介/" class="leancloud_visitors" data-flag-title="Linux 系统简介">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="UNIX-和-LINUX的发展历史"><a href="#UNIX-和-LINUX的发展历史" class="headerlink" title="UNIX 和 LINUX的发展历史"></a>UNIX 和 LINUX的发展历史</h2><h3 id="UNIX-发展历史"><a href="#UNIX-发展历史" class="headerlink" title="UNIX 发展历史"></a>UNIX 发展历史</h3><ol>
-<li><p>1965 MIT、GE、AT&amp;T联合开发 Multics 工程计划，其目标是开发一种交互式的具有多道程序处理能力的分时操作系统，但因 Multics 追求的目标过于庞大复杂，项目进度远远落后与计划，最后贝尔实验室退出。</p>
-</li>
-<li><p>1969年，美国贝尔实验室的肯·汤普森在DEC PDP-7机器上开发出了UNIX系统。</p>
-</li>
-<li><p>1971年，肯·汤普森的同事丹尼斯·里奇发明了C语言，1973年，UNIX系统的绝大部分源代码用C语言重写，这为提高UNIX系统的可移植性打下基础。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/Linux-系统简介/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2007,7 +2030,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
