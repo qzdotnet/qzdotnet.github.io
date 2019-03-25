@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git 常用命令总结]]></title>
+    <url>%2F2019%2F03%2F25%2Fgit-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[git init 创建项目git init 可以将将目录初始化为 git 项目目录 git clone 克隆项目使用 git clone 可以拷贝一个 git 仓库到本地。 1git clone [url] git add 修改提交到缓冲区使用 git add 命令可以将新添加的文件添加到暂存区。 1git add [文件名列表] 使用 git add . 命令可以将工作区的修改都添加到暂存区里。 git pull 获取最新版本代码我们可以使用 git pull 命令获取当前分支的最新版本。 git checkout 命令创建新的分支 1git checkout -b [分支名称] 切换分支 1git checkout [分支名称] 撤销某个文件的修改 1git checkout [文件名] 撤销所有的修改 1git checkout . git commit 提交命令提交代码，将暂存区的代码提交到仓库 1git commit -m "说明" git push 命令提交本地分支的修改到远端仓库的分支中 1git push [主机名] [分支名] git merge 合并分支将分支的内容合并到其他的分支中 1git merge [分支名] 参考资料 gitpro 中文 朋友虎子现场教学]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用 Fiddler 获取微信公众号的HTML源码]]></title>
+    <url>%2F2018%2F05%2F25%2F%E4%BD%BF%E7%94%A8-Fiddler-%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84HTML%E6%BA%90%E7%A0%81%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[基于 CentOS 搭建 KODExplorer 服务]]></title>
     <url>%2F2017%2F11%2F28%2F%E5%9F%BA%E4%BA%8E-CentOS-%E6%90%AD%E5%BB%BA-KODExplorer-%E6%9C%8D%E5%8A%A1%2F</url>
     <content type="text"><![CDATA[部署 XAMPP 服务下载 XAMPPXAMPP 是个集成了多个组件的开发环境 ，我们通过 wget 命令获取其安装包 1wget https://www.apachefriends.org/xampp-files/7.1.10/xampp-linux-x64-7.1.10-0-installer.run 安装 XAMMP12chmod a+x xampp-linux-x64-7.1.10-0-installer.run./xampp-linux-x64-7.1.10-0-installer.run 询问是否继续安装时，输入 Y 后按回车继续安装。 启动 XAMMP1/opt/lampp/lampp start 部署可道云 KODExplorer开源的云服务有好多，而可道云 KODExplorer 是目前国内有代表性、美观易用性好的私有云软件，用户可以通过远程网页，手机来访问，非常方便。 安装 GitKODExplorer 需要通过 git 下载，我们需要先安装 Git 1yum -y install git 下载 KODExplorer1git clone https://github.com/kalcaddle/KODExplorer.git 移动 KODExplorer本实验希望能够通过 http//111.230.5.61/KODExplorer 来访问云服务，所以需要把下载到的 KODExplorer 移动到之前下载的 LAMPP 相应目录下，一般来说是 /opt/lampp/htdocs 1mv KODExplorer /opt/lampp/htdocs/ &amp; cd /opt/lampp/htdocs/ 然后要给这个目录添加权限 1chmod -Rf 777 ./KODExplorer/* 使用 KODExplorer现在，在任意客户端访问 http://127.0.0.1/KODExplorer 就可以使用部署的云服务了。 总结记得之前部署过 Seafile ，感觉 KOD 界面更加简单操作起来非常的舒服 。]]></content>
@@ -340,9 +353,9 @@
         <category>博客搭建</category>
       </categories>
       <tags>
+        <tag>GitHub</tag>
         <tag>Hexo</tag>
         <tag>Next</tag>
-        <tag>GitHub</tag>
       </tags>
   </entry>
 </search>
