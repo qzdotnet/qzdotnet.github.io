@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[记一次客户网站变更过程]]></title>
+    <url>%2F2019%2F06%2F04%2F%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AE%A2%E6%88%B7%E7%BD%91%E7%AB%99%E5%8F%98%E6%9B%B4%E8%BF%87%E7%A8%8B%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[git 常用命令总结]]></title>
     <url>%2F2019%2F03%2F25%2Fgit-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[git init 创建项目git init 可以将将目录初始化为 git 项目目录 git clone 克隆项目使用 git clone 可以拷贝一个 git 仓库到本地。 1git clone [url] git add 修改提交到缓冲区使用 git add 命令可以将新添加的文件添加到暂存区。 1git add [文件名列表] 使用 git add . 命令可以将工作区的修改都添加到暂存区里。 git pull 获取最新版本代码我们可以使用 git pull 命令获取当前分支的最新版本。 git checkout 命令创建新的分支 1git checkout -b [分支名称] 切换分支 1git checkout [分支名称] 撤销某个文件的修改 1git checkout [文件名] 撤销所有的修改 1git checkout . git commit 提交命令提交代码，将暂存区的代码提交到仓库 1git commit -m "说明" git push 命令提交本地分支的修改到远端仓库的分支中 1git push [主机名] [分支名] git merge 合并分支将分支的内容合并到其他的分支中 1git merge [分支名] 参考资料 gitpro 中文 朋友虎子现场教学]]></content>
@@ -353,9 +358,9 @@
         <category>博客搭建</category>
       </categories>
       <tags>
-        <tag>GitHub</tag>
         <tag>Hexo</tag>
         <tag>Next</tag>
+        <tag>GitHub</tag>
       </tags>
   </entry>
 </search>
