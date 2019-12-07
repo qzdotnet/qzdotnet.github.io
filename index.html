@@ -334,6 +334,342 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2019/12/07/ASP-NET-集成-Auth2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/07/ASP-NET-集成-Auth2/" itemprop="url">ASP.NET 集成 Auth2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-07T17:22:45+08:00">
+                2019-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Asp-net/" itemprop="url" rel="index">
+                    <span itemprop="name">Asp.net</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/07/ASP-NET-集成-Auth2/" class="leancloud_visitors" data-flag-title="ASP.NET 集成 Auth2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​       由于我们公司的技术比较落后，目前开发的所有给移动端以及 Web 端，使用的 WebAPI 接口都没有身份验证。安全性比较差。由于我们公司的客户都是传统企业的客户所以刚开始也没啥问题。但是，最近一段时间我们的系统老是别人各种攻击。所以想把这个问题解决了。</p>
+<p>​       我很早以前就了解 OAuth 协议，但也只是了解。知道一些基本的概念。也接触过其他公司的一些开放接口基本上都是基于 <code>Token</code>的所以就打算找找 asp.net 下面有没有开源的省事的解决方案。</p>
+<p>​       很快我发现了 <code>Owin</code> 这个东西以前都没听说过，从网上找了几个代码基本上都是基于他的而且非常简单就可以实现我想要的效果，让人洗出往外。搞了一个测试项目通过了以后就想了解了解 <code>Owin</code> 这个项目。</p>
+<ul>
+<li><a href="https://www.cnblogs.com/xiaobai123/p/9348074.html" target="_blank" rel="external"><a href="https://www.cnblogs.com/xiaobai123/p/9348074.html" target="_blank" rel="external">ASP.NET  OAuth 2.0 新手上路</a></a></li>
+</ul>
+<p>​      搜了一些文章大概知道 Owin 是一套标准规范。解决的主要问题就是让 Asp.Net 可以不依赖 IIS。当然还有一套非常牛逼的逻辑在里面，但是我没看懂。后来我又翻看了几篇文章，发现<code>OAuth</code>现在又更好的实现了 <code>IdentityServer3</code>,这个是基于 Owin 的但是好像是更牛逼。最新版本是4，但是只能运行在 .net core 下，所以过段放弃4使用3。</p>
+<p>​     这个东西官方也有很多例子可以参考，网上也找了一些文章，基本上都是基于官方DEMO的。最后贴一些今天一下午找的一些比较优秀的文章。</p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/Irving/p/5707215.html" target="_blank" rel="external">基于 IdentityServer3 实现 OAuth 2.0 授权服务【客户端模式(Client Credentials Grant)】</a></p>
+</li>
+<li><p><a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="external">理解OAuth 2.0</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/redmoon/p/4448968.html" target="_blank" rel="external">一个功能完备的.NET开源OpenID Connect/OAuth 2.0框架——IdentityServer3</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/Irving/p/5220578.html" target="_blank" rel="external">基于OWIN WebAPI 使用OAUTH2授权服务【授权码模式(Authorization Code)】</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/GuZhenYin/p/5201388.html" target="_blank" rel="external">OWIN与Katana详解</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/xishuai/p/aspnet-webapi-owin-oauth2.html" target="_blank" rel="external">ASP.NET WebApi OWIN 实现 OAuth 2.0</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2019/12/07/UrBackup  软件使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QuZheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="QuZheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/07/UrBackup  软件使用/" itemprop="url">UrBackup  备份软件使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-07T09:30:06+08:00">
+                2019-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/07/UrBackup  软件使用/" class="leancloud_visitors" data-flag-title="UrBackup  备份软件使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>UrBackup 是一款跨平台 客户端/服务器 (C / S架构 ) 的<a href="https://github.com/uroni/urbackup_backend" target="_blank" rel="external">开源</a>跨平台备份系统。公司客户之前也有异地备份数据的需求，但是我们的做法都是让客户在局域网内增加一台服务器，共享某一个目录，然后在需要备份的电脑上写一个批处理文件进行文件备份。在头条看到这款开源软件后，便想下载下来使用下。</p>
+<h2 id="软件的下载安装"><a href="#软件的下载安装" class="headerlink" title="软件的下载安装"></a>软件的下载安装</h2><p>我是在官方网站下载的服务器和客户端的WINDOWS系统的<a href="http://www.urbackup.org/" target="_blank" rel="external">安装包</a>，下载的时候不要选只支持X64位的，我第一下载的文件没有安装成功。我下载的软件版本如下</p>
+<ul>
+<li><p>服务端：<a href="http://hndl.urbackup.org/Server/2.3.8/UrBackup%20Server%202.3.8.exe" target="_blank" rel="external">URKBACK SERVER 2.3.8</a></p>
+</li>
+<li><p>客户端：<a href="http://hndl.urbackup.org/Client/2.3.4/UrBackup%20Client%202.3.4.exe" target="_blank" rel="external">UrBackUp Client 2.3.4</a></p>
+</li>
+</ul>
+<p>安装过程比较顺利没有出现任何问题。</p>
+<h2 id="软件配置"><a href="#软件配置" class="headerlink" title="软件配置"></a>软件配置</h2><p>服务器安装完毕后，在浏览器中输入<a href="http://127.0.0.1:55414/" target="_blank" rel="external">http://127.0.0.1:55414/</a> 就可以打开服务器软件。在设置中配置服务器备份文件路径。配置完毕后，需要在设置文件的权限为可读写。</p>
+<p>客户端安装完毕后，软件后在系统托盘中出现。，需要在互联网选项卡配置主机名和端口号，因为我用的默认的端口号所以只需要配置IP地址就可以了。</p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1560306282723.png" alt="1560306282723"></p>
+<ul>
+<li><p>配置文件备份的路径 在增加删除备份路径功能中可以添加，删除需要备份的文件夹路径。</p>
+</li>
+<li><p>配置 windows 组件，可以配置需要备份的组件，说实话我也没明白这个是干啥的。但是这个里面有一个比较强大的功能是 SqlServerWriter 目录下面，有本机安装的数据库的所有文件。选择这个目录后，可以自动备份所有的数据库。</p>
+</li>
+</ul>
+<h2 id="文件备份"><a href="#文件备份" class="headerlink" title="文件备份"></a>文件备份</h2><p>在客户端中点击执行完整备份就可以立刻执行备份操作了。客户端执行备份后，在服务端可以看到备份的情况以及备份日志。</p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1560306713742.png" alt="1560306713742"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1560306725442.png" alt="1560306725442"></p>
+<p>我测试了一下38个G 的文件百兆局域网1个半小时备份完成， 效率也非常不错了。</p>
+<h2 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h2><p>这个备份工具本身功能感觉已经非常不错了但是在使用过程中感觉还是有一些小的缺陷。</p>
+<ol>
+<li>客户端备份时间设定不灵活，目前软件只能是指每隔多长时间执行一次备份，不能设置定具体的备份时间。</li>
+<li>软件的易用性有点差，备份工作一旦开始无法停止。我尝试了各种办法，在服务端点停止，在客户端点停止不了。。</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这款软件已经是一款非常NB的免费开源备份软件了。基本能够满足我们的备份要求。使用中出现了一些问题，可能也都是由于我操作不当引起的。还是想大家推荐一下这款软件</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2019/06/04/记一次客户网站变更过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -419,15 +755,15 @@
             <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>公司10年前给一事业单位使用asp.net 搭建了网站。最近事业单位上云，要求将公司之前做的网站也上云，但是在上云的安全检测中扫描出了100多个漏洞。。云中心要求解决这些漏洞后才能上云，但是由于公司离职人员过于频繁，管理漏洞大，网站的源代码已经找不到了。客户要求1周内必须解决问题。</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看了云中心提供的测试报告由于老网站使用asp.net web from 的方式，所以页面大量的 ViewState 。被标记为有风险要求加密还有一些问题必须通过修改源代码 。但是源代码不存在啊。。也不要好跟客户要钱了，毕竟自己软件的问题。现在需要一个最低成本解决问题的方案。还要解决所有的问题。</p>
 <p>很明显啊CMS大法好啊，之前用过很多 ASP 和 PHP 的CMS，但是公司的人主要是用.NET 做开发了，所以还是选择了 .Net 的  <code>SitServer CMS</code> ,感觉功能还可以主要能满足我这个项目的需求（PS,和那些PHP的CMS比功能还有差距）。</p>
-<h2 id="动起来"><a href="#动起来" class="headerlink" title="动起来"></a>动起来</h2><h3 id="SiteServer-CMS-学习"><a href="#SiteServer-CMS-学习" class="headerlink" title="SiteServer CMS 学习"></a><code>SiteServer CMS</code> 学习</h3><p><code>SiteServer CMS</code> 的 <a href="https://www.siteserver.cn/docs/" target="_blank" rel="external">文档中心</a> 还是不错了，从软件的安装部署 到标签语言的使用、插件的使用等等都算比较全面。但是，缺少一个从零教学的文章，零基础的用户很难通过文档把网站做起来。还好我不是零基础。。</p>
-<h3 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h3><p>简单看了看文档以后，就做起来了，做的时候还算比较顺利，基本上没遇到什么问题。之所以没遇到啥问题是，是因为提供的模板中心有好多模板可以参考，做不出来了就参考官方的模板，用了2天时间把之前的网站使用 CMS 搭建起来。</p>
-<h3 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h3><p>之前网站用了10年了存在大量的新闻，刚开始我还一篇一篇的从老网站复制内容到新网站，复制了大概100多篇以后。我发现老网站的一个栏目居然有200多条新闻，我录入100条用了半天时间，这两百条得要了我的老命啊。。</p>
+<h2 id="动起来"><a href="#动起来" class="headerlink" title="动起来"></a>动起来</h2><h3 id="SiteServer-CMS-学习"><a href="#SiteServer-CMS-学习" class="headerlink" title="SiteServer CMS 学习"></a><code>SiteServer CMS</code> 学习</h3><p><code>SiteServer CMS</code> 的 <a href="https://www.siteserver.cn/docs/" target="_blank" rel="external">文档中心</a> 还是不错了，从软件的安装部署 到标签语言的使用、插件的使用等等都算比较全面。但是，缺少一个从零教学的文章，零基础的用户很难通过文档把网站做起来。还好我不是零基础。</p>
+<h3 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h3><p>简单看了看文档以后，就做起来了，做的时候还算比较顺利，基本上没遇到什么问题。<code>SiteServer CMS</code>模板中心有好多模板参考，做不出来了就参考官方的模板，用了2天时间把网站 搭建起来。</p>
+<h3 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h3><p>之前网站用了10年，新闻数量巨大。刚开始我还一篇一篇的从老网站复制内容到新网站，复制了大概100多篇以后。我发现老网站的一个栏目居然有200多条新闻，我录入100条用了半天时间，这两百条得要了我的老命啊。</p>
 <p><strong>采集</strong></p>
-<p>咋办呢，火车头采集用起来了，坚持拿来主义的原则，把自己写程序迁移数据的方案直接否定了，用第三方软件，火车头采集器。简单了解了火车头的采集后，就开始了。但是由于之前网站的分页使用的 aspnetpager 的 POST 提交，所以不太好采集，百度了一些文章以后，还是不会。使用了一个笨办法，把列表中的每一页网页另存为到本地命名按照页面的序号命名，然后从本地 IIS 搭建网站，采集的起始位置设置成本地 IIS ，采集过程顺利完成。</p>
+<p>咋办呢，自己写程序抓网页迁移数据太麻烦,坚持拿来主义的原则,用第三方软件，火车头采集器。简单了解了火车头的采集过程和设置后就开动了。采集的过程中遇到一个问题，之前网站的分页使用的 aspnetpager 的 POST 提交，所以不太好采集。百度了一些文章以后，还是不会。使用了一个笨办法，把列表中的每一页另存到本地，命名按照页面的分页序号命名。从本地 IIS 搭建网站，将另存为的页面文件夹配置为网站文件夹。采集软件的采集地址也切换到本地 IIS ，采集过程顺利完成。</p>
 <p><strong>数据迁移</strong></p>
-<p>使用的采集软件是免费版本的不支持 SqlServer 的数据库发布。分析后发现 火车头使用的是  Sqllite 数据库。从网上下载了 SqlLiteManager 将数据存储成了 SQL脚本。将脚本在 SqlServer 中执行。然后使用 insert into select 语句将数据导入到新闻内容表中。由于客户的新闻中不怎么存在图片和附件，所以将图片和附件都当默认不存在了。</p>
-<h3 id="复检"><a href="#复检" class="headerlink" title="复检"></a>复检</h3><p>网站搭建完毕后让云中心的人进行了复检，云中心的人发现没有问题了。非常愤怒。要求将后台的账号密码和后台账后都提供给他们，他们要扫描后台。不得不说 SiteServer 做的还是不错的，顺利通过了云中心的审查，并且云中心要求的强密码策略，系统也是默认支持的。这里给 SiteServer 点个赞。最终顺利通过了云中心的检测，网站可以顺利上线。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>此次事件从开始到结束一共经历了7天事件，从刚开始的浇头烂额到最终拨云见日，回头想想其实并么有什么复杂的。技术人员不能给自己设限，这个完不成，根本不可能这些话尽量不要说，还是要多思考，多百度。我们经历的问题很多人都经历过。乐观面对工作，996燥起来。</p>
+<p>使用的采集软件是免费版本的不支持 SqlServer 的数据库发布。分析后发现 火车头使用的是  Sqllite 数据库。从网上下载了 SqlLiteManager 将数据存储成了 SQL脚本。将脚本在 SqlServer 中执行。然后使用 insert into select 语句将数据导入到新闻内容表中。由于客户的新闻中图片和附件较少，所以新闻中的图片和附件我也就没在处理了。</p>
+<h3 id="复检"><a href="#复检" class="headerlink" title="复检"></a>复检</h3><p>网站搭建完毕后让云中心的人进行了复检，云中心的人发现没有问题。要求将后台的账号密码提供给他们，他们要扫描后台。不得不说 SiteServer 做的还是不错的，顺利通过了云中心的审查，并且云中心要求的强密码策略，系统也是默认支持的。这里给 SiteServer 点个赞。最终顺利通过了云中心的检测，网站可以顺利上线。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>此次事件从开始到结束一共经历了7天时间，从刚开始的浇头烂额到最终拨云见日，回头想想其实并么有什么复杂的。技术人员不能给自己设限，这个完不成，根本不可能这些话尽量不要说，还是要多思考，多百度。我们经历的问题很多人都经历过。乐观面对工作，996燥起来。</p>
 
           
         
@@ -1605,331 +1941,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/11/06/搭建-PySpider-爬虫服务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/06/搭建-PySpider-爬虫服务/" itemprop="url">搭建 PySpider 爬虫服务</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T08:55:07+08:00">
-                2017-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/06/搭建-PySpider-爬虫服务/" class="leancloud_visitors" data-flag-title="搭建 PySpider 爬虫服务">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="PySpider-简介"><a href="#PySpider-简介" class="headerlink" title="PySpider 简介"></a>PySpider 简介</h2><p>PySpider 是一个国人编写的强大的网络爬虫系统并带有强大的 WebUI。 采用 Python 语言编写，分布式架构，支持多种数据库后端，强大的 WebUI 支持脚本编辑器，任务监视器，项目管理器以及结果查看器。本教程将一步一步指引您搭建属于自己的 PySpider 爬虫服务。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/06/搭建-PySpider-爬虫服务/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qzdotnet.github.io/2017/10/27/搭建-LNMP-环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="QuZheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QuZheng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/27/搭建-LNMP-环境/" itemprop="url">搭建 LNMP 环境</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-27T17:35:50+08:00">
-                2017-10-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/27/搭建-LNMP-环境/" class="leancloud_visitors" data-flag-title="搭建 LNMP 环境">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>LNMP是建立web应用的平台，是Linux、NGINX，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的简称。 </p>
-</blockquote>
-<h2 id="搭建-Nginx-静态服务器"><a href="#搭建-Nginx-静态服务器" class="headerlink" title="搭建 Nginx 静态服务器"></a>搭建 Nginx 静态服务器</h2><h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>使用 <code>yum</code> 安装 Nginx</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install nginx</div></pre></td></tr></table></figure>
-<p>修改  <a href="">/etc/nginx/conf.d/default.conf</a> ，去除对 IPv6 地址的监听，可以参考下面的示例代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80 default_server;</div><div class="line">    # listen       [::]:80 default_server;</div><div class="line">    server_name  _;</div><div class="line">    root         /usr/share/nginx/html;</div><div class="line"></div><div class="line">    # Load configuration files for the default server block.</div><div class="line">    include /etc/nginx/default.d/*.conf;</div><div class="line"></div><div class="line">    location /&#123; </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    error_page 404 /404.html;</div><div class="line">        location = /40x.html &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    error_page 500 502 503 504 /50x.html;</div><div class="line">        location = /50x.html &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>修改完成后，启动 Nginx</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx</div></pre></td></tr></table></figure>
-<p>此时，可以访问 http://\<ip地址\> 来确认是否安装成功</ip地址\></p>
-<p>将 nginx 设置为开机自动启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig nginx</div></pre></td></tr></table></figure>
-<h2 id="安装-MySQL-数据库服务"><a href="#安装-MySQL-数据库服务" class="headerlink" title="安装 MySQL 数据库服务"></a>安装 MySQL 数据库服务</h2><p>使用 <code>yum</code> 安装 MySQL :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install mysql-server</div></pre></td></tr></table></figure>
-<p>安装完成后，启动 MySQL 服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mysqld start</div></pre></td></tr></table></figure>
-<p>设置 MySQL 管理员密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/mysqladmin -u root password 'QuZheng'</div></pre></td></tr></table></figure>
-<p>将 MySQL 设置开机自动启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig mysql on</div></pre></td></tr></table></figure>
-<h2 id="安装-PHP"><a href="#安装-PHP" class="headerlink" title="安装 PHP"></a>安装 PHP</h2><p>使用 <code>yum</code> 安装 PHP:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install php php-fpm php-mysql</div></pre></td></tr></table></figure>
-<p>安装之后，启动 php-fpm 进程：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service php-fpm start</div></pre></td></tr></table></figure>
-<p>启动之后，可以使用下面的命令查看 PHP-FPM 进程监听那个端口</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -nplt | grep php-fpm</div></pre></td></tr></table></figure>
-<p>将 PHP-FPM 设置开机自动启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig php-fpm on</div></pre></td></tr></table></figure>
-<h2 id="配置-Nginx-并运行-PHP-程序"><a href="#配置-Nginx-并运行-PHP-程序" class="headerlink" title="配置 Nginx 并运行 PHP 程序"></a>配置 Nginx 并运行 PHP 程序</h2><h3 id="配置-Nginx"><a href="#配置-Nginx" class="headerlink" title="配置 Nginx"></a>配置 Nginx</h3><p>在 <a href="">/etc/nginx/conf.d</a> 目录中新建一个名为 php.conf 的文件，并配置 Nginx 端口 ，配置示例如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 8000;</div><div class="line">    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</div><div class="line">    location ~ .php$ &#123;</div><div class="line">        root           /usr/share/php;</div><div class="line">        fastcgi_pass   127.0.0.1:9000;</div><div class="line">        fastcgi_index  index.php;</div><div class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</div><div class="line">        include        fastcgi_params;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>修改配置完成后，重启 nginx 服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service nginx restart</div></pre></td></tr></table></figure>
-<p>这时候，我们就可以在<a href="">/usr/share/php</a> 目录下新建一个 info.php 文件来检查 php 是否安装成功了，文件内容参考如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> phpinfo(); <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1980,7 +1991,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1991,7 +2002,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2002,7 +2013,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
